@@ -1,0 +1,15 @@
+Markdown
+
+2h teoría (scripting en lenguajes interpretados vs programa compilado, lenguajes (bash, perl, R, python)++
+8h prácticas en Linux
+Contenidos por ahora:
+/paths, ssh, scp, rsync, cat, less, head, tail, sort, crtl-Z, & bg, screen, nohup, tmux, $PATH, .bashrc
+instalación de software: apt-get,yum,github, miniconda
+one liners, sed, awk, regex, leer y escribir ficheros
+editores 
+scripts complejos (perl, python, bash, R)
+- shebang
+- dependencias
+- disección
+- ejecución
+- modificación
