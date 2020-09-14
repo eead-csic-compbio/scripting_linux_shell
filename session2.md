@@ -2,7 +2,13 @@
 
 ## 2.1 Processes and subshells
 
-- Hora 3: Stdout: echo, printf. Stderr. Pipes and redirection: |, >, >>, 2>, /dev/null, 2>&1, <. Variables and subshells: var=, ${var}, var=$(whatever). Arithmetic: (( )), let.
+- Hora 3: Stdout: echo, printf. Stderr. Pipes and redirection: |, >, >>, 2>, /dev/null, 2>&1, <. Variables and subshells: var=, ${var}, var=$(whatever). 
+
+crtl-Z, & bg, screen, nohup, tmux
+
+Arithmetic: (( )), let. 
+
+
 
 ## 2.2 Scripting basics
 
