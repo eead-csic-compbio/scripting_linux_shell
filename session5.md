@@ -1,4 +1,4 @@
-# Session 5: Python scripts
+# Session 5: Script files
 
 ## 5.1 Python environment
 
