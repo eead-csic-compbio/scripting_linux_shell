@@ -10,6 +10,7 @@ This is a five-session course for learning the basics of the Linux shell and scr
 
 |session|title|required time|URL|
 |-------|-----|-------------|---|
+|0|Setup|prior to course|[session 0](./session0.md)|
 |1|Linux basics and files|2h|[session 1](./session1.md)|
 |2|Processes and scripts|2h|[session 2](./session2.md)|
 |3|Regular expressions|2h|[session 3](./session3.md)|
