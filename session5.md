@@ -1,6 +1,13 @@
 # Session 5: Script files
 
-## 5.1 Python environment
+scripts complejos (perl, python, bash, R)
+- shebang
+- dependencias
+- disección
+- ejecución
+- modificación
+
+## 5.1 Script environment
 
 ## 5.2 Installing dependencies
 
