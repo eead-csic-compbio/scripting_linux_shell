@@ -23,10 +23,12 @@ You should see a cursor and something similar to:
 
 If you hit `Enter` several times, you should see how the previous line duplicates with every hit, and the cursor places itself after the last line.
 
+```
 username@host:~$
 username@host:~$
 username@host:~$
 username@host:~$
+```
 
 This means that your keyboard is now bound to the terminal. In other terms, the terminal is "listening" your keyboard as an input, and you could start sending commands to it.
 Usually, the first "word" that you write is a command. You intend to do something, and you use the right command to accomplish it. For example, you have just logged in the terminal, and you want to check "where" you are, that is, the current directory. To do that you use the `pwd` command:
