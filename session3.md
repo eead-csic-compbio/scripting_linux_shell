@@ -11,3 +11,5 @@ test, CSV, TSV, Excel
 Portable Perl regex styles, should work in R and python
 
 https://github.com/eead-csic-compbio/biostats_bioinfo/blob/master/Lecture7.Rmd
+
+## 3.3 Writing to files
