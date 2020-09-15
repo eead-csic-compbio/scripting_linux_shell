@@ -4,6 +4,8 @@
 
 test, CSV, TSV, Excel
 
+\n \r
+
 ## 3.2 Regular expressions
 
 Portable Perl regex styles, should work in R and python
