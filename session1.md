@@ -33,19 +33,23 @@ username@host:~$
 This means that your keyboard is now bound to the terminal. In other terms, the terminal is "listening" your keyboard as an input, and you could start sending commands to it.
 Usually, the first "word" that you write is a command. You intend to do something, and you use the right command to accomplish it. For example, you have just logged in the terminal, and you want to check "where" you are, that is, the current directory. To do that you use the `pwd` command:
 
-pwd
+    pwd
 
-Right after writing the command and pressing "Enter", to run the command, you should have the following output:
+Right after writing the command and pressing `Enter`, to run the command, you should have the following output:
 
-/home/username
+   /home/username
 
-Firstly, you are getting an output from the command, which is printed on your terminal. This means that besides the input (your keyboard), the terminal is also able to output text which you can read on the screen.
+Firstly, you are getting an output from the command, which is printed on your terminal. This means that besides listening to your input (your keyboard), the terminal is also able to output text which you can read on the screen.
 
-The `pwd` name is an abbreviation for "print working directory". Most commands use abbreviations, so that you don't need to write so much. However, this makes them not so easy to remember at first. Also, for every command there are different options, arguments or parameters to modify the way it works. Also, you could need further explanation of a command in order to fully understand it. Type:
+The `pwd` name is an abbreviation for *print working directory*. Most commands use abbreviations, so that you don't need to write so much. However, this makes them not so easy to remember at first. Also, for every command there are different options, arguments or parameters to modify the way it works. Also, you could need further explanation of a command in order to fully understand it. Type:
 
-pwd --help
+    pwd --help
 
-You should get a list of options for the command. Many commands accept different "help" options, which allow you to see more usage info. The most common ones are --help and -h.
+You should get a list of options for the command. Many commands accept different help options, which allow you to see more usage info. The most common ones are --help and -h. However, usually you can get a more comprehensive explanation of the command and how it works checking its manual. You can do this with the `man` command, using the command for which you need help as argument:
+
+    man pwd
+
+You will open the manual of the `pwd` command. Once you are done, you can press the `q` key to exit.
 
 Let's check the current directory again:
 pwd
