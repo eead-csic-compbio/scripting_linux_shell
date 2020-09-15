@@ -15,4 +15,4 @@ This is a five-session course for learning the basics of the Linux shell and scr
 |2|Processes and scripts|2h|[session 2](./session2.md)|
 |3|Parsing with regular expressions|2h|[session 3](./session3.md)|
 |4|Perl and R one-liners|2h|[session 4](./session4.md)|
-|5|Script files|2h|[session 5](./session5.md)|
+|5|Advanced scripts|2h|[session 5](./session5.md)|
