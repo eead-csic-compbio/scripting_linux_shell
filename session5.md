@@ -1,4 +1,4 @@
-# Session 5: Script files
+# Session 5: Advanced scripts
 
 scripts complejos (perl, python, bash, R)
 - shebang
