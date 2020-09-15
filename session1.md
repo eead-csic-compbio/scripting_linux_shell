@@ -19,7 +19,7 @@ docker, singularity, etc
 Open a terminal (TODO depending of the OS or setup)
 You should see a cursor and something similar to:
 
-username@host:~$
+    username@host:~$
 
 If you hit `Enter` several times, you should see how the previous line duplicates with every hit, and the cursor places itself after the last line.
 
