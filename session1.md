@@ -4,7 +4,7 @@
 
 Package managers: apt-get,yum, etc
 
-github
+github -> git clone https://github.com/eead-csic-compbio/scripting_linux_shell
 
 miniconda, etc
 
