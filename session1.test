@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+##
+
+pwd
+mkdir iamz
+cd iamz
+mkdir data
+mkdir scripts
+mkdir results
+touch README
+touch SETUP
+touch dummy
+touch dummy2
+touch dummy3
+
+## END
