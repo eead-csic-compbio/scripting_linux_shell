@@ -251,14 +251,6 @@ move a file (or directory) to within another directory - mv FILE DIR
 create symbolic links - ln -s FILE_TO_LINK
 
 
-
-
-Others:
-$PATH
-tree
-rename
-
-
 ## 1.2 Installing software
 
 Package managers: apt-get,yum, etc
@@ -368,3 +360,11 @@ Finally, lets make a first alignment of our query to the proteome:
 ## 1.4 Remote filesystems
 
 ssh, scp, rsync
+
+
+
+Others:
+$PATH
+tree
+rename
+.bashrc
