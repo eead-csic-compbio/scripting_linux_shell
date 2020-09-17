@@ -1,16 +1,6 @@
 # Session 1: Linux basics and files
 
-## 1.1 Installing software
-
-Package managers: apt-get,yum, etc
-
-github -> git clone https://github.com/eead-csic-compbio/scripting_linux_shell
-
-miniconda, etc
-
-docker, singularity, etc
-
-## 1.2 Linux environment and the file system
+## 1.1 Linux environment and the file system
 
 : input and commands, -h, --help, man; the home directory; ls (-a -l -lh -lrt -ad), wildcards (ls whatever*), relative paths (./ ../), the root directory, absolute paths (/, ~/); hard drives, df and mount; moving (cd DIR, cd ..). Creating, moving, renaming and copying files (touch, mv, cp, rename). Symbolic links (ln -s, unlink).
 
@@ -268,27 +258,103 @@ $PATH
 tree
 rename
 
-## 1.3 Remote filesystems
 
-ssh, scp, rsync
+## 1.2 Installing software
+
+Package managers: apt-get,yum, etc
+github -> git clone https://github.com/eead-csic-compbio/scripting_linux_shell
+miniconda, etc
+docker, singularity, etc
 
 
-## 1.4 Working with files
+Besides the commands included in our Linux distribution, we can install additional software. There are multiple ways to do this: downloading and compiling source, obtaining a ready to install binary for our system, cloning a repository or using package managers. The latter is the preferred method when we want to track the collection of software that we have installed, including the specific versions, in a centralized fashion, which makes it more maneagable. Also, using package managers allow in some cases to create different "views" or "environments" which we can switch to have a different collection of software available or "active" depending on the commands we want to run for a specific analysis or session. Examples of package managers are apt, yum, conda, npm, ...
+
+In this case, we are going to install a conda manager which includes just the basic packages (aka Miniconda). Then, we will use this conda manager to create a specific environment which we will use to install blast. To download the Miniconda installer we will do it directly from the terminal with the `wget` command:
+
+cd iamz/scripting
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+This ".sh" file is a script which we need to run in order to install conda. However, it is very likely that we will need to change permissions to be allowed to run the script. Try to run the file with:
+
+    ./Miniconda3-latest-Linux-x86_64.sh
+
+You will get:
+
+    -bash: ./Miniconda3-latest-Linux-x86_64.sh: Permission denied
+
+This is an opportunity to have a first sight at linux file permissions, and it is also useful to see it now, since many programs and scripts we will download will need to change permissions to be able to run them. This is true even for new scripts that you will program yourself. Let's check file permissions for the installer:
+
+    ls -l Miniconda3-latest-Linux-x86_64.sh
+
+We'll get an output similar to:
+
+    -rw-r--r-- 1 cantalapiedra cantalapiedra 93052469 jul 28 18:13 Miniconda3-latest-Linux-x86_64.sh
+
+We said before that permissions are in the first field of the output: `-rw-r--r--` in this case. Every character here has a different meaning. The first one indicates whether the file is actually a file "-", or if it a directory "d", a link "l", etc. Then there are other 9 characters, which we can divide in 3 groups of 3 characters. These 3 groups are the permissions for the owner of the file, the group of the owner of the file, and any other user. The 3 characters of each group indicate whether the file can be read "r", written "w" and executed "x".
+
+In our Miniconda installer we see that the file is actually a regular file "-", the owner (us) has permission to read and write, but no to execute the file "rw-", and both the group of the owner and any other user have only permissions to read the file "r--". If we want to run the installer, how do we change permissions? We do it with the `chmod` (change file mode bits) command. We want to make the user (the owner) have permission to execute the file:
+
+    chmod u+x Miniconda3-latest-Linux-x86_64.sh
+
+The `u+x` argument means "for the user (u), activate (+) permission to execute (x) the file". Check file permissions again:
+
+    ls -l Miniconda3-latest-Linux-x86_64.sh
+
+You will get:
+
+    -rwxr--r-- 1 cantalapiedra cantalapiedra 93052469 jul 28 18:13 Miniconda3-latest-Linux-x86_64.sh
+
+You can se how the 4th character (or bit) has changed from "-" to "x". Now, we should be able to run the file:
+
+    ./Miniconda3-latest-Linux-x86_64.sh
+
+(TODO explain how to go through installation...)
+
+Lets create a new environment to work with blast:
+
+    conda create -n blastenv
+
+Then, we need to activate the environment we want to use (this is how we switch between different environments):
+
+    conda activate blastenv
+
+Now, lets install blast within that environment. In conda, we can install software from different channels. In this case, we will use the "bioconda" channel, and we will specify the version of blast to be installed:
+
+    conda install -c bioconda blast=2.10.1
+
+conda will detect the need of installing dependencies for the blast program, and it will ask you whether you agree or not. Answer yes "y". Once the installation finishes, check the installed packages with:
+
+    conda list
+
+Also, we are going to use the `which` command, which is useful to check from which path it is being run a particular program:
+
+    which blastp
+
+You should get:
+
+    /home/cantalapiedra/anaconda2/envs/blastenv/bin/blastp
+
+Which means that blastp is running from the conda environment we created.
+
+
+## 1.3 Working with files
 
 Working with text files: cat, tac, head, tail (tail -n +X), more, less, grep (regular expressions), diff. Modifying text: sed, tr. Working with tabular data: column, sort, uniq, join, paste, awk. Compressing files and packing directories: gzip, gunzip, tar, zcat. Text editors: nano, vi, emacs.
 
 .bashrc
 
-First, we are going to use blast, to create some output files.
+First, we are going to use blast, to create some output files for the practice.
+
 This part is adapted from: https://jvanheld.github.io/using_IFB_NNCR/practicals/blast_proteome/blast_proteome.html
 
-Download the query, which is the sequence of protein P08660 of UniprotKB, in FASTA format:
+Download the query, which is the sequence of protein P08660 of UniprotKB, in FASTA format. We will be using again the `wget` command:
 
     wget https://www.uniprot.org/uniprot/P08660.fasta
 
-Download the subject or database against which we want to align our query. In this case, it is the proteome of Escherichia coli strain k12, which we obtain from Ensembl Genomes:
+Download the subject or database against which we want to align our query. In this case, it is the proteome of Escherichia coli strain k12, which we obtain from Ensembl Genomes. In this case, we could be using `wget`, but we are going to show an alternative, which is the `curl` command. For `curl`, we need to specify the output file with the `-o` option:
 
-    wget --no-clobber ftp://ftp.ensemblgenomes.org/pub/release-41/bacteria//fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/pep/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa.gz
+    curl ftp://ftp.ensemblgenomes.org/pub/release-41/bacteria//fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/pep/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa.gz -o Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa.gz
 
 The file we downloaded is compressed in gzip format. It is rather straightforward in Linux to uncompress files with gzip format, using the command `gunzip`:
 
@@ -298,3 +364,7 @@ Finally, lets make a first alignment of our query to the proteome:
 
     blastp -subject <(zcat Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa.gz) -query P08660.fasta
 
+
+## 1.4 Remote filesystems
+
+ssh, scp, rsync
