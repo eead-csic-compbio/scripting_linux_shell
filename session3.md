@@ -8,6 +8,10 @@ text, CSV, TSV, Excel
 
 \n \r
 
+while read p; do
+  echo "$p"
+  done <file.txt
+
 ## 3.2 Regular expressions
 
 Portable Perl regex styles, should work in R and python
