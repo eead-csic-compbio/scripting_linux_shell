@@ -20,6 +20,8 @@ A "Settings" window will emerge, and on the left menu go down to "Region & Langu
 
 It is recommended also to install the Guest Additions (check if they are already installed, because the osboxes.org distribution should have it already), and check the VirtualBox options under the "Devices" menu, to share the clipboard.
 
+Also, it is important to explain how to use the "Host key". This key can be pressed when within the virtual OS, to recover the keyboard and mouse control for the host OS, and also to activate some options. You can check which is your current "Host key" on the group of icons bottom right of the window running the virtual OS. One example of its use, press "Host key"+F to go full screen.
+
 
 
 Alternatives to using Oracle VM VirtualBox:
