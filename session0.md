@@ -18,9 +18,13 @@ It is likely that some user will need to change the keyboard distribution.
 To do this, within the Ubuntu virtual machine, click on the "Show applications" button, type "settings", and click on the icon.
 A "Settings" window will emerge, and on the left menu go down to "Region & Language" and click on it. There, below the "Input Sources" section, just click on the "+" icon, then the "..." icon, look for your language. If you cannot find it, choose "Other", to see a larger list of languages, and search again for yours. Click on your choice, and click "Add". Then, you should remove other languages, or change priorities moving the one of your choice to the top of the list below the "Input Sources" section.
 
+Something which could be useful also is disabling shutting down the screen after some inactivity. To do this, go again to "Settings", on the left menu click on "Power", and under "Power Saving", "Blank Screen" choose "Never".
+
 It is recommended also to install the Guest Additions (check if they are already installed, because the osboxes.org distribution should have it already), and check the VirtualBox options under the "Devices" menu, to share the clipboard.
 
 Also, it is important to explain how to use the "Host key". This key can be pressed when within the virtual OS, to recover the keyboard and mouse control for the host OS, and also to activate some options. You can check which is your current "Host key" on the group of icons bottom right of the window running the virtual OS. One example of its use, press "Host key"+F to go full screen.
+
+
 
 
 
