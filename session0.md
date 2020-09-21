@@ -14,6 +14,14 @@ One way to do this: TODO (explain this completely)
 
 Once the process ends, within VirtualBox choose the Ubuntu virtual machine and click "Start"
 
+It is likely that some user will need to change the keyboard distribution.
+To do this, within the Ubuntu virtual machine, click on the "Show applications" button, type "settings", and click on the icon.
+A "Settings" window will emerge, and on the left menu go down to "Region & Language" and click on it. There, below the "Input Sources" section, just click on the "+" icon, then the "..." icon, look for your language. If you cannot find it, choose "Other", to see a larger list of languages, and search again for yours. Click on your choice, and click "Add". Then, you should remove other languages, or change priorities moving the one of your choice to the top of the list below the "Input Sources" section.
+
+It is recommended also to install the Guest Additions (check if they are already installed, because the osboxes.org distribution should have it already), and check the VirtualBox options under the "Devices" menu, to share the clipboard.
+
+
+
 Alternatives to using Oracle VM VirtualBox:
 https://www.vmware.com/
 https://www.qemu.org/
