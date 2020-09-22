@@ -328,10 +328,13 @@ You'll need to use a special command named 'sudo' that allows authorized users t
 Type the following commands on your terminal:
 ```
 sudo apt-get update # get fresh software repos
-sudo install git 
+sudo apt-get install git 
+
 cd iamz
 git clone https://github.com/eead-csic-compbio/scripting_linux_shell
 ```
+These will clone the repository of this course on your local filesystem, which is another popular way of installing software.
+
 
 ### The conda manager
 
