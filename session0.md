@@ -1,12 +1,8 @@
 # Session 0: setup
 
-# Session 0: setup
-## A virtual machine (VM)
-## Ubuntu embedded in Windows 10
-## Other options
-1. [A virtual machine (VM)](#a-virtual-machine--vm-)
-2. [Ubuntu embedded in Windows 10](#ubuntu-embedded-in-windows-10)
-3. [Other options](#other_options)
+- [A virtual machine (VM)](#a-virtual-machine--vm-)
+- [Ubuntu embedded in Windows 10](#ubuntu-embedded-in-windows-10)
+- [Other options](#other-options)
 
 Computer scientists often start counting from zero. In this course, session 0 is about setting up the required environment for the course.
 
