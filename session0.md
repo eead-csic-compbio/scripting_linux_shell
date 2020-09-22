@@ -49,7 +49,9 @@ For systems runnings Windows 10 there's a way of running Ubuntu and its terminal
 
 If you are running a MacOS computer you should be able to run this course on your terminal. You must learn how to install new software though.
 
-If you use a Windows system you can install [MobaXterm](https://mobaxterm.mobatek.net). It is a powerfull yet simple tool to connect to SSH and SFTP servers. it also offers Linux terminal and X server. It also allows you to install parts beyond *bash*, such as *perl* or *python* packages. 
+If you use a Windows system you can install [MobaXterm](https://mobaxterm.mobatek.net). It is a powerfull yet simple tool to connect to SSH and SFTP servers. it also offers Linux terminal and X server. It also allows you to install parts beyond *bash*, such as *git*, *perl* or *python* packages. For example, in order to install Perl under MobaXterm please push "Packages" and select "perl". 
+
+![](pics/MobaXterm.png)
 
 Other options include:
 
