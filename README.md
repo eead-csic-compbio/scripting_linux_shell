@@ -13,6 +13,6 @@ This is a five-session course for learning the basics of the Linux shell and scr
 |0|Setup|prior to course|[session 0](./session0.md)|
 |1|Linux basics and files|2h|[session 1](./session1.md)|
 |2|Processes and scripts|2h|[session 2](./session2.md)|
-|3|One-liners|2h|[session 4](./session4.md)|
-|4|Parsing with regular expressions|2h|[session 3](./session3.md)|
+|3|Parsing with regular expressions|2h|[session 3](./session3.md)|
+|4|Perl one-liners|2h|[session 4](./session4.md)|
 |5|Advanced scripts|2h|[session 5](./session5.md)|
