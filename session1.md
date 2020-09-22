@@ -2,13 +2,14 @@
 
 ## 1.1 Linux environment and the file system
 
-: input and commands, -h, --help, man; the home directory; ls (-a -l -lh -lrt -ad), wildcards (ls whatever*), relative paths (./ ../), the root directory, absolute paths (/, ~/); hard drives, df and mount; moving (cd DIR, cd ..). Creating, moving, renaming and copying files (touch, mv, cp, rename). Symbolic links (ln -s, unlink).
+<!-- : input and commands, -h, --help, man; the home directory; ls (-a -l -lh -lrt -ad), wildcards (ls whatever*), relative paths (./ ../), the root directory, absolute paths (/, ~/); hard drives, df and mount; moving (cd DIR, cd ..). Creating, moving, renaming and copying files (touch, mv, cp, rename). Symbolic links (ln -s, unlink). -->
 
 #### The terminal
 
-First of all, start the Ubuntu virtual machine, login (osboxes.org as user and password) and open a terminal.
+First of all, start the Ubuntu virtual machine with login and password 'ossboxes.org'.
+
 How to open a terminal depends on the OS or setup.
-In Ubuntu 20.04 you can press Ctrl+Alt+t, or go to the "Show applications" button, type "Terminal", and click on the resulting icon.
+In Ubuntu 20.04 you can press Ctrl+Alt+t, or go to the "Show applications" button, type "Terminal", and click on the resulting icon. With an open terminal you can right-click on the icon at the task bar and 'Add to favourites'.
 
 
 You should see a cursor blinking at the end of a line which looks like:
@@ -299,13 +300,31 @@ remove symbolic links - unlink LINK
 
 ## 1.2 Installing software
 
-Package managers: apt-get,yum, etc
-github -> git clone https://github.com/eead-csic-compbio/scripting_linux_shell
-miniconda, etc
-docker, singularity, etc
+Besides the software included in our Linux distribution, we can install additional software. There are multiple ways to do this: 
 
+* downloading and compiling source
+* obtaining a ready to install binary for our system
+* cloning a repository 
+* using package managers 
 
-Besides the commands included in our Linux distribution, we can install additional software. There are multiple ways to do this: downloading and compiling source, obtaining a ready to install binary for our system, cloning a repository or using package managers. The latter is the preferred method when we want to track the collection of software that we have installed, including the specific versions, in a centralized fashion, which makes it more maneagable. Also, using package managers allow in some cases to create different "views" or "environments" which we can switch to have a different collection of software available or "active" depending on the commands we want to run for a specific analysis or session. Examples of package managers are apt, yum, conda, npm, ...
+The latter is the preferred method when we want to track the collection of software that we have installed, including the specific versions, in a centralized fashion, which makes it more maneagable. Also, using package managers allow in some cases to create different "views" or "environments" which we can switch to have a different collection of software available or "active" depending on the commands we want to run for a specific analysis or session. Examples of package managers are apt, yum, conda, npm, ...
+
+Other advanced options to run software include running Docker or singularity containers.
+
+### 1.2.1 The apt package manager in Ubuntu
+
+The *apt* manager is the the easiest way to install software in Ubuntu systems.
+You'll need to use a special command named 'sudo' that allows authorized users to do management tasks. User 'osboxes.org' is one of those users (check file ).
+
+Type the following commands on your terminal:
+```
+sudo apt-get update # get fresh software repos
+sudo install git 
+cd iamz
+git clone https://github.com/eead-csic-compbio/scripting_linux_shell
+```
+
+### 1.2.2 The conda manager
 
 In this case, we are going to install a conda manager which includes just the basic packages (aka Miniconda). Then, we will use this conda manager to create a specific environment which we will use to install blast. To download the Miniconda installer we will do it directly from the terminal with the `wget` command:
 
