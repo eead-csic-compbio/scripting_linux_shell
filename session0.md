@@ -1,7 +1,11 @@
 # Session 0: setup
-Computer scientists often start counting from zero.
 
-For this course we are using a virtual machine to run Ubuntu 20.04.
+Computer scientists often start counting from zero. In this course, session 0 is about setting up the required environment for the course.
+
+For this course we are using Ubuntu 20.04.
+
+## A virtual machine (VM)
+
 A virtual machine allows us to run a OS different from the one installed on our computer.
 
 One way to do this: TODO (explain this completely)
@@ -24,17 +28,28 @@ It is recommended also to install the Guest Additions (check if they are already
 
 Also, it is important to explain how to use the "Host key". This key can be pressed when within the virtual OS, to recover the keyboard and mouse control for the host OS, and also to activate some options. You can check which is your current "Host key" on the group of icons bottom right of the window running the virtual OS. One example of its use, press "Host key"+F to go full screen.
 
+## Ubuntu embedded in Windows 10
+
+For systems runnings Windows 10 there's a way of running Ubuntu and its terminal. Follow these steps:
+
+1. Make sure you have version 1709 or hihger, as explained [here](https://www.protocols.io/view/ubuntu-on-windows-for-computational-biology-sfuebnw)
+
+2. Open Microsoft Store. Search and install "Ubuntu". You can choose a particular version or simply 'Ubuntu' to get the latest supported version.
+
+3. Open system admin and look for "Turn Windows Features on or off". Select the Windows subsystem for Linux.
+
+4. Reboot and launch the Ubuntu app. After a few minutes you should be able to choose your own user and password. You are ready to go.
 
 
+## Other options 
 
+If you are running a MacOS computer you should be able to run this course on your terminal. You must learn how to install new software though.
 
-Alternatives to using Oracle VM VirtualBox:
-https://www.vmware.com/
-https://www.qemu.org/
-macOS terminal
-mobaxterm
-https://bioinfoperl.blogspot.com/2020/08/ubuntu-nativo-en-windows-10.html
-https://multipass.run/
+If you use a Windows system you can install [MobaXterm](https://mobaxterm.mobatek.net). It is a powerfull yet simple tool to connect to SSH and SFTP servers. it also offers Linux terminal and X server. It also allows you to install parts beyond *bash*, such as *perl* or *python* packages. 
 
-https://swcarpentry.github.io/shell-novice/setup.html
+Other options include:
 
+* https://www.vmware.com
+* https://www.qemu.org
+* https://multipass.run
+* https://swcarpentry.github.io/shell-novice/setup.html
