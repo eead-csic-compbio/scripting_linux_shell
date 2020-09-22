@@ -1,6 +1,35 @@
-# Session 4: One-liners
+# Session 4: Perl one-liners
 
-The main goal of this lecture is to learn the basics of one-liners, single-line scripts, when dealing with data files in the terminal.
+<!-- made with perl -lne 'if(/^(#{1,}) (.*)/){ ($i,$t)=($1,$2); $l=lc($t); $l=~s/\W/\-/g; print "$i [$t](#$l)"}' session4.md -->
+
+- [Dependencies](#dependencies)
+	- [Perl](#perl)
+	- [Git](#git)
+	- [Optional software](#optional-software)
+	- [Sample data files](#sample-data-files)
+- [Key file formats](#key-file-formats)
+	- [FASTA](#fasta)
+	- [FASTQ](#fastq)
+	- [BLAST tab-separated format](#blast-tab-separated-format)
+	- [SAM](#sam)
+	- [VCF](#vcf)
+	- [PDB](#pdb)
+	- [Newick](#newick)
+[Perl](#perl)
+- [Perl basics in 5 minutes](#perl-basics-in-5-minutes)
+- [Perl one-liners](#perl-one-liners)
+	- [Hello world one-liners](#hello-world-one-liners)
+	- [One-liners that count input lines](#one-liners-that-count-input-lines)
+	- [Split-column one-liners](#split-column-one-liners)
+	- [One-liners calling modules](#one-liners-calling-modules)
+	- [*In situ* edition of files with regular expressions (regexes)](#-in-situ--edition-of-files-with-regular-expressions--regexes-)
+	- [One-liners that use range regexes](#one-liners-that-use-range-regexes)
+	- [One-liner output piped to other process](#one-liner-output-piped-to-other-process)
+	- [Some bioinformatics one-liners](#some-bioinformatics-one-liners)
+
+
+The main goal of this lecture is to learn the basics of one-liners.
+One-liners are short scripts in a single line, which are often useful when dealing with data files in the terminal.
 
 ## Dependencies
 
@@ -15,17 +44,12 @@ R --version
 
 ### Perl
 
-We will use [Perl5](http://www.perl.org/about.html), 
-a classic programming language which is very powerful for the task of processing data files at the terminal. 
+We will use [Perl5](http://www.perl.org/about.html), a classic programming language which is very powerful for the task of processing data files at the terminal. 
 Perl is [installed by default](https://www.perl.org/get.html) in Linux, including macOS, but not in MS Windows. 
 However, it is [easy to install in these systems](https://www.perl.org/get.html#win32) as well. 
-My preference for casual Windows users is to install [MobaXterm](https://mobaxterm.mobatek.net), as this provides a Linux-like terminal and a package manager which we can use to install other required parts, such as Perl (and a selection of modules), Git or R (see below). If full access to modules in CPAN is desired then a stand-alone Strawberry/ActiveState install should be preferred.
+My preference for casual Windows users is to install [MobaXterm](https://mobaxterm.mobatek.net), as explained in [session 0](./session0.md).
 
-![](pics/MobaXterm.png)
-
-In order to install Perl under MobaXterm please push "Packages" and select "perl".
-
-### Git 
+### Git
 
 Git is a popular distributed version control software which is very common in Bioinformatics. 
 It can be very useful to install and update third-party software. Follow these instructions to install Git:
@@ -48,7 +72,7 @@ Some of the examples below make use of optional dependencies, which in Ubuntu sy
 
 sudo apt-get install bioperl r-base
 
-# for optional Perl modules
+# for optional Perl modules we will use the official source, CPAN
 sudo cpan App::cpanminus
 cpanm HTTP::Server::Brick
 ```
@@ -64,6 +88,8 @@ git clone https://github.com/eead-csic-compbio/methods_biostats_bioinfo.git
 ```
 
 ## Key file formats
+
+In Genomics and Computational Biology it is common to handle large datasets, which are often encoded in file formats such as FASTQ, FASTA, etc. Files in these formats are often so bulky that they are compressed to save disk space. Moreover, users of these files might only have remote access to them and therefore are required to operate with them with technologies compatible with the the SSH protocol. The most flexible of them is the terminal, which is easily reachable in Linux, but also MacOS and Windows systems.
 
 ### FASTA
 ```{r, engine='bash', eval=FALSE, highlight=TRUE}
@@ -209,12 +235,148 @@ The Newick format does the job of describing a phylogenetic tree as a sucession 
 
 ## Perl basics in 5 minutes
 
-The following snippet illustrates the main features you must know in order to read and write Perl code.
-One of the strongest features of Perl are its [regular expressions](https://perldoc.perl.org/perlre.html), 
-which are efficient and powerful:
+The following snippet illustrates the main features you must know in order to read and write Perl code. One of the strongest features of Perl are its [regular expressions](https://perldoc.perl.org/perlre.html), which are efficient and powerful. This code was adapted from
+[https://learnxinyminutes.com/docs/perl](https://learnxinyminutes.com/docs/perl):
 
-```{r child="perlYmin.Rmd"}
+```{r, engine='perl', eval=FALSE, highlight=TRUE}
+# This is a comment
+
+# Adapted from https://learnxinyminutes.com/docs/perl
+
+#### Strict and warnings
+
+use strict;
+use warnings;
+
+# All perl scripts and modules should include these lines. Strict causes
+# compilation to fail in cases like misspelled variable names, and
+# warnings will print warning messages in case of common pitfalls like
+# concatenating to an undefined value.
+
+#### Perl variable types
+
+#  Variables begin with a sigil, which is a symbol showing the type.
+#  A valid variable name starts with a letter or underscore,
+#  followed by any number of letters, numbers, or underscores.
+
+### Perl has three main variable types: $scalar, @array, and %hash.
+
+## Scalars
+#  A scalar represents a single value:
+my $animal = "camel";
+my $answer = 42;
+my $display = "You have $answer ${animal}s.\n";
+
+# Scalar values can be strings, integers or floating point numbers, and
+# Perl will automatically convert between them as required.
+
+# Strings in single quotes are literal strings. Strings in double quotes
+# will interpolate variables and escape codes like "\n" for newline.
+
+## Arrays
+#  An array represents a list of values:
+my @animals = ("camel", "llama", "owl");
+my @numbers = (23, 42, 69);
+my @mixed   = ("camel", 42, 1.23);
+
+# Array elements are accessed using square brackets, with a $ to
+# indicate one value will be returned.
+my $second = $animals[1];
+
+# The size of an array is retrieved by accessing the array in a scalar
+# context, such as assigning it to a scalar variable or using the
+# "scalar" operator.
+
+my $num_animals = @animals;
+print "Number of numbers: ", scalar(@numbers), "\n";
+
+# Be careful when using double quotes for strings containing symbols
+# such as email addresses, as it will be interpreted as a variable.
+
+my @example = ('secret', 'array');
+my $oops_email = "foo@example.com"; # 'foosecret array.com'
+my $ok_email = 'foo@example.com';
+
+## Hashes
+#   A hash represents a set of key/value pairs:
+
+my %fruit_color = ("apple", "red", "banana", "yellow");
+
+#  You can use whitespace and the "=>" operator to lay them out more
+#  nicely:
+
+my %fruit_color = (
+  apple  => "red",
+  banana => "yellow",
+	 );
+
+# Hash elements are accessed using curly braces, again with the $ sigil.
+my $color = $fruit_color{apple};
+
+# All of the keys or values that exist in a hash can be accessed using
+# the "keys" and "values" functions.
+my @fruits = keys %fruit_color;
+my @colors = values %fruit_color;
+
+# Scalars, arrays and hashes are documented more fully in perldata.
+# (perldoc perldata).
+
+#### Conditional and looping constructs
+
+# Perl has most of the usual conditional and looping constructs.
+
+if ($var) {
+  ...
+} elsif ($var eq 'bar') {
+  ...
+} else {
+  ...
+}
+
+# the Perlish post-condition way
+print "Yow!" if $zippy;
+print "We have no bananas" unless $bananas;
+
+#  while
+while (condition) {
+  ...
+}
+
+# for loops and iteration
+for my $i (0 .. $max) {
+  print "index is $i";
+}
+
+for my $element (@elements) {
+  print $element;
+}
+
+map {print} @elements;
+
+# iterating through a hash (for and foreach are equivalent)
+foreach my $key (keys %hash) {
+  print $key, ': ', $hash{$key}, "\n";
+}
+
+#### Regular expressions
+
+# Perl's regular expression support is both broad and deep, and is the
+# subject of lengthy documentation in perlrequick, perlretut, and
+# elsewhere. However, in short:
+
+# Simple matching
+if (/foo/)       { ... }  # true if $_ contains "foo"
+if ($x =~ /foo/) { ... }  # true if $x contains "foo"
+
+# Simple substitution
+
+$x =~ s/foo/bar/;         # replaces foo with bar in $x
+$x =~ s/foo/bar/g;        # replaces ALL INSTANCES of foo with bar in $x
 ```
+
+There are many tutorials available online in English. A good place to start might be:
+[https://perlmaven.com/perl-tutorial](https://perlmaven.com/perl-tutorial)
+If you prefer in Spanish, you can try [https://eead-csic-compbio.github.io/perl_bioinformatica](https://eead-csic-compbio.github.io/perl_bioinformatica)
 
 ## Perl one-liners
 
@@ -341,7 +503,12 @@ echo
 
 # print top 6-mers
 perl -lne 'if(!/^>/){ while(/(\w{6})/g){$fq{$1}++}} END{ foreach $k (sort {$fq{$b}<=>$fq{$a}} keys(%fq)){ print "$k $fq{$k}" }}' test_data/test.1.fasta | head -10
+
+# get hard-masked genome file with repeats as Ns
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/715/135/GCF_000715135.1_Ntab-TN90/GCF_000715135.1_Ntab-TN90_genomic.fna.gz
+zcat GCF_000715135.1_Ntab-TN90_genomic.fna.gz | perl -lne 'if(!/^>/){ s/[a-z]/N/g } print' > hard-masked.fna
 ```
+
 
 If [Bio::Perl](http://bioperl.org) is installed in your system you can use one-liners to download and format sequences from databases:
 
