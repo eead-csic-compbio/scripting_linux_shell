@@ -1,10 +1,19 @@
 # Session 1: Linux basics and files
 
+- [## 1.1 Linux environment and the file system](#1-1-linux-environment-and-the-file-system)
+	- [### The terminal](#the-terminal)
+- [## 1.2 Installing software](#1-2-installing-software)
+	- [### The apt package manager in Ubuntu](#the-apt-package-manager-in-ubuntu)
+	- [### The conda manager](#the-conda-manager)
+- [## 1.3 Working with files](#1-3-working-with-files)
+- [## 1.4 Remote filesystems](#1-4-remote-filesystems)
+
+
 ## 1.1 Linux environment and the file system
 
 <!-- : input and commands, -h, --help, man; the home directory; ls (-a -l -lh -lrt -ad), wildcards (ls whatever*), relative paths (./ ../), the root directory, absolute paths (/, ~/); hard drives, df and mount; moving (cd DIR, cd ..). Creating, moving, renaming and copying files (touch, mv, cp, rename). Symbolic links (ln -s, unlink). -->
 
-#### The terminal
+### The terminal
 
 First of all, start the Ubuntu virtual machine with login and password 'ossboxes.org'.
 
@@ -311,7 +320,7 @@ The latter is the preferred method when we want to track the collection of softw
 
 Other advanced options to run software include running Docker or singularity containers.
 
-### 1.2.1 The apt package manager in Ubuntu
+### The apt package manager in Ubuntu
 
 The *apt* manager is the the easiest way to install software in Ubuntu systems.
 You'll need to use a special command named 'sudo' that allows authorized users to do management tasks. User 'osboxes.org' is one of those users (check file ).
@@ -324,7 +333,7 @@ cd iamz
 git clone https://github.com/eead-csic-compbio/scripting_linux_shell
 ```
 
-### 1.2.2 The conda manager
+### The conda manager
 
 In this case, we are going to install a conda manager which includes just the basic packages (aka Miniconda). Then, we will use this conda manager to create a specific environment which we will use to install blast. To download the Miniconda installer we will do it directly from the terminal with the `wget` command:
 
