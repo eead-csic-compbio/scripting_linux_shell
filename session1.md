@@ -2,6 +2,15 @@
 
 - [1.1 Linux environment and the file system](#11-linux-environment-and-the-file-system)
 	- [The terminal](#the-terminal)
+	- [Commands](#commands)
+	- [Linux paths](#linux-paths)
+	- [Creating files and directories, moving around](#creating-files-and-directories,-moving-around)
+	- [Listing directory contents](#listing-directory-contents)
+	- [Absolute and relative paths](#absolute-and-relative-paths)
+	- [Useful path symbols and abbreviations](#useful-path-symbols-and-abbreviations)
+	- [Copying, renaming and deleting files and directories](#copying,-renaming-and-deleting-files-and-directories)
+	- [TAB autocompletion](#tab-autocompletion)
+	- [Summary](#summary)
 - [1.2 Installing software](#12-installing-software)
 	- [The apt package manager in Ubuntu](#the-apt-package-manager-in-ubuntu)
 	- [The conda manager](#the-conda-manager)
@@ -18,7 +27,6 @@
 First of all, start the Ubuntu virtual machine (VM) with login and password 'osboxes.org'.
 
 How to open a terminal depends on the OS or setup. In Ubuntu 20.04 you can press Ctrl+Alt+t, or go to the 'Show applications' button, type 'Terminal', and click on the resulting icon. With an open terminal you can right-click on the icon at the task bar and 'Add to favourites'.
-
 
 You should see a cursor blinking at the end of a line which looks like:
 
@@ -37,6 +45,8 @@ username@host:~$
 
 This means that your keyboard is now bound to the terminal. In other terms, the terminal is *listening* to your keyboard, and you could start sending commands to it.
 Usually, the first word that you write is a command, and it can be followed by options, parameters and arguments. You intend to do something, and you use the right command to accomplish it. The first command you are going to try is the `clear` command: just type 'clear', and hit `Enter`. You should see again a single line and the cursor waiting for another command, being the terminal empty, as if no previous commands were run.
+
+### Commands
 
 Let's try another command. Again, we will run it without any parameter. You want to check *where* you are, that is, which is the current directory. To do that you use the `pwd` command:
 
@@ -76,6 +86,8 @@ Many commands accept different help options, which allow you to see more usage i
 
 This will open the manual of the `pwd` command. You can navigate up and down the manual with the arrow keys. Once you are done, you can press the `q` key to exit.
 
+### Linux paths
+
 Let's check the current directory again, to explain the structure of a linux path:
 
     pwd
@@ -87,6 +99,8 @@ You will get the output:
 We are within a directory called as our user name (`osboxes`), and this directory is within the `home` directory. The `home` directory is the parent of the `osboxes` directory, and they are separated by a single `/`. The `home` directory is where user-specific directories of linux users are located. Within each user-specific directory, such user has permissions to create new directories and new files, run commands, etc. You should not be able, for example, to create a new file within the home directory of another user (for example, `/home/anotheruser`), except if such user, or an administrator, gives you permission for that. In general, your home directory (`/home/osboxes`) is the place where you will carry out most of your work. Note also that the `home` directory itself it is not within any other directory. In fact yes, it is within the *root* directory (which is denoted just as `/`), from which all the other directories hang.
 
 In summary, the `/home/osboxes` path contains the root directory `/`, the home directory `home`, a separator `/`, and the osboxes home directory `osboxes`.
+
+### Creating files and directories, moving around
 
 Let's try other commands. First, we are going to create a directory. We can do this with the `mkdir` (*make directories*) command:
 
@@ -140,6 +154,8 @@ touch data/dummydata
 touch scripts/dummyscript
 touch results/dummyresults
 ```
+
+### Listing directory contents
 
 Note that we can create files within directories different from the current one, without need to `cd` to such directories, using a linux path, like `data/dummydata`.
 
@@ -216,6 +232,8 @@ You can also combine different options. For example, to list the contents of the
 
     ls -lht 
 
+### Absolute and relative paths
+
 Note that we have been using different paths as arguments for `ls`. There are different ways to specify a path. Compare the next 2 commands:
 
 ```
@@ -238,6 +256,8 @@ Or an absolute path:
     ls -l /home/osboxes/scripting/lesson1/data/dummydata
 
 In general, an absolute path will grow very rapidly if the target file is underneath a lot of directories, whereas a relative path will grow when the target file is far from our current location.
+
+### Useful path symbols and abbreviations
 
 But, what if we want to list the contents of the parent path of our current directory using a relative path? As we saw before, we can use `..`, which represents the parent directory. In fact, we can use this `..` recursively to go up through the directory tree, separating each further level with the path separator: `/`. For example, we want to list the contents of `/home` from different locations:
 
@@ -292,6 +312,8 @@ You will see now a symbolic link, among the list of files, like:
 
 Like this, you can use the path to `dummydata` as if you were using the path to `data/dummydata`. The file you will access is the same. Also, this is a *soft link*, meaning that if we remove the link the original file will persist.
 
+### Copying, renaming and deleting files and directories
+
 We have seen how to create directories and files (and links). Next, we will see how to delete them, how to move them around, or how to change their names and also how to make copies of them.
 
 To create a copy of a file, use the copy command `cp`:
@@ -342,27 +364,29 @@ We can remove a link with the `rm` or the `unlink` command. WARNING: despite its
 
 It is very important to note that removal, renaming, or moving of files in linux is permanent. So be very cautious when deleting or moving a file or directory.
 
+### TAB autocompletion
+
 Finally, there are several things which are very important to work efficiently in the command line. One of them is using the `TAB` key to autocomplete our commands and paths. If you want to be efficient in linux in the long term, you should force yourself to use the `TAB` key for autocompletion as soon as possible, so that you get used to it.
 
 For example, type `ls da` and then hit `TAB`. You should see how your line is now `ls data`, because the only possible option was that you were going to write `ls data`. However, if you further hit `TAB` you will get a list of 2 options (`data/` and `data_moved/`), since there are those 2 possible paths you want to write. You can now add `_` to get `ls data_` and hit `TAB`. The command will be completed to `ls data_moved/`. This means that you can consecutively combine writing and hitting `TAB` until your command or path is complete. This will save you a lot of effort and time in the end.
 
+### Summary
 
-Summary:
-pwd - print current directory
-getting help of a COMMAND - COMMAND --help, man COMMAND
-create empty directory - mkdir DIRECTORY
-create empty file - touch FILENAME
-show contents of a directory - ls DIRECTORY
-list contents of a directory, showing properties of files - ls -l DIRECTORY
-create symbolic links - ln -s FILE_TO_LINK
-copy files - cp FILE COPY_OF_FILE
-remove files - rm FILE
-copy directories - cp -r DIR COPY_OF_DIR
-remove directories - rm -r DIR
-move or rename files - mv FILE FILE_NEW_PATHNAME
-move a file (or directory) to within another directory - mv FILE DIR
-remove symbolic links - unlink LINK
-`TAB` autocompletion
+- pwd - print current directory
+- getting help of a COMMAND - COMMAND --help, man COMMAND
+- create empty directory - mkdir DIRECTORY
+- create empty file - touch FILENAME
+- show contents of a directory - ls DIRECTORY
+- list contents of a directory, showing properties of files - ls -l DIRECTORY
+- create symbolic links - ln -s FILE_TO_LINK
+- copy files - cp FILE COPY_OF_FILE
+- remove files - rm FILE
+- copy directories - cp -r DIR COPY_OF_DIR
+- remove directories - rm -r DIR
+- move or rename files - mv FILE FILE_NEW_PATHNAME
+- move a file (or directory) to within another directory - mv FILE DIR
+- remove symbolic links - unlink LINK
+- `TAB` autocompletion
 
 
 ## 1.2 Installing software
