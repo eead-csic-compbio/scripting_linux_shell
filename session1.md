@@ -398,25 +398,32 @@ Besides the software included in our Linux distribution, we can install addition
 * cloning a repository 
 * using package managers 
 
-The latter is the preferred method when we want to track the collection of software that we have installed, including the specific versions, in a centralized fashion, which makes it more maneagable. Also, using package managers allow in some cases to create different "views" or "environments" which we can switch to have a different collection of software available or "active" depending on the commands we want to run for a specific analysis or session. Examples of package managers are apt, yum, conda, npm, ...
+The latter is the preferred method when we want to track the collection of software that we have installed, including the specific versions, in a centralized fashion, which makes it more maneagable. Also, using package managers allow us to create different "views" or "environments" which we can switch to have a different collection of software available or "active" depending on the commands we want to run for a specific analysis or session. This "environments" are helpful also to share dependencies, for example if we want to install a software which requires other software, importing or loading an environment with the list of dependencies will make it easier to install. Examples of package managers are apt, yum, conda, npm, ...
 
-Other advanced options to run software include running Docker or singularity containers.
+Other advanced options to organize, pack, distribute and run software include container systems, or containerization software, such as Docker or Singularity. But these are beyond the scope of this lesson.
 
 ### The apt package manager in Ubuntu
 
 The *apt* manager is the the easiest way to install software in Ubuntu systems.
-You'll need to use a special command named 'sudo' that allows authorized users to do management tasks. User 'osboxes.org' is one of those users (check file ).
+You'll need to use a special command named `sudo` that allows authorized users to do management tasks. User 'osboxes.org' is one of those users (check file ).
 
-Type the following commands on your terminal:
+For example, we want use the `git` command to be able to clone the GitHub repository used in this course. However, the `git` command is not installed in our system.
+To install `git`, yype the following commands on your terminal:
+
 ```
 sudo apt-get update # get fresh software repos
-sudo apt-get install git 
+sudo apt-get install git
+```
 
-cd iamz
+When prompted, type "Y". Once the `apt-get` command finishes, if it was successful, you should be able to run the `git` command.
+
+Now, let's clone a repository with `git`. First, use `cd` to go to the `~/scripting` directory, if you not there yet. Now, to clone the repository of this course, which is hosted at https://github.com/eead-csic-compbio/scripting_linux_shell, type:
+
+```
 git clone https://github.com/eead-csic-compbio/scripting_linux_shell
 ```
-These will clone the repository of this course on your local filesystem, which is another popular way of installing software.
 
+These will clone the repository of this course on your local filesystem. In this case, the repository contains basically text and data. Nonetheless, using `git` is in fact another popular way of installing software.
 
 ### The conda manager
 
