@@ -194,34 +194,40 @@ Besides the contents of the directory as a list, you obtain several fields for e
 - Date and time of last modification.
 - The file or directory name.
 
-Note that you don't need to be in a specific directory to list its contents. You can specify the *path* of the directory to be listed as an argument of the `ls` command. For example, to show the contents of the *home* directory:
+As we have seen with the `touch` command, we don't need to be in a specific directory to list its contents. You can specify the *path* of the directory to be listed as an argument of the `ls` command. For example, to show the contents of the *home* directory:
 
     ls /home
+
+Hence, this is true in general when a command accepts a path as an argument. 
 
 You can also use the `-d` option to list the directory itself, instead of its contents, so that you can check its permissions, for example:
 
     ls -ld /home
 
-You can also combine different options. For example, to list the contents of the data directory, as a list `l`, with file sizes in *human readable format* `h`, sorted by date of modification `t`:
+You should get something like:
 
-    ls -lht data
+    drwxr-xr-x 4 root root 4096 sep 17  20:26 /home
 
-As argument you can also specify a filename, instead of a directory name. In fact, in linux everything is a file, directories too.
+As argument you can also specify a filename, instead of a directory name.
 
     ls -lht data/dummydata
 
-Note that we have been using file paths as an argument for `ls`. There are different ways to specify a path. Compare the next 2 commands:
+You can also combine different options. For example, to list the contents of the current directory, as a list `l`, with file sizes in *human readable format* `h`, sorted by date of modification `t`:
+
+    ls -lht 
+
+Note that we have been using different paths as arguments for `ls`. There are different ways to specify a path. Compare the next 2 commands:
 
 ```
 ls -l /home/osboxes/scripting/lesson1/data
 ls -l data
 ```
 
-The results are the same, because in fact we are asking to list the contents of the same path.
+The results are the same, because in fact we are asking to list the contents of the same directory, using different type of path.
 
-In the first example (`ls -l /home/osboxes/scripting/lesson1/data`) we are using what is called an **absolute path**. Absolute paths start always with `/`, because we are specifying the full path, from the *root* directory up to the final file. With absolute paths, we can specify any file of the system, but sometimes the path can grow very rapidly to a very long string of text.
+In the first example (`ls -l /home/osboxes/scripting/lesson1/data`) we are using what is called an **absolute path**. Absolute paths start always with `/`, because we are specifying the full path: from the root directory up to the final file.
 
-With the second example (`ls -l data`), we are using a **relative path**, which means "from the place we are currently". We are not using "/" to begin the path, since instead of from the root directory, we are specifying the path from our current location. This is a key to differentiate absolute and relative paths in linux: absolute paths start with "/", relative paths do not.
+With the second example (`ls -l data`), we are using a **relative path**, which means *from the place we are currently at*. We are not using `/` to begin the path, since instead of from the root directory, we are specifying the path from our current location. This is a key to differentiate absolute and relative paths in linux: absolute paths start with "/", relative paths do not.
 
 Another example, let's list the `dummydata` file within the `data` directory. From our current directory (`/home/osboxes/scripting/lesson1`) we could write a relative path:
 
@@ -229,21 +235,24 @@ Another example, let's list the `dummydata` file within the `data` directory. Fr
 
 Or an absolute path:
 
-    ls -l /home/osboxes/lesson1/data/dummydata
+    ls -l /home/osboxes/scripting/lesson1/data/dummydata
 
-But, what if we want to list the contents of the parent path of our current directory using a relative path? As we saw before, we can use `..`, which represents the parent directory. In fact, we can use this `..` recursively to go up through the directory tree, separating each further level with "/". For example, we want to list the contents of `/home` from different locations:
+In general, an absolute path will grow very rapidly if the target file is underneath a lot of directories, whereas a relative path will grow when the target file is far from our current location.
+
+But, what if we want to list the contents of the parent path of our current directory using a relative path? As we saw before, we can use `..`, which represents the parent directory. In fact, we can use this `..` recursively to go up through the directory tree, separating each further level with the path separator: `/`. For example, we want to list the contents of `/home` from different locations:
 
 Change directory to `/home/osboxes/scripting` using relative path: `cd ..`
 List `/home` from `/home/osboxes/scripting`: `ls ../..`
 Change directory to `/home/osboxes/scripting/lesson1`: `cd lesson1`
 List `/home` from `/home/osboxes/scripting/lesson1`: `ls ../../..`
 
-We can even go up first, then go down looking for a path which is in a different branch of the directory tree, in relation to the one in which we are located. For example, from within the `/home/osboxes/scripting/lesson1/data` directory, try to list the `/home/osboxes/scripting/lesson1/results` directory.
+We can even go up first, then go down looking for a path which is in a different branch of the directory tree, in relation to the one in which we are located. For example, from within the `/home/osboxes/scripting/lesson1/data` directory ...
 
-```
-cd data
-ls -l ../results
-```
+   cd data
+
+... to list the `/home/osboxes/scripting/lesson1/results` directory we could type:
+
+    ls -l ../results
 
 As we saw before, you can use the `~` to represent the home directory. For example, try:
 
@@ -261,6 +270,13 @@ touch data/dummydata2
 ls -l data/dummy*
 ```
 
+You should get the info of both files within the directory, since both names start with `dummy`:
+
+'''
+-rw-rw-r-- 1 osboxes osboxes 0 Sep 24 12:38 data/dummydata
+-rw-rw-r-- 1 osboxes osboxes 0 Sep 24 13:06 data/dummydata2
+'''
+
 In general, by combining absolute and relative paths, and special symbols for current, parent and home directory, you should be able to manage yourself within the linux directory hierarchy from the location of your choice.
 
 There is another powerful way to avoid moving around in linux, and have "at hand" the files you wish to work with. For example, we want to access a file as if it was located within the current directory, when the file is actually located in a different directory. We can do this without making an actual copy of the file. We can create links to files (or directories) with the `ln -s` command, and access the actual files using path of the links instead of the actual paths of the files. For example, try:
@@ -269,6 +285,12 @@ There is another powerful way to avoid moving around in linux, and have "at hand
 ln -s data/dummydata
 ls -l
 ```
+
+You will see now a symbolic link, among the list of files, like:
+
+    lrwxrwxrwx 1 osboxes osboxes 14 Sep 24 13:09 dummydata -> data/dummydata
+
+Like this, you can use the path to `dummydata` as if you were using the path to `data/dummydata`. The file you will access is the same. Also, this is a *soft link*, meaning that if we remove the link the original file will persist.
 
 We have seen how to create directories and files (and links). Next, we will see how to delete them, how to move them around, or how to change their names and also how to make copies of them.
 
@@ -287,7 +309,7 @@ rm data/dummydata2
 ls data/dummy*
 ```
 
-To copy and remove directories is similar, but we need to copy or remove also the contents of the directory. That is why we use the `-r` option, which means to do the same command recursively, that is, also with all the contents of the directory:
+To copy and remove directories is similar, but we need to copy or remove also the contents of the directory. That is why we must use the `-r` option, which means to do the same command recursively, that is, also with all the contents of the directory:
 
 ```
 cp -r data data2
@@ -297,6 +319,8 @@ ls -l
 rm -r data3
 ls -l
 ```
+
+That being said, you can check what happens if you type `rm data2`, without the `-r` option.
 
 In linux, changing a file (or directory) location is the same as renaming it, and can be done with the move `mv` command. For example, to rename the `data2` dir to `data_moved`:
 
@@ -318,6 +342,11 @@ We can remove a link with the `rm` or the `unlink` command. WARNING: despite its
 
 It is very important to note that removal, renaming, or moving of files in linux is permanent. So be very cautious when deleting or moving a file or directory.
 
+Finally, there are several things which are very important to work efficiently in the command line. One of them is using the `TAB` key to autocomplete our commands and paths. If you want to be efficient in linux in the long term, you should force yourself to use the `TAB` key for autocompletion as soon as possible, so that you get used to it.
+
+For example, type `ls da` and then hit `TAB`. You should see how your line is now `ls data`, because the only possible option was that you were going to write `ls data`. However, if you further hit `TAB` you will get a list of 2 options (`data/` and `data_moved/`), since there are those 2 possible paths you want to write. You can now add `_` to get `ls data_` and hit `TAB`. The command will be completed to `ls data_moved/`. This means that you can consecutively combine writing and hitting `TAB` until your command or path is complete. This will save you a lot of effort and time in the end.
+
+
 Summary:
 pwd - print current directory
 getting help of a COMMAND - COMMAND --help, man COMMAND
@@ -333,6 +362,7 @@ remove directories - rm -r DIR
 move or rename files - mv FILE FILE_NEW_PATHNAME
 move a file (or directory) to within another directory - mv FILE DIR
 remove symbolic links - unlink LINK
+`TAB` autocompletion
 
 
 ## 1.2 Installing software
