@@ -1,12 +1,12 @@
 # Session 1: Linux basics and files
 
 - [1.1 Linux environment and the file system](#11-linux-environment-and-the-file-system)
-	- [### The terminal](#the-terminal)
-- [## 1.2 Installing software](#12-installing-software)
-	- [### The apt package manager in Ubuntu](#the-apt-package-manager-in-ubuntu)
-	- [### The conda manager](#the-conda-manager)
-- [## 1.3 Working with files](#13-working-with-files)
-- [## 1.4 Remote filesystems](#14-remote-filesystems)
+	- [The terminal](#the-terminal)
+- [1.2 Installing software](#12-installing-software)
+	- [The apt package manager in Ubuntu](#the-apt-package-manager-in-ubuntu)
+	- [The conda manager](#the-conda-manager)
+- [1.3 Working with files](#13-working-with-files)
+- [1.4 Remote filesystems](#14-remote-filesystems)
 
 
 ## 1.1 Linux environment and the file system
