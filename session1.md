@@ -17,7 +17,7 @@
 
 First of all, start the Ubuntu virtual machine (VM) with login and password 'osboxes.org'.
 
-How to open a terminal depends on the OS or setup. In Ubuntu 20.04 you can press Ctrl+Alt+t, or go to the "Show applications" button, type "Terminal", and click on the resulting icon. With an open terminal you can right-click on the icon at the task bar and 'Add to favourites'.
+How to open a terminal depends on the OS or setup. In Ubuntu 20.04 you can press Ctrl+Alt+t, or go to the 'Show applications' button, type 'Terminal', and click on the resulting icon. With an open terminal you can right-click on the icon at the task bar and 'Add to favourites'.
 
 
 You should see a cursor blinking at the end of a line which looks like:
@@ -35,7 +35,7 @@ username@host:~$
 username@host:~$
 ```
 
-This means that your keyboard is now bound to the terminal. In other terms, the terminal is **listening** your keyboard as an input, and you could start sending commands to it.
+This means that your keyboard is now bound to the terminal. In other terms, the terminal is *listening* your keyboard as an input, and you could start sending commands to it.
 Usually, the first word that you write is a command, and it can be followed by options, parameters and arguments. You intend to do something, and you use the right command to accomplish it. The first command you are going to try is the `clear` command: just type "clear", and hit `Enter`. You should see again a single line and the cursor waiting for another command.
 
 Let's try another example of a command without any parameter. You want to check "where" you are, that is, which is the current directory. To do that you use the `pwd` command:
