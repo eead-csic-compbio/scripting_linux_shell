@@ -15,7 +15,7 @@
 
 ### The terminal
 
-First of all, start the Ubuntu virtual machine with login and password 'ossboxes.org'.
+First of all, start the Ubuntu virtual machine (VM) with login and password 'osboxes.org'.
 
 How to open a terminal depends on the OS or setup.
 In Ubuntu 20.04 you can press Ctrl+Alt+t, or go to the "Show applications" button, type "Terminal", and click on the resulting icon. With an open terminal you can right-click on the icon at the task bar and 'Add to favourites'.
