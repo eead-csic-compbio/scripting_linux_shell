@@ -35,10 +35,10 @@ username@host:~$
 username@host:~$
 ```
 
-This means that your keyboard is now bound to the terminal. In other terms, the terminal is *listening* your keyboard as an input, and you could start sending commands to it.
-Usually, the first word that you write is a command, and it can be followed by options, parameters and arguments. You intend to do something, and you use the right command to accomplish it. The first command you are going to try is the `clear` command: just type "clear", and hit `Enter`. You should see again a single line and the cursor waiting for another command.
+This means that your keyboard is now bound to the terminal. In other terms, the terminal is *listening* to your keyboard, and you could start sending commands to it.
+Usually, the first word that you write is a command, and it can be followed by options, parameters and arguments. You intend to do something, and you use the right command to accomplish it. The first command you are going to try is the `clear` command: just type 'clear', and hit `Enter`. You should see again a single line and the cursor waiting for another command, being the terminal empty, as if no previous commands were run.
 
-Let's try another example of a command without any parameter. You want to check "where" you are, that is, which is the current directory. To do that you use the `pwd` command:
+Let's try another command. Again, we will run it without any parameter. You want to check *where* you are, that is, which is the current directory. To do that you use the `pwd` command:
 
     pwd
 
@@ -46,19 +46,37 @@ Right after writing the command and pressing `Enter`, to run the command, you sh
 
     /home/osboxes
 
-Firstly, you are getting an output from the command, which is printed on your terminal. This means that besides listening to your input (your keyboard), the terminal is also able to output text which you can read on the screen.
+Firstly, you are getting an output from the command, and such output is printed on your terminal. This means that ,besides listening to your keyboard, the terminal is also able to output text for you to read on the screen.
 
-The `pwd` name is an abbreviation for *print working directory*. Most commands use abbreviations, so that you don't need to write so much. However, this makes them not so easy to remember at first. Don't worry. You will need to use the command several times, and in several sessions, until you remember them. As said before, for every command there are different options, parameters and arguments to modify the way it works. For example, many command accept the "--help" option, to provide information about how to run the command:
+The name of the command, `pwd`, is an abbreviation for *print working directory*. Most commands names are abbreviations, so that you don't need to write so much. However, this makes them not so easy to remember at first. Don't worry. You will need to use the command several times, and in several sessions, until you remember them. As said before, for every command there are different options, parameters and arguments to modify the way it works. For example, many commands accept the `--help` option, which is used to ask for information about how to run the command:
 
     pwd --help
 
-You should get a list of options for the command. Many commands accept different help options, which allow you to see more usage info. The most common ones are --help and -h. However, usually you can get a more comprehensive explanation of the command and how it works checking its manual. You can do this with the `man` command, using the command for which you need help as argument:
+You should get a list of options for the command, like:
+
+'''
+pwd: pwd [-LP]
+    Print the name of the current working directory.
+    
+    Options:
+      -L        print the value of $PWD if it names the current working
+                directory
+      -P        print the physical directory, without any symbolic links
+    
+    By default, `pwd' behaves as if `-L' were specified.
+    
+    Exit Status:
+    Returns 0 unless an invalid option is given or the current directory
+    cannot be read.
+'''
+
+Many commands accept different help options, which allow you to see more usage info. The most common ones are `--help` and `-h`. However, usually you can get a more comprehensive explanation of the command and how it works checking its manual. You can do this running `man`, using as an argument the command for which you want further information:
 
     man pwd
 
-You will open the manual of the `pwd` command. Once you are done, you can press the `q` key to exit.
+This will open the manual of the `pwd` command. You can navigate up and down the manual with the arrow keys. Once you are done, you can press the `q` key to exit.
 
-Let's check the current directory again:
+Let's check the current directory again, to explain the structure of a linux path:
 
     pwd
 
@@ -66,14 +84,15 @@ You will get the output:
 
     /home/osboxes
 
-We are within a directory called as our user name (osboxes), and this directory is within the *home* directory. The *home* directory is where the user-specific directories of linux users are located. Within each user-specific directory, such user has permissions to create new directories and new files, run commands, etc. You should not be able, for example, to create a new file within the home directory of another user (for example, */home/anotheruser*), except if such user, or an administrator, gives you permission for that. In general, your home directory (*/home/osboxes*) is the place where you will carry out most of your work. Note also that the *home* directory itself (*/home*) it is not within any other directory. In fact yes, it is within the *root* directory (which is just */*), from which all the other directories hang. We will explain further about this *root* directory later.
+We are within a directory called as our user name (`osboxes`), and this directory is within the `home` directory. The `home` directory is the parent of the `osboxes` directory, and they are separated by a single `/`. The `home` directory is where user-specific directories of linux users are located. Within each user-specific directory, such user has permissions to create new directories and new files, run commands, etc. You should not be able, for example, to create a new file within the home directory of another user (for example, `/home/anotheruser`), except if such user, or an administrator, gives you permission for that. In general, your home directory (`/home/osboxes`) is the place where you will carry out most of your work. Note also that the `home` directory itself it is not within any other directory. In fact yes, it is within the *root* directory (which is denoted just as `/`), from which all the other directories hang.
 
-Let's try other commands. First, we are going to create a directory. We can do this with the `mkdir` ("make directories") command:
+In summary, the `/home/osboxes` path contains the root directory `/`, the home directory `home`, a separator `/`, and the osboxes home directory `osboxes`.
+
+Let's try other commands. First, we are going to create a directory. We can do this with the `mkdir` (*make directories*) command:
 
     mkdir scripting
 
-
-Then, let's move within such directory. To move to another place, we use the `cd` ("change directory") command:
+Then, let's move within such directory. To move to another place, we use the `cd` (*change directory*) command:
 
     cd scripting
 
@@ -81,7 +100,7 @@ You will see that the line on the terminal has changed to:
 
     osboxes@osboxes:~/scripting$
 
-Which indicates that you are currently within the "scripting" directory. Let's create and move to another directory:
+Which indicates that you are currently within the `scripting` directory. Let's create and move to another directory:
 
     mkdir lesson1
     cd lesson1
@@ -94,17 +113,17 @@ If you compare this line with the cursor line:
 
     osboxes@osboxes:~/scripting/lesson1$    
 
-you will realize that the "~" represents your home directory ("/home/osboxes"). You can use the "~" symbol as an abbreviation for your home directory. For example, to change from any location to your home directory, type:
+you will realize that the `~` symbol represents your home directory (`/home/osboxes`). You can use the `~` symbol as an abbreviation for your user-specific home directory. For example, to change from any location to your home directory, type:
 
     cd ~
 
-Also, you can use the "-" symbol with the `cd` command, to go back to the last previous directory:
+Also, you can use the `-` symbol with the `cd` command, to go back to the last previous directory:
 
     cd -
 
 You should be back at `/home/osboxes/scripting/lesson1`.
 
-Now, let's create a few more directories within the current directory. For example, you just started a project and you know that you will need a "data" directory, a "scripts" directory and a "results" directory:
+Now, let's create a few more directories within the current directory. For example, you just started a project and you know that you will need a `data` directory, a `scripts` directory and a `results` directory:
 
 ```
 mkdir data
@@ -122,7 +141,9 @@ touch scripts/dummyscript
 touch results/dummyresults
 ```
 
-Now, let's check the contents within the current directory. We can "list" the contents of a directory with the "ls" command:
+Note that we can create files within directories different from the current one, without need to `cd` to such directories, using a linux path, like `data/dummydata`.
+
+Now, let's check the contents of the current directory. We can show the contents of a directory with the `ls` command:
 
     ls
 
@@ -132,14 +153,14 @@ You should get:
 data  README  results  scripts  SETUP
 ```
 
-The output are the contents of the current directory. You can also try running the command with other options and arguments. For example, to show also the hidden files use the `-a` option to show all files:
+These are the contents of the current directory. You can also try running the command with other options and arguments. For example, to show also the hidden files use the `-a` option to show all files:
 
 ```
 ls -a
 .  ..  data  README  results  scripts  SETUP
 ```
 
-In linux, the hidden files are those prefixed with `.`. In the previous output you will notice that there are not hidden files, except for those weird `.` and `..` items. In fact, those items represent the path to the current directory `.`, and to the parent directory `..`. Actually, you can check this by using the `cd` command, for example:
+In linux, the hidden files are those prefixed with `.`. In the previous output you will notice that there are not hidden files, except for those weird `.` and `..` items. In fact, those items represent the path to the directory being listed `.`, and the path to the parent directory `..`. Actually, you can check this by using the `cd` command, for example:
 
     cd .
 
@@ -149,7 +170,7 @@ You will see that you remain in the same directory.
 
 You will go to the parent directory `/home/osboxes/scripting`. Enter again within the `lesson1` directory using `cd lesson1` or `cd -`.
 
-Going back to hidden files, you can actually create a hidden file very easily. You just need to prefix its name with `.`. For example, type `touch .dummyhidden` and compare the output of `ls` and `ls -a`.
+More regarding hidden files: you can actually create a hidden file very easily. You just need to prefix its name with `.`. For example, type `touch .dummyhidden` and compare the output of `ls` and `ls -a`.
 
 In many circumstances, it is better to show the contents as a list, which we obtain using the `-l` option:
 
@@ -163,7 +184,15 @@ drwxr-xr-x 2 osboxes osboxes 4096 sep 15 11:43 scripts
 -rw-r--r-- 1 osboxes osboxes    0 sep 15 11:42 SETUP
 ```
 
-We are not going in depth with all the info here. First you get a line with the total size of the directory in bytes, and then one line per file or directory. Each of these lines show, from left to right, the permissions (e.g. `drwxr-xr-x`), number of hard links, owner user name, owner group name, file size in bytes, date and time of last modification and the file or directory name.
+Besides the contents of the directory as a list, you obtain several fields for each of the files. We are not going into details with all them here. First you get a line with the total size of the directory in bytes (`total 12` in this example) Then one line per file or directory. Each of these lines show, from left to right:
+- The type of file it is (in our example, a `d` for directories, a `-` for regular files)
+- The permissions (e.g. `rwxr-xr-x`) of the file
+- Number of hard links (don't mind about this now)
+- User name of the user which *owns* the file (`osboxes` is our user name)
+- Group name of the group which *owns* the file (`osboxes` is also our user group).
+- File size in bytes. Note that empty files have `0` size, whereas empty directories have a size of `4096` bytes.
+- Date and time of last modification.
+- The file or directory name.
 
 Note that you don't need to be in a specific directory to list its contents. You can specify the *path* of the directory to be listed as an argument of the `ls` command. For example, to show the contents of the *home* directory:
 
