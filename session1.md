@@ -597,7 +597,7 @@ Now, lets make a first alignment of our query to the proteome. As we have create
 
 If it works, you should see some alignments printed on the terminal. However, after we keep running commands in our session, all the alignments will be lost. We would like to store the output from the `blastp` command in a file. We can do this in Linux with the `>` symbol, like:
 
-    blastp -db Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa -query P08660.fasta > P08660.aln`
+    blastp -db Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa -query P08660.fasta > P08660.aln
 
 Which means *redirect the output of the blastp command to a file called "P08660.aln"*. Check the file exists with `ls -l`. Now, how do I read the file from the command line? There are several commands to achieve this, and they can be useful for different purposes.
 
@@ -619,7 +619,19 @@ Now, there is another way to show the contents of a file, which is the `cat` com
 
 You will see that the contents of the file are now printed to the terminal. This is because the `cat` command emits as output the contents of the file, and as no redirection of such output is done, it ends in what is called the 'standard out', which in this case is the terminal screen. Of course, you could redirect the output of cat to another file using the `>` symbol (for example, `cat P08660.aln > P08660.aln.copy`), although in this case it makes no sense (since you could just copy the file with `cp`).
 
-There is a way to print the content of the file, but in the opposite direction. Try:
+There are ways to print our own text to the terminal screen. For example, the `echo` command:
+
+    echo "Hello world"
+
+Or the `printf` command:
+
+    printf "Hello world\n"
+
+Note how the `echo` command ends with a new line before the command line. However, the `printf` command does not create this new line itself, and we have to tell it to do it with the `\n` special symbol. In linux, we can use `\n` meaning new line for any text string. Other useful symbol of this kind is the `\t` to insert a tab. Try:
+
+    printf "\tHello world\n"
+
+Besides `cat`, there are other commands to output the contents of a text file. For example, there is a way to print the content of the file, but in the opposite direction. Try:
 
     tac P08660.aln
 
@@ -648,7 +660,6 @@ There is a command to obtain a list of all the previous commands you ran, which 
     !235
 
 Another useful trick is that you can cut the right part of a command to remove it. For example, use the arrows to recover the command `tail -n +394 P08660.aln`, move the cursor to the space between +394 and the filename, and press 'Ctrl+k'. Now you could write the name of another file, for example, and run the command.
-
     
 
 ### Linux pipes
@@ -664,6 +675,311 @@ Or to read with `less` only the last 100 lines of a file:
 You can chain all the commands you want like this. For example, to read with `less` the first 100 lines of the last 1000 lines:
 
     tail -1000 P08660.aln | head -100 | less
+
+### Text filters
+
+There is another useful command to filter the contents of a file, which is the `grep` command. In this case, you choose the text to search or to skip, and the command will return the output according to your choice. For example:
+
+    grep "Stephen" P08660.aln
+
+As a result, you will get 2 lines, which are the lines containing the "Stephen" text string:
+
+'''
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+'''
+
+Note that the search is case-sensitive. Compare the previous results with `grep "stephen" P08660.aln`.
+
+We can use the `-m` option to limit the results to a maximum number of matches. For example, to get only one result from the previous search:
+
+    grep -m 1 "Stephen" P08660.aln
+
+To get:
+
+'''
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+'''
+
+You can also show the lines before the result with `-B` and the lines after the result with `-A`. For example, to get the previous line and the next 2 lines, besides the result, try:
+
+    grep -B 1 -A 2 "Stephen" P08660.aln 
+
+You get the next output (note how the 2 results are separated by a line with '--' which is not in the original file):
+
+'''
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+--
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+'''
+
+Now, note that if "Stephen" was part of "Stephenson" we would retrieve such result as well. For example:
+
+    printf "Stephen" | grep "Stephen"
+    printf "Stephenson" | grep "Stephen"
+
+If we want to find only "Stephen" as a complete word, we can use the `-w` parameter:
+
+    printf "Stephen" | grep -w "Stephen"
+    printf "Stephenson" | grep -w "Stephen"
+
+Note that the text to be searched by grep is in fact a regular expression. Regular expressions are beyond the scope of this lesson. They are very powerful for text search, replacement and filtering. We will see only some examples using grep:
+
+- Use `^` to represent the start of a line: `grep "^Reference" P08660.aln`
+
+'''
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Reference for composition-based statistics: Alejandro A. Schaffer,
+'''
+
+- Use `$` to represent the end of a line: `grep "BLOSUM62$" P08660.aln`
+
+'''
+Matrix: BLOSUM62
+'''
+
+- Use the `.` symbol to represent any character: `grep ".HPA.L." P08660.aln`
+
+'''
+Query  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
+            DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR
+Sbjct  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
+Query  225  GIYTTDPRVVSAAKRIDEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRA  284
+Query  242  EIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLV  289
+Query  243  IAFAEAAEMATFGAKVLHPATLLPAVRSDIPV  274
+Query  258  VLHPATLLPAVRSDIPVFVGSSKDPRAGGTL  288
+Query  220  WTDVPGIYTTDPRVVSAAKRIDEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSS  279
+            W  + G         S ++ + + A A     A    ++ HPATL P V + I + +  +
+Sbjct  185  WQALQGAKLVLQDYASGSRPLIDAALARNGIQANIVQEIGHPATLFPMVAAGIGISILPA  244
+'''
+
+- Use `*` to represent "the previous character any number of times. For example, use `.*` to represent any number of characters: `grep "^Sbjct.*.HPA.L.P" P08660.aln`
+
+'''
+Sbjct  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
+Sbjct  185  WQALQGAKLVLQDYASGSRPLIDAALARNGIQANIVQEIGHPATLFPMVAAGIGISILPA  244
+'''
+
+- Use the `-v` option to instead of keeping the lines found, discard those and get the others: `grep ".HPA.L." P08660.aln | grep -v "^Query"`
+
+'''
+            DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR
+Sbjct  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
+            W  + G         S ++ + + A A     A    ++ HPATL P V + I + +  +
+Sbjct  185  WQALQGAKLVLQDYASGSRPLIDAALARNGIQANIVQEIGHPATLFPMVAAGIGISILPA  244
+'''
+
+- Use "[0-9]" to represent a number. For example, to get any number of 1 or more digits, in %, try: `grep "[0-9][0-9]*%" P08660.aln`
+
+'''
+ Identities = 449/449 (100%), Positives = 449/449 (100%), Gaps = 0/449 (0%)
+ Identities = 142/471 (30%), Positives = 228/471 (48%), Gaps = 41/471 (9%)
+ Identities = 23/82 (28%), Positives = 39/82 (48%), Gaps = 6/82 (7%)
+ Identities = 90/288 (31%), Positives = 138/288 (48%), Gaps = 7/288 (2%)
+ Identities = 28/92 (30%), Positives = 38/92 (41%), Gaps = 8/92 (9%)
+ Identities = 32/122 (26%), Positives = 50/122 (41%), Gaps = 14/122 (11%)
+ Identities = 21/89 (24%), Positives = 37/89 (42%), Gaps = 13/89 (15%)
+ Identities = 16/39 (41%), Positives = 22/39 (56%), Gaps = 3/39 (8%)
+ Identities = 14/56 (25%), Positives = 27/56 (48%), Gaps = 6/56 (11%)
+ Identities = 19/73 (26%), Positives = 41/73 (56%), Gaps = 10/73 (14%)
+ Identities = 12/36 (33%), Positives = 21/36 (58%), Gaps = 1/36 (3%)
+ Identities = 22/84 (26%), Positives = 35/84 (42%), Gaps = 3/84 (4%)
+ Identities = 12/31 (39%), Positives = 19/31 (61%), Gaps = 0/31 (0%)
+ Identities = 9/20 (45%), Positives = 12/20 (60%), Gaps = 0/20 (0%)
+ Identities = 38/117 (32%), Positives = 54/117 (46%), Gaps = 21/117 (18%)
+ Identities = 25/96 (26%), Positives = 42/96 (44%), Gaps = 3/96 (3%)
+'''
+
+- Actually, you can use the `[]` to define any set of characters. For example, to get all the pairs of positive and negative aminoacids in the aligned references: `grep "^Sbjct" P08660.aln | grep "[RHK][DE]"`
+
+'''
+Sbjct  61   FEKLDAIRNIQFAILERLRYPNVIREEIERLLENITVLAEAAALATSPALTDELVSHGEL  120
+Sbjct  121  MSTLLFVEILRERDVQAQWFDVRKVMRTNDRFGRAEPDIAALAELAALQLLPRLNEGLVI  180
+Sbjct  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
+Sbjct  361  TGDTLLTQSLLMELSALCRVEVEEGLALVALIGNDLSKACGVGKEVFGVLEPFNIRMICY  420
+Sbjct  291  PGTLIGASRDEDELPVKGISNLNNMAMFSVSGPGMKGMVGMAARVFAAMSRARISVVLIT  350
+Sbjct  351  QSSSEYSISFCVPQSDCVR-AERAMQEEFYLELKEGLLEPLAVTERLAIISVVGDGMRTL  409
+Sbjct  133  SARLMSAVLNQQGLPAAWLDAREFLRA-ERAAQPQVDEGLSYPLLQQLLVQHPGKRLVVT  191
+Sbjct  192  -GFISRNNAGETVLLGRNGSDYSATQIGALAGVSRVTIWSDVAGVYSADPRKVKDACLLP  250
+Sbjct  99   GQMLLTRADMEDRERFLNARDTLRALLDN---NIVPVINENDAVA-----------TAEI  144
+Sbjct  145  KVGDNDNLSALAAILAGADKLLLLTDQKGLYTADPRSNPQAELIKDVYGIDDALRAIAGD  204
+Sbjct  60   IAVHKSQTATLLHTDSQQRVRGINADYLNLLKRALNIKLTLREYADHQKAMDALAEGEVD  119
+Sbjct  168  VFQEGVSAEIQQINIVGNHAFT------TDELISHFQLRDEVPWWNVVGDRKYQKQ  217
+Sbjct  318  RSPGTLSDWLQKQGLVEGISANSDPIVNGNSGVLAISASLTDKGLANRDQVVAAIFSYLN  377
+Sbjct  378  LLREKGIDKQYFD  390
+Sbjct  132  FGTITARDHDDVQQHVDVLLADGKTRLKVAITAQSG  167
+Sbjct  145  TDSAACLRGIEIEADVVLKATKVDGVFTADPAKDPTATMYEQLTYSEVLEKEL---KVMD  201
+Sbjct  202  LAAFTLARDHKLPIRVFNMNKPGA  225
+Sbjct  144  MKRDGKYLRRVVASPQPRKILDSEAIELL--LKEGHVV----ICSGGGGVPVTDDGAGSE  197
+Sbjct  198  AVIDKDLAAALLAEQINADGLVILTDADAVYENWGTPQQRAIRHATP-DELAPFAKA  253
+'''
+
+The same regular expression can be used with another command, `sed`, to replace those patterns for other text strings. For example:
+
+    grep "Stephen" P08660.aln | sed 's#Stephen#Osboxes#'
+
+Will change "Stephen" by "Osboxes" in all the lines output by grep. We could use this easily to create another file with the author name changed:
+
+    sed 's#Stephen#Osboxes#' P08660.aln > P08660.aln.osboxes
+
+Check it:
+
+    grep "Altschul" P08660.aln.osboxes
+
+And use the `diff` command to compare both files:
+
+    diff P08660.aln P08660.aln.osboxes
+
+You will get the correspondence of lines which show changes:
+
+'''
+4c4
+< Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+---
+> Reference: Osboxes F. Altschul, Thomas L. Madden, Alejandro A.
+12c12
+< I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+---
+> I. Wolf, Eugene V. Koonin, and Osboxes F. Altschul (2001),
+'''
+
+Another example, changing all the [RHK][DE] pairs by "__my_motif_" text:
+
+    grep "^Sbjct" P08660.aln | sed 's#[RHK][DE]#_my_motif_#g' | grep "_my_motif_"
+
+Note in the previous expression the use of the `g` flag at the end, which means 'global' replacement, and instructs sed to replace not only the first occurrence of a pattern, but all the occurrences in the line.
+
+We can use `-e` to perform several replacements, as alternative to pipe consecutive `sed` commands. Compare:
+
+    sed 's#^Query#P08660#' P08660.aln | sed 's#^Sbjct#E.coli#'
+
+    sed -e 's#^Query#P08660#' -e 's#^Sbjct#E.coli#' P08660.aln
+
+`sed` has many other uses:
+
+- To remove empty lines: `sed '/^$/d' P08660.aln`
+- To show only an interval of lines, for example from 100 to 110: `sed -n "100,110p;111q" P08660.aln`
+- To print only the replaced lines, using `-n` option and the `p` flag: `sed -n 's#Stephen#Osboxes#p' P08660.aln`
+- To delete specific lines of a file: `sed '10,400d' P08660.aln`
+- etc
+
+
+### Working with tabular data
+
+It is very common to work with tabular data. We are going to generate the same blastp alignments, but in tabular format, so that we can more easily manage and analyze the results based on its statistics, instead of on the detailed alignment of the residues. To create the alignment in tabular format, use the `-outfmt 6` option in blast. Check the `-outfmt` parameter in the blast documentation of whith `blastp -help`. The default fields in the output are: qaccver saccver pident length mismatch gapopen qstart qend sstart send evalue bitscore. Therefore, we are going to create a header first, for our output file, with those fields:
+
+    printf "qaccver saccver pident length mismatch gapopen qstart qend sstart send evalue bitscore\n" | tr " " "\t" > P08660.aln.tsv
+
+With the `tr` command we replace the white spaces to tabular spaces. Now, our output file, `P08660.aln.tsv`, contains only the header. However, if we now run blast like:
+
+    blastp -db Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa -query P08660.fasta -outfmt 6 > P08660.aln.tsv
+
+we will overwrite the output file, and the header will be gone. To avoid this, we want to append the output from blastp into our existing output file. We can do this using `>>` instead of `>`, like:
+
+    blastp -db Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa -query P08660.fasta -outfmt 6 >> P08660.aln.tsv
+
+And there we have our tabular file with header. If you try to inspect the table using `cat`, `less`, `more` or similar, you will not be able to match the columns of the different rows, because these programs are agnostic of the tabular nature of the file. An useful command, only to view the tabular contents in the terminal screen, is the `column` command, with the `-t` option. Try:
+
+    column -t P08660.aln.tsv
+
+However, this command alters the tabular spacing between rows, and thus it should be used only for the final visualization of the table, and its output should not be used to pipe it to further commands working on tabular data.
+
+Now, we can use different commands to manipulate the table. For example, we could sort the results by different columns. Although to do this we need to avoid the header with `tail -n +2`. First, let's sort by starting position on the reference (9th column):
+
+    tail -n +2 P08660.aln.tsv | sort -k9,9n | column -t
+
+We use the `sort` command, using `-k` to sort by column, `9,9` means from 9th to 9th column, and `n` means numerical sort.
+
+Now, let's sort the data by score (12th column), which is a decimal number. This is more complex, since depends on the decimal separator registered in your system. You can check this with:
+
+    locale decimal_point
+
+If the output is ".", you can sort by decimal numbers replacing the `n` by `g`. We are adding also the `r` option, so that the order is from largest to smallest numbers.
+
+    tail -n +2 P08660.aln.tsv | sort -k12,12gr | column -t
+
+If the output is ",", you could need first to modify your table, so that your the "." decimal separators from blast output are converted to ",". You can do this easily with the `tr` command:
+
+    tail -n +2 P08660.aln.tsv | tr "." "," | sort -k12,12gr | tr "," "." | column -t
+
+The last `tr` is just in case you want again decimal numbers of the table in the original format.
+
+However, we want our table sorted so that those lines with the same score, are sorted by %identity (3rd column, pident):
+
+If your locale is ".":
+
+    tail -n +2 P08660.aln.tsv | sort -k12,12gr -k3,3gr | column -t
+
+If your locale is ",":
+
+    tail -n +2 P08660.aln.tsv | tr "." "," | sort -k12,12gr -k3,3gr | tr "," "." | column -t
+
+This means, sort first by the 12th column, then by the 3rd column.
+
+Now, we realize that we want to analyze the %identity of the targets of the alignment. So first we would like to remove the other columns from the table. You can remove columns from a table very easily using the `cut` command. For example:
+
+    cut -f 2-3 P08660.aln.tsv | column -t
+
+We use `2-3` as an interval from 2nd to 3rd columns. You can also use "," to add single columns, and combine both single columns and intervals. For example, to keep the query, %identity, start and end of the target and score:
+
+    cut -f 1,3,9-10,12 P08660.aln.tsv | column -t
+
+Another very useful command is `uniq`, which given a list returns the unique elements found in the list. Note however, that `uniq` only "merges" identical values when they are consecutive in the list. So, in general, to get uniq elements we should sort first. For example to get the list of targets from our alignment:
+
+    tail -n +2 P08660.aln.tsv | cut -f 2 | sort | uniq
+
+The previous line could be replaced by `sort -u`:
+
+    tail -n +2 P08660.aln.tsv | cut -f 2 | sort -u
+    
+However, if we want to use other parameters of uniq, we cannot use directly `sort`. For example, to get the uniq elements and also how many occurrences of them we found:
+
+    tail -n +2 P08660.aln.tsv | cut -f 2 | sort | uniq -c
+
+You can also use `uniq` to keep only the duplicated elements:
+
+    tail -n +2 P08660.aln.tsv | cut -f 2 | sort | uniq -d
+
+Or the elements which appear only once:
+
+    tail -n +2 P08660.aln.tsv | cut -f 2 | sort | uniq -u
+
+Finally, there is a command, `awk`, which is a scripting language itself. As such, it gives us enormous versatility to parse text files, and combined with the previous commands will allow us to perform many different operations on text files, and specially with tabular data. For example, let's keep only the rows with identity equal or over 45.0:
+
+    tail -n +2 P08660.aln.tsv | awk -F $'\t' '{if ($3>=45.0) print $0}' | column -t
+
+You will get:
+
+'''
+sp|P08660|AK3_ECOLI  AAC76994  100.000  449  0   0  1    449  1    449  0.0  903
+sp|P08660|AK3_ECOLI  AAC75331  45.000   20   11  0  282  301  153  172  7.4  25.8
+'''
+
+The `-F` option is to define the column separator, in our case tab (`-F $'\t'`). Then, the script is enclosed between '{}'. The code which we include within the script is going to be applied to every line of the input separatedly. So, in our example we check whether the 3rd column is equal or above 45.0 (`if ($3>45.0)`). If the condition is met, we print the whole line (`print $0`).
+
+
+
+### Working with several tables
+
+join, paste
+
+
+
+
+### Text editors
+
+nano, vi, emacs.
+
+### Compressing files and packing directories
+
+gzip, gunzip, tar, zcat. 
+
+
 
 
 ## 1.4 Remote filesystems
