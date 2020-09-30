@@ -487,6 +487,12 @@ zcat test_data/test.blast.tsv.gz | perl -lane 'print $F[11] if($F[10] < 0.00001)
 ### Some bioinformatics one-liners
 
 ```{r, engine='bash', highlight=TRUE} 
+
+# get length of sequences in FASTA file
+zcat test_data/test.fasta.gz |\
+	perl -lne 'if(/^>/){ print $l if($l); $l=0 } else{$l+=length($_)} END{ print $l}'
+echo
+
 # find palindromes
 zcat test_data/test.fasta.gz | perl -lne 'print if($_ eq reverse)'
 echo
