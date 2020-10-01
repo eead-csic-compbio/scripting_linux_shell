@@ -9,7 +9,11 @@ In data science is broadly the task of extracting features of interest from data
 
 A specially important character is the [newline](https://en.wikipedia.org/wiki/Newline), which is used in text files to indicate that a line has terminated. In UNIX/Linux and derived systems such as MacOS newlines are encoded with character '\n' while in Windows it is actually two chars ('\r\n'). This can cause problems while parsing files across systems. A useful software to avoid this is the terminal utility [dos2unix](http://manpages.ubuntu.com/manpages/focal/man1/dos2unix.1.html).
 
-* **CSV/TSV** are files containing comma or TAB-separated text columns. These files are very convenient for processing and wrangling in the terminal. They can be exported from Spreadsheet software such as [MS Excel](https://en.wikipedia.org/wiki/Microsoft_Excel), [Google Sheets](https://en.wikipedia.org/wiki/Google_Sheets) or [OpenCalc](https://en.wikipedia.org/wiki/OpenOffice.org). These files usually have extensions *.csv* or *.tsv*
+* **CSV/TSV** are files containing comma or TAB-separated text columns. These files are very convenient for processing and wrangling in the terminal. They can be exported from Spreadsheet software such as [MS Excel](https://en.wikipedia.org/wiki/Microsoft_Excel), [Google Sheets](https://en.wikipedia.org/wiki/Google_Sheets) or [OpenCalc](https://en.wikipedia.org/wiki/OpenOffice.org). These files usually have extensions *.csv*, *.tsv* or *.tab*
+
+Note that the TAB character is encoded as '\t'.
+
+* **markdown** files are text files that support some simple text formatting, with headers, section, hyperlinks or bullet points. This course in written in this format and GitHub renders it by default. These files have *.md* extension. 
 
 * **Excel** files can be on a variety of [formats](https://support.microsoft.com/en-us/office/file-formats-that-are-supported-in-excel-0943ff2c-6014-4e8d-aaea-b83d51d46247) but for the sake of this course they should be converted to CSV or TSV formats. A typical excel extension is *.xlsx*
 
@@ -22,6 +26,17 @@ A specially important character is the [newline](https://en.wikipedia.org/wiki/N
 ### 3.1.1 Exercises
 
 <!-- windows txt file , dos2unix, file, gzip/gunzip, zcat, zless-->
+
+```
+## set the path to the course material cloned in session 1
+COURSEDIR=./scripting_linux_shell
+file $COURSEDIR/files/exampleCRLF.txt 
+
+dos2unix $COURSEDIR/files/exampleCRLF.txt
+
+file $COURSEDIR/files/exampleCRLF.txt
+```
+
 
 You can try to convert a spreadsheet to TSV format using this [file](https://docs.google.com/spreadsheets/d/1h9ELze4Idjr5NTtksK11i1JQh6EyI7ZrPKLcT8AxoEk).
 
