@@ -25,8 +25,6 @@ Note that the TAB character is encoded as '\t'.
 
 ### 3.1.1 Exercises
 
-<!-- windows txt file , dos2unix, file, gzip/gunzip, zcat, zless-->
-
 ```
 ## set the path to the course material cloned in session 1
 COURSEDIR=./scripting_linux_shell
@@ -37,10 +35,18 @@ dos2unix $COURSEDIR/files/exampleCRLF.txt
 file $COURSEDIR/files/exampleCRLF.txt
 ```
 
+Now  try to convert a spreadsheet to TSV format using this [file](https://docs.google.com/spreadsheets/d/1h9ELze4Idjr5NTtksK11i1JQh6EyI7ZrPKLcT8AxoEk). Please save the resulting file as 'files/example.tsv' and do the following:
 
-You can try to convert a spreadsheet to TSV format using this [file](https://docs.google.com/spreadsheets/d/1h9ELze4Idjr5NTtksK11i1JQh6EyI7ZrPKLcT8AxoEk).
+```
+gzip example.tsv
 
+file example.tsv.gz
 
+zcat example.tsv.gz
+
+zless example.tsv.gz
+```
+You can try bzip2, bzcat and bzless as well.
 
 ## 3.2 Reading files
 
