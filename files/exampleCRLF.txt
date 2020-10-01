@@ -1,0 +1,6 @@
+# Example file with CRLF newlines
+
+use warnings;
+use strict;
+
+print "hello world\n";
