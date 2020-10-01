@@ -65,7 +65,7 @@ The name of the command, `pwd`, is an abbreviation for *print working directory*
 
 You should get a list of options for the command, like:
 
-'''
+```
 pwd: pwd [-LP]
     Print the name of the current working directory.
     
@@ -79,7 +79,7 @@ pwd: pwd [-LP]
     Exit Status:
     Returns 0 unless an invalid option is given or the current directory
     cannot be read.
-'''
+```
 
 Many commands accept different help options, which allow you to see more usage info. The most common ones are `--help` and `-h`. However, usually you can get a more comprehensive explanation of the command and how it works checking its manual. You can do this running `man`, using as an argument the command for which you want further information:
 
