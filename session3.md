@@ -17,11 +17,15 @@ A specially important character is the [newline](https://en.wikipedia.org/wiki/N
 
 * **BZIP2** files are also compressed, in this case using the software [bzip2/bunzip2](https://en.wikipedia.org/wiki/Bzip2). They usually have extension *.bz* and can be extracted in real time with *bzcat*.
 
-<!-- * *tar* files are actually bundles of files which can be extracted using the utility [tar](https://en.wikipedia.org/wiki/Tar_(computing). They --> 
+<!-- * *tar* files are actually bundles of files which can be extracted using the utility [tar](https://en.wikipedia.org/wiki/Tar_(computing). -->
 
-<!-- windows txt file -->
+### 3.1.1 Exercises
+
+<!-- windows txt file , dos2unix, file, gzip/gunzip, zcat, zless-->
 
 You can try to convert a spreadsheet to TSV format using this [file](https://docs.google.com/spreadsheets/d/1h9ELze4Idjr5NTtksK11i1JQh6EyI7ZrPKLcT8AxoEk).
+
+
 
 ## 3.2 Reading files
 
