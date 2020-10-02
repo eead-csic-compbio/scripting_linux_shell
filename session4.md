@@ -68,7 +68,7 @@ git --version
 
 Some of the examples below make use of optional dependencies, which in Ubuntu systems can be installed as follows:
 
-```{r, engine='bash', eval=FALSE}
+```
 
 sudo apt-get install bioperl r-base
 
@@ -83,7 +83,7 @@ To install bioperl in other systems please see [http://bioperl.org/INSTALL.html]
 If *git* was succesfully installe the following command will download the sample data which will be used in this lecture.
 These files can be also directly downloaded from [https://github.com/eead-csic-compbio/methods_biostats_bioinfo](https://github.com/eead-csic-compbio/methods_biostats_bioinfo/archive/master.zip):
 
-```{r, engine='bash', eval=FALSE}
+```
 git clone https://github.com/eead-csic-compbio/methods_biostats_bioinfo.git
 ```
 
@@ -92,7 +92,7 @@ git clone https://github.com/eead-csic-compbio/methods_biostats_bioinfo.git
 In Genomics and Computational Biology it is common to handle large datasets, which are often encoded in file formats such as FASTQ, FASTA, etc. Files in these formats are often so bulky that they are compressed to save disk space. Moreover, users of these files might only have remote access to them and therefore are required to operate with them with technologies compatible with the the SSH protocol. The most flexible of them is the terminal, which is easily reachable in Linux, but also MacOS and Windows systems.
 
 ### FASTA
-```{r, engine='bash', eval=FALSE, highlight=TRUE}
+```
 >transcript XYZ
 AAGAATTACAAACCTCAACAACTCTCGACTGTTACAGGCATCGCTGCCATAATATGAGTA
 GAGTACATGGGCATCACCTAAATTCTGTGAGCGCCATCCATCAAACTATGTCTGACTGAC
@@ -117,7 +117,7 @@ KEFHFNKYLS RARRVEIAAT LELNETQVKI WFQNRRMKQK KREREGG
 
 This is the standard format for high-throughput sequencing reads. Each read takes four lines, with headers starting with char @. Note that in this example pair-end reads are interleaved, with read 2 of each pair coming just after read 1:
 
-```{r, engine='bash', eval=FALSE, highlight=TRUE}
+```
 @SRR491411.1.1 HWUSI-EAS1737_0007:6:1:1007:2418 length=101
 NCTACCGATGAGCCCGAAACTTTTCCGGTAATGCACGAAAACCTTCCGGTAACCAAATGAGGTCATCCTCTATCTCAATCTTCCATTCCGGACCATTCCGG
 +SRR491411.1.1 HWUSI-EAS1737_0007:6:1:1007:2418 length=101
@@ -135,7 +135,7 @@ Check our [blog post](https://bioinfoperl.blogspot.com.es/2014/12/perl-module-ks
 The 12-column format below is produced by BLAST when option **-outfmt 6** is in use; columns are **tab-separated** in
 the [following order](https://www.ncbi.nlm.nih.gov/books/NBK279684): *qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore*
 
-```{r, engine='bash', eval=FALSE, highlight=TRUE}
+```
 1	1	100.00	628	0	0	1	628	1	628	0.0	1281
 1	4102	64.63	622	220	0	1	622	1	622	0.0	 852
 1	5262	60.61	622	245	0	1	622	1	622	0.0	 812
@@ -151,7 +151,7 @@ The format below contains at least 11 **tab-separated** columns in the
 [following order](https://en.wikipedia.org/wiki/SAM_(file_format)): 
 *QNAME, FLAG, RNAME, POS, MAPQ, CIGAR, RNEXT, PNEXT, TLEN, SEQ, QUAL*
 
-```{r, engine='bash', eval=FALSE, highlight=TRUE}
+```
 @SQ    SN:chr1    LN:50
 read1    16    chr1    1    255    50M    *    0    0    ATTTAAAAATTAATTTAATGCTTGGCTAAATCTTAATTACATATATAATT   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<    NM:i:0
 read1    1032    chr1    1    255    50M    *    0    0    ATTTAAAAATTAATTTAATGCTTGGCTAAATCTTAATTACATATATAATT   <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<    NM:i:0
@@ -163,7 +163,7 @@ The binary version of SAM is called BAM, and can be queried with software [samto
 
 The Variant Call Format was designed to summarize genetic variations mapped on a reference genome/sequence:
 
-```{r, engine='bash', eval=FALSE, highlight=TRUE}
+```
 ##fileformat=VCFv4.0
 ##fileDate=20090805
 ##source=myImputationProgramV3.1
@@ -197,7 +197,7 @@ The classic Protein Data Bank format, as well as the
 [updated PDBx variant](https://bioinfoperl.blogspot.com.es/2017/10/formato-pdbxmmcif-protein-data-bank.html), 
 are used to annotate and describe the positions of atoms in macromolecules such as proteins, DNA and RNA:
 
-```{r, engine='bash', eval=FALSE, highlight=TRUE}
+```
 ATOM      1  O5'  DG A   1      13.136  26.426  -2.541  1.00 15.00           O  
 ATOM      2  C5'  DG A   1      11.802  26.362  -2.030  1.00 15.00           C  
 ATOM      3  C4'  DG A   1      11.520  25.005  -1.428  1.00 15.00           C  
@@ -223,7 +223,7 @@ ATOM     19  C4   DG A   1      10.583  24.683  -5.357  1.00 15.00           C
 
 The Newick format does the job of describing a phylogenetic tree as a sucession of nodes, branches, and distances:
 
-```{r, engine='bash', eval=FALSE, highlight=TRUE}
+```
 ((((((((((BsyC:0.013358,BsyE:0.021549):0.090257,BsyG:0.027746):0.012743,Bpin:0.080853):0.015246,((B422:0.015850,Bpho:0.017473):0.034584,Brup:0.01
 8335):0.025314):0.018883,Barb:0.108741):0.045155,((Bboi:0.115276,Bret:0.042738):0.050086,Bmex:0.153381):0.040856):0.159346,((Bdis:0.039945,Bhyb:0
 .042164):0.016188,Bsta:0.054611):0.072495):0.093114,Osat:0.177214):0.071042):0.035521,Sbic:0.035521);
@@ -238,7 +238,7 @@ The Newick format does the job of describing a phylogenetic tree as a sucession 
 The following snippet illustrates the main features you must know in order to read and write Perl code. One of the strongest features of Perl are its [regular expressions](https://perldoc.perl.org/perlre.html), which are efficient and powerful. This code was adapted from
 [https://learnxinyminutes.com/docs/perl](https://learnxinyminutes.com/docs/perl):
 
-```{r, engine='perl', eval=FALSE, highlight=TRUE}
+```perl
 # This is a comment
 
 # Adapted from https://learnxinyminutes.com/docs/perl
@@ -392,7 +392,7 @@ Occasionally we post one-liners at out [blog](https://bioinfoperl.blogspot.com.e
 
 One-liners are executed by calling the interpreter with option *-e* and some Perl syntax between 'single quotes':
 
-```{r, engine='bash', highlight=TRUE}
+```
 perl -e 'print "hello world"'
 echo
 
@@ -419,7 +419,7 @@ zcat test_data/test.fasta.gz | perl -lne 'print if(/^>/)'
 
 Perl global variable $. contains at any moment the current input line number.
 In this example we used to print the first line every four lines of a FASTQ file:
-```{r, engine='bash', highlight=TRUE}
+```
 zcat test_data/testPE.fastq.gz | perl -lne 'print if($.%4==1)' | head -10
 ```
 
@@ -427,7 +427,7 @@ zcat test_data/testPE.fastq.gz | perl -lne 'print if($.%4==1)' | head -10
 
 Option *-a* should be used to split input lines in columns and save teh resulting elements in array @F:
 
-```{r, engine='bash', highlight=TRUE}
+```
 # parse 12-column TSV BLAST output and select hits of sequence "12" with some E-value cutoff
 zcat test_data/test.blast.tsv.gz | perl -lane 'print $F[1] if($F[0] eq "12" && $F[10] < 0.0001)'
 echo
@@ -444,13 +444,14 @@ zcat test_data/test.blast.tsv.gz | sort -nk1,1 -nk2,2 -nrk11,11 | \
 ### One-liners calling modules
 
 Sometimes modules are required in one-liners. Core modules are pre-installed in most systems:
-```{r, engine='bash', highlight=TRUE}
+```
 # List::Util is a core module
 echo '34,17,6' | perl -MList::Util=max -F"," -lane 'print max @F'
 ```
 
-Other modules must be instaleld before they can be used:
-```{r, engine='bash', highlight=TRUE, eval=FALSE}
+Other modules must be installed before they can be used:
+<!-- I believe this could be done easily with python as well -->
+```
 # HTTP::Server::Brick must be installed 
 # this serves the current folder to share data through the Web
 perl -MHTTP::Server::Brick -e '$s=HTTP::Server::Brick->new(port=>8000); $s->mount("/"=>{path=>"."}); $s->start'
@@ -460,7 +461,7 @@ perl -MHTTP::Server::Brick -e '$s=HTTP::Server::Brick->new(port=>8000); $s->moun
 
 Flag *-i* allows the edition of text files *in situ*, creating backups:
 
-```{r, engine='bash', eval=FALSE, highlight=TRUE}
+```
 gunzip test_data/test.fasta.gz
 perl -i.bk -ne 's/, complete genome\.//; print' test_data/test.fasta
 ```
@@ -468,16 +469,20 @@ perl -i.bk -ne 's/, complete genome\.//; print' test_data/test.fasta
 ### One-liners that use range regexes
 
 The next example prints lines that appear in the input file after the first regex and before the second: 
-```{r, engine='bash', highlight=TRUE}
+```
 zcat test_data/test.blast.tsv.gz | perl -lne 'print if /^10\t/../^12\t/'
 ```
 
 ### One-liner output piped to other process
 
-In this example a histogram is computed in R from data parsed with Perl one-liner:
+In this examples the median and histogram are computed in R from data parsed with one-liner:
 
-```{r, engine='bash', eval=FALSE, highlight=TRUE}
+```
 # this requires R installed and produces a PDF file
+
+zcat test_data/test.blast.tsv.gz | perl -lane 'print $F[11] if($F[10] < 0.00001)' | \
+  Rscript -e 'median(scan(file="stdin"))'
+
 zcat test_data/test.blast.tsv.gz | perl -lane 'print $F[11] if($F[10] < 0.00001)' | \
   Rscript -e 'data=abs(scan(file="stdin")); pdf("bits.pdf"); hist(data,xlab="bitscore")'
 ```
@@ -486,8 +491,7 @@ zcat test_data/test.blast.tsv.gz | perl -lane 'print $F[11] if($F[10] < 0.00001)
 
 ### Some bioinformatics one-liners
 
-```{r, engine='bash', highlight=TRUE} 
-
+```
 # get length of sequences in FASTA file
 zcat test_data/test.fasta.gz |\
 	perl -lne 'if(/^>/){ print $l if($l); $l=0 } else{$l+=length($_)} END{ print $l}'
@@ -518,7 +522,7 @@ zcat GCF_000715135.1_Ntab-TN90_genomic.fna.gz | perl -lne 'if(!/^>/){ s/[a-z]/N/
 
 If [Bio::Perl](http://bioperl.org) is installed in your system you can use one-liners to download and format sequences from databases:
 
-```{r, engine='bash', highlight=TRUE, eval=FALSE} 
+```
 # Bio::Perl must be installed 
 perl -MBio::Perl -e '$gb=get_sequence("genbank","CP000524"); write_sequence(">CP000524.fna","fasta",$gb)'
 ```
