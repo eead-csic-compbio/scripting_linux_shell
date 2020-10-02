@@ -19,7 +19,7 @@ Note that the TAB character is encoded as '\t'.
 
 * **GZIP** files are binary, compressed using the software [gzip/gunzip](https://en.wikipedia.org/wiki/Gzip). They usually have extension *.gz*, but in doubt you can always identify them with the terminal utility *file*. They can be extracted on the fly with *zcat*
 
-* **BZIP2** files are also compressed, in this case using the software [bzip2/bunzip2](https://en.wikipedia.org/wiki/Bzip2). They usually have extension *.bz* and can be extracted in real time with *bzcat*.
+* **BZIP2** files are also compressed, in this case using the software [bzip2/bunzip2](https://en.wikipedia.org/wiki/Bzip2). They usually have extension *.bz2* and can be extracted in real time with *bzcat*.
 
 <!-- * *tar* files are actually bundles of files which can be extracted using the utility [tar](https://en.wikipedia.org/wiki/Tar_(computing). -->
 
@@ -30,29 +30,53 @@ Note that the TAB character is encoded as '\t'.
 COURSEDIR=./scripting_linux_shell
 file $COURSEDIR/files/exampleCRLF.txt 
 
+less $COURSEDIR/files/exampleCRLF.txt
+
 dos2unix $COURSEDIR/files/exampleCRLF.txt
 
 file $COURSEDIR/files/exampleCRLF.txt
+
+less $COURSEDIR/files/exampleCRLF.txt
 ```
 
-Now  try to convert a spreadsheet to TSV format using this [file](https://docs.google.com/spreadsheets/d/1h9ELze4Idjr5NTtksK11i1JQh6EyI7ZrPKLcT8AxoEk). Please save the resulting file as 'files/example.tsv' and do the following:
+Now try to convert this [spreadsheet](https://docs.google.com/spreadsheets/d/1h9ELze4Idjr5NTtksK11i1JQh6EyI7ZrPKLcT8AxoEk) to TSV format, for instance the QTL sheet. Please rename the resulting file as 'files/QTL.tsv' and do the following:
 
 ```
-gzip example.tsv
+# rename file, blanks in filenames can be troublesome
+mv dataIAMZ\ -\ QTL.tsv QTL.tsv
 
-file example.tsv.gz
+ls -l QTL.tsv
+gzip QTL.tsv
 
-zcat example.tsv.gz
+ls -l QTL.tsv.gz
+file QTL.tsv.gz
 
-zless example.tsv.gz
+zcat QTL.tsv.gz
+zless QTL.tsv.gz
+
+gunzip QTL.tsv.gz
+
+bzip2 QTL.tsv
+ls QTL.tsv.bz2
+file QTL.tsv.bz2
 ```
-You can try bzip2, bzcat and bzless as well.
+You can try bzcat and bzless as well.
 
-## 3.2 Reading files
 
-while read p; do
-  echo "$p"
-  done <file.txt
+## 3.2 Reading files 
+
+Files are handy when processing data on the terminal. 
+You can use them to repeat the same operation on all lines of a file, for instance.
+Before we learn how to do that, let's first see how you can use BASH to read a text file
+line by line:
+
+```
+while read line; do
+	echo $line
+done < QTL.tsv
+```
+
+This code is fine when you have only one word per line, or you really want to process the whole line.
 
 ## 3.3 Writing to files
 
