@@ -13,7 +13,7 @@ A specially important character is the [newline](https://en.wikipedia.org/wiki/N
 
 Note that the TAB character is encoded as '\t'.
 
-* **markdown** files are text files that support some simple text formatting, with headers, section, hyperlinks or bullet points. This course in written in this format and GitHub renders it by default. These files have *.md* extension. 
+* **markdown** files are text files that support some simple text formatting, with headers, section, hyperlinks or bullet points. See this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to learn more. This course in written in this format and GitHub renders it by default. These files have *.md* extension. 
 
 * **Excel** files can be on a variety of [formats](https://support.microsoft.com/en-us/office/file-formats-that-are-supported-in-excel-0943ff2c-6014-4e8d-aaea-b83d51d46247) but for the sake of this course they should be converted to CSV or TSV formats. A typical excel extension is *.xlsx*
 
