@@ -143,14 +143,24 @@ atg    # matches occurrences of 'atg'
 [a-z]  # matches any letter from alphabet
 [A-Z]  # same but uppercase
 [^A-Z] # negation of previous, any char not in A-Z
+
+# greedy/lazy matches
+
+a.*b   # longest possible match starting with 'a' and ending with 'b'
+a.?b   # shortest match starting with 'a' and ending with 'b' 
+
 ```
 
 Regexes are usually written in the form /abc/, where the search pattern is delimited by two slash characters /. At the end we can add flags to control matching:
 
 ```
-g (global) do not return after the first match, continue from there
+# g (global) do not return after the first match, continue from there
 
-i case-(insensitive)
+/[A-Z]{3}/g
+
+# i case-(insensitive)
+
+/acgt/i
 
 ```
 
@@ -167,6 +177,9 @@ https://ryanstutorials.net/linuxtutorial/cheatsheetgrep.php
 
 <!-- such as code, log files, spreadsheets, or even documents. And while there is a lot of theory behind formal languages, the following lessons and examples will explore the more practical uses of regular expressions so that you can use them as quickly as possible. -->
 
-
+<!--
+https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285
+https://eead-csic-compbio.github.io/perl_bioinformatica/node18.html
+-->
 
 
