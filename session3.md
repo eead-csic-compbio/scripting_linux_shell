@@ -23,7 +23,7 @@ Note that the TAB character is encoded as '\t'.
 
 <!-- * *tar* files are actually bundles of files which can be extracted using the utility [tar](https://en.wikipedia.org/wiki/Tar_(computing). -->
 
-### 3.1.1 Exercises
+### Exercises
 
 ```
 ## set the path to the course material cloned in session 1
@@ -90,18 +90,83 @@ You might recall from session 2 that pipes can be used to transfer data from one
 Regular expressions, or regexes, are useful for extracting information from text files.
 Regexes are search patterns expressed in the form of a sequence of text characters
 that are used to match particular contents in files.
-Their syntax is weird at first, but once you’ve learned it, you can actually use a similar syntax in most programming languages, such as Python, R, Perl, or sed and awk, with minor differences.
+
+Regexes are usually applied to strings, which are lists of characters.
+For instance, in the previous section, each line of the file being read is a string.
+
+Their syntax is weird at first, but once you’ve learned it, 
+you can actually use a similar syntax in most programming languages, 
+such as Python, R, Perl, or sed and awk, with minor differences.
+
+### Basics
+
+```
+# basic characters
+
+a      # an 'a'
+1      # a digit '1'
+.      # any char, wildcard
+
+\w     # word alphanumeric char, including underscore '_'
+\d     # digit 
+\s     # whitespace character (plus tab and newline)  
+
+\W     # non-word
+\D     # non-digit
+\S     # non-whitespace
+
+\t     # tab ->|
+\r     # carriage return 
+\n     # newline
+
+\\     # char \ escaped, literal
+
+# anchors
+
+^      # start of string
+$      # end of string
+atg    # matches occurrences of 'atg' 
+^atg$  # exact string match
+
+# quantifiers
+
++      # one or more occurrences
+?      # cero or one occurrence
+*      # cero or more occurrences
+{2}    # two occurrences
+{2,}   # at least two occurrences
+{2,4}  # two to four occurrences
+
+# character classes
+
+[abc]  # matches a string that has either a OR b OR c
+[a-z]  # matches any letter from alphabet
+[A-Z]  # same but uppercase
+[^A-Z] # negation of previous, any char not in A-Z
+```
+
+Regexes are usually written in the form /abc/, where the search pattern is delimited by two slash characters /. At the end we can add flags to control matching:
+
+```
+g (global) do not return after the first match, continue from there
+
+i case-(insensitive)
+
+```
+
+### Grep with regexes
 
 <!-- egrep
 https://ryanstutorials.net/linuxtutorial/cheatsheetgrep.php
-https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285
 -->
 
 
-such as code, log files, spreadsheets, or even documents. And while there is a lot of theory behind formal languages, the following lessons and examples will explore the more practical uses of regular expressions so that you can use them as quickly as possible.
 
 
+### Exercises
 
-Portable Perl regex styles, should work in R and python
+<!-- such as code, log files, spreadsheets, or even documents. And while there is a lot of theory behind formal languages, the following lessons and examples will explore the more practical uses of regular expressions so that you can use them as quickly as possible. -->
+
+
 
 
