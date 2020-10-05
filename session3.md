@@ -59,6 +59,9 @@ gunzip QTL.tsv.gz
 bzip2 QTL.tsv
 ls QTL.tsv.bz2
 file QTL.tsv.bz2
+
+# which compressed format saves more space?
+
 ```
 You can try bzcat and bzless as well.
 
@@ -73,20 +76,21 @@ line by line:
 ```
 while read line; do
 	echo $line
-done < QTL.tsv
+	# do something with this word/line
+done < "QTL.tsv"
 ```
 
-This code is fine when you have only one word per line, or you really want to process the whole line.
+This code will work if there is only one word per line, or when you want to process the whole line. 
 
-## 3.3 Writing to files
+You might recall from session 2 that pipes can be used to transfer data from one process to another. In that case, the second process will be actually reading the standard output of process 1 as if it was a file. 
+<!-- ## 3.3 Writing to files --> 
 
-
-## 3.4 Regular expressions
+## 3.3 Regular expressions
 
 Regular expressions, or regexes, are useful for extracting information from text files.
 Regexes are search patterns expressed in the form of a sequence of text characters
 that are used to match particular contents in files.
-Their syntax is weird at first, but once you’ve learned it, you can actually use them in most programming languages, such as Python, R, Perl, or sed and awk, with minor differences.
+Their syntax is weird at first, but once you’ve learned it, you can actually use a similar syntax in most programming languages, such as Python, R, Perl, or sed and awk, with minor differences.
 
 <!-- egrep
 https://ryanstutorials.net/linuxtutorial/cheatsheetgrep.php
