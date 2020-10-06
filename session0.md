@@ -38,14 +38,15 @@ It is likely that some user will need to change the keyboard distribution. To do
 
 ### Disabling screen saving
 
-Something which could be useful also is disabling shutting down the screen after some inactivity. To do this, go again to *Settings*, on the left menu click on *Power*, and under *Power Saving*, *Blank Screen* choose *Never*.
+Something which could be useful also is disabling shutting down the screen after some inactivity. To do this, go again to **Settings**, on the left menu click on **Power**, and under **Power Saving**, **Blank Screen**, choose **Never**.
 
 ### Guest Additions
 
-It is recommended also to install the Guest Additions (check if they are already installed, because the *osboxes.org* distribution should have it already), and check the VirtualBox options under the *Devices* menu, to share the clipboard.
+It is recommended also to install the Guest Additions. If you installed the *osboxes.org* VM they should be already installed. If the Guest Additions are installed, you should be able to toggle the options to share the clipboard between the guest and the host OS, which are under the **Devices** menu.
 
 ### The VirtualBox Host key
-Also, it is important to explain how to use the *Host key*. This key can be pressed when within the virtual OS, to recover the keyboard and mouse control for the host OS, and also to activate some options. You can check which is your current *Host key* on the group of icons to the bottom right of the window of the virtual OS. One example of its use, press *Host key+F* to go full screen.
+
+Also, it is important to explain how to use the *Host key*. This key can be pressed when within the guest OS, to recover the keyboard and mouse control to the host OS, and also to activate some options. The *Host key* is configurable, but it is usually assigned by default to keys like the *Windows key*, *left Shift*, *left Alt*, *left Ctrl*, or similar. You can check which is your current *Host key* on the group of icons to the bottom right of the window of the guest OS. One example of its use: press *Host key+F* to go full screen.
 
 ## Ubuntu embedded in Windows 10
 
