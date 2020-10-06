@@ -1,36 +1,42 @@
 # Session 0: setup
 
-- [A virtual machine (VM)](#a-virtual-machine--vm-)
+Computer scientists often start counting from zero. In this course, session 0 is about setting up the required environment for the course.
+
+For this course we are using Ubuntu 20.04. In this session, we present different ways to install Ubuntu. Of course, you can always install Ubuntu as native OS. In any case, if you have a Linux terminal available, either Ubuntu or another distribution, you can always follow this course. To make things easier to follow, you may wish to follow the lessons as a user called "osboxes".
+
+- [Using a virtual machine (VM)](#using-a-virtual-machine--vm-)
 - [Ubuntu embedded in Windows 10](#ubuntu-embedded-in-windows-10)
 - [Other options](#other-options)
 
-Computer scientists often start counting from zero. In this course, session 0 is about setting up the required environment for the course.
 
-For this course we are using Ubuntu 20.04.
 
-## A virtual machine (VM)
+## Using a virtual machine (VM)
 
-A virtual machine allows us to run a OS different from the one installed on our computer.
+A virtual machine allows us to run a OS different from the one installed as native OS on our computer.
 
-One way to do this: TODO (explain this completely)
+There are different virtualization applications. One option to install a VM is:
 - Download and install Oracle VM VirtualBox (https://www.virtualbox.org/) on your system
 - In your web browser, go to osboxes.org, downloads, and look for Ubuntu 20.04
-- Once the image for Ubuntu has been downloaded, open VirtualBox and:
-- Click on "New", choose Linux, Ubuntu, and use an existing drive
-- Choose the Ubuntu image
-- ...
+- Once the image for Ubuntu has been downloaded, open VirtualBox
+- Within VirtualBox, click on "New", choose Linux, Ubuntu, and use an existing drive
+- Browse and choose the Ubuntu image
+- Follow the wizard to install the Ubuntu OS.
+- Once the process ends, within VirtualBox select the Ubuntu VM and click "Start"
 
-Once the process ends, within VirtualBox choose the Ubuntu virtual machine and click "Start"
+### Changing the keyboard distribution
 
-It is likely that some user will need to change the keyboard distribution.
-To do this, within the Ubuntu virtual machine, click on the "Show applications" button, type "settings", and click on the icon.
-A "Settings" window will emerge, and on the left menu go down to "Region & Language" and click on it. There, below the "Input Sources" section, just click on the "+" icon, then the "..." icon, look for your language. If you cannot find it, choose "Other", to see a larger list of languages, and search again for yours. Click on your choice, and click "Add". Then, you should remove other languages, or change priorities moving the one of your choice to the top of the list below the "Input Sources" section.
+It is likely that some user will need to change the keyboard distribution. To do this, within the Ubuntu VM, click on the *Show applications* button, type *settings*, and click on the icon. A *Settings* window will emerge, and on the left menu go down to *Region & Language* and click on it. There, below the *Input Sources* section, just click on the *+* icon, then the *...* icon, and look for your language. If you cannot find it, choose *Other*, to see a full list of languages, and search again for yours. Click on your choice, and click *Add*. Then, you should remove other languages, or change priorities moving the one of your choice to the top of the list below the *Input Sources* section.
 
-Something which could be useful also is disabling shutting down the screen after some inactivity. To do this, go again to "Settings", on the left menu click on "Power", and under "Power Saving", "Blank Screen" choose "Never".
+### Disabling screen saving
 
-It is recommended also to install the Guest Additions (check if they are already installed, because the osboxes.org distribution should have it already), and check the VirtualBox options under the "Devices" menu, to share the clipboard.
+Something which could be useful also is disabling shutting down the screen after some inactivity. To do this, go again to *Settings*, on the left menu click on *Power*, and under *Power Saving*, *Blank Screen* choose *Never*.
 
-Also, it is important to explain how to use the "Host key". This key can be pressed when within the virtual OS, to recover the keyboard and mouse control for the host OS, and also to activate some options. You can check which is your current "Host key" on the group of icons bottom right of the window running the virtual OS. One example of its use, press "Host key"+F to go full screen.
+### Guest Additions
+
+It is recommended also to install the Guest Additions (check if they are already installed, because the *osboxes.org* distribution should have it already), and check the VirtualBox options under the *Devices* menu, to share the clipboard.
+
+### The VirtualBox Host key
+Also, it is important to explain how to use the *Host key*. This key can be pressed when within the virtual OS, to recover the keyboard and mouse control for the host OS, and also to activate some options. You can check which is your current *Host key* on the group of icons to the bottom right of the window of the virtual OS. One example of its use, press *Host key+F* to go full screen.
 
 ## Ubuntu embedded in Windows 10
 
