@@ -734,7 +734,7 @@ If we want to find only "Stephen" as a complete word, we can use the `-w` parame
     printf "Stephen" | grep -w "Stephen"
     printf "Stephenson" | grep -w "Stephen"
 
-Note that the text to be searched by grep is in fact a regular expression. Regular expressions are beyond the scope of this lesson. They are very powerful for text search, replacement and filtering. We will see only some examples using grep:
+Note that the text to be searched by grep is in fact a **regular expression**. Regular expressions are beyond the scope of this lesson, and will be further covered in session3 of this course. They are very powerful for text search, replacement and filtering. We will see just some examples using grep:
 
 - Use `^` to represent the start of a line: `grep "^Reference" P08660.aln`
 
@@ -745,13 +745,13 @@ Reference for composition-based statistics: Alejandro A. Schaffer,
 
 - Use `$` to represent the end of a line: `grep "BLOSUM62$" P08660.aln`
 
-'''
+```
 Matrix: BLOSUM62
-'''
+```
 
 - Use the `.` symbol to represent any character: `grep ".HPA.L." P08660.aln`
 
-'''
+```
 Query  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
             DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR
 Sbjct  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
@@ -762,27 +762,27 @@ Query  258  VLHPATLLPAVRSDIPVFVGSSKDPRAGGTL  288
 Query  220  WTDVPGIYTTDPRVVSAAKRIDEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSS  279
             W  + G         S ++ + + A A     A    ++ HPATL P V + I + +  +
 Sbjct  185  WQALQGAKLVLQDYASGSRPLIDAALARNGIQANIVQEIGHPATLFPMVAAGIGISILPA  244
-'''
+```
 
 - Use `*` to represent "the previous character any number of times. For example, use `.*` to represent any number of characters: `grep "^Sbjct.*.HPA.L.P" P08660.aln`
 
-'''
+```
 Sbjct  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
 Sbjct  185  WQALQGAKLVLQDYASGSRPLIDAALARNGIQANIVQEIGHPATLFPMVAAGIGISILPA  244
-'''
+```
 
 - Use the `-v` option to instead of keeping the lines found, discard those and get the others: `grep ".HPA.L." P08660.aln | grep -v "^Query"`
 
-'''
+```
             DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR
 Sbjct  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
             W  + G         S ++ + + A A     A    ++ HPATL P V + I + +  +
 Sbjct  185  WQALQGAKLVLQDYASGSRPLIDAALARNGIQANIVQEIGHPATLFPMVAAGIGISILPA  244
-'''
+```
 
 - Use "[0-9]" to represent a number. For example, to get any number of 1 or more digits, in %, try: `grep "[0-9][0-9]*%" P08660.aln`
 
-'''
+```
  Identities = 449/449 (100%), Positives = 449/449 (100%), Gaps = 0/449 (0%)
  Identities = 142/471 (30%), Positives = 228/471 (48%), Gaps = 41/471 (9%)
  Identities = 23/82 (28%), Positives = 39/82 (48%), Gaps = 6/82 (7%)
@@ -799,11 +799,11 @@ Sbjct  185  WQALQGAKLVLQDYASGSRPLIDAALARNGIQANIVQEIGHPATLFPMVAAGIGISILPA  244
  Identities = 9/20 (45%), Positives = 12/20 (60%), Gaps = 0/20 (0%)
  Identities = 38/117 (32%), Positives = 54/117 (46%), Gaps = 21/117 (18%)
  Identities = 25/96 (26%), Positives = 42/96 (44%), Gaps = 3/96 (3%)
-'''
+```
 
 - Actually, you can use the `[]` to define any set of characters. For example, to get all the pairs of positive and negative aminoacids in the aligned references: `grep "^Sbjct" P08660.aln | grep "[RHK][DE]"`
 
-'''
+```
 Sbjct  61   FEKLDAIRNIQFAILERLRYPNVIREEIERLLENITVLAEAAALATSPALTDELVSHGEL  120
 Sbjct  121  MSTLLFVEILRERDVQAQWFDVRKVMRTNDRFGRAEPDIAALAELAALQLLPRLNEGLVI  180
 Sbjct  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
@@ -823,7 +823,7 @@ Sbjct  145  TDSAACLRGIEIEADVVLKATKVDGVFTADPAKDPTATMYEQLTYSEVLEKEL---KVMD  201
 Sbjct  202  LAAFTLARDHKLPIRVFNMNKPGA  225
 Sbjct  144  MKRDGKYLRRVVASPQPRKILDSEAIELL--LKEGHVV----ICSGGGGVPVTDDGAGSE  197
 Sbjct  198  AVIDKDLAAALLAEQINADGLVILTDADAVYENWGTPQQRAIRHATP-DELAPFAKA  253
-'''
+```
 
 The same regular expression can be used with another command, `sed`, to replace those patterns for other text strings. For example:
 
