@@ -25,27 +25,23 @@
 
 ### The terminal
 
-First of all, start the Ubuntu virtual machine (VM) with login and password 'osboxes.org'.
+First of all, start the Ubuntu virtual machine (VM) with login and password **osboxes.org**.
 
-How to open a terminal depends on the OS or setup. In Ubuntu 20.04 you can press Ctrl+Alt+t, or go to the 'Show applications' button, type 'Terminal', and click on the resulting icon. With an open terminal you can right-click on the icon at the task bar and 'Add to favourites'.
+How to open a terminal depends on the OS or setup. In Ubuntu 20.04 you can press *Ctrl+Alt+t*, or go to the **Show applications** button, type **Terminal**, and click on the *Terminal* icon. With an open terminal you can right-click on the icon at the task bar and *Add to favourites*.
 
 You should see a cursor blinking at the end of a line which looks like:
 
     osboxes@osboxes:~$
 
-The previous line is showing the user name and host name, which in this case is 'osboxes' in both cases.
+The previous line is showing the username and hostname, which are both 'osboxes' in this case. If you hit `Enter` several times, you should see how the previous line duplicates with every hit, and the cursor places itself after the last line.
 
-If you hit `Enter` several times, you should see how the previous line duplicates with every hit, and the cursor places itself after the last line.
+    osboxes@osboxes:~$
+    osboxes@osboxes:~$
+    osboxes@osboxes:~$
+    osboxes@osboxes:~$
 
-```
-username@host:~$
-username@host:~$
-username@host:~$
-username@host:~$
-```
-
-This means that your keyboard is now bound to the terminal. In other terms, the terminal is *listening* to your keyboard, and you could start sending commands to it.
-Usually, the first word that you write is a command, and it can be followed by options, parameters and arguments. You intend to do something, and you use the right command to accomplish it. The first command you are going to try is the `clear` command: just type 'clear', and hit `Enter`. You should see again a single line and the cursor waiting for another command, being the terminal empty, as if no previous commands were run. (note: you can clear the screen also typing 'Ctrl+l').
+This means that your keyboard is now bound to the terminal. In other terms, the terminal is *listening* to your keyboard, and you could start sending **commands** to it.
+Usually, the first word that you write is a command, and it can be followed by **options, parameters and arguments**. The first command you are going to try is the `clear` command: just type *clear*, and hit `Enter`. You should see how the terminal screen is cleared, showing again only one line and the cursor waiting for another command. (note: you can clear the screen also pressing 'Ctrl+l').
 
 ### Commands
 
@@ -156,9 +152,9 @@ touch scripts/dummyscript
 touch results/dummyresults
 ```
 
-### Listing directory contents
-
 Note that we can create files within directories different from the current one, without need to `cd` to such directories, using a linux path, like `data/dummydata`.
+
+### Listing directory contents
 
 Now, let's check the contents of the current directory. We can show the contents of a directory with the `ls` command:
 
@@ -177,7 +173,7 @@ ls -a
 .  ..  data  README  results  scripts  SETUP
 ```
 
-In linux, the hidden files are those prefixed with `.`. In the previous output you will notice that there are not hidden files, except for those weird `.` and `..` items. In fact, those items represent the path to the directory being listed `.`, and the path to the parent directory `..`. Actually, you can check this by using the `cd` command, for example:
+In linux, the hidden files are those prefixed with `.`. In the previous output you will notice that there are not hidden files, except for those weird `.` and `..` items. In fact, those items represent the path to the directory being listed `.`, and the path to its parent directory `..`. Actually, you can check this by using the `cd` command, for example:
 
     cd .
 
@@ -187,7 +183,7 @@ You will see that you remain in the same directory.
 
 You will go to the parent directory `/home/osboxes/scripting`. Enter again within the `lesson1` directory using `cd lesson1` or `cd -`.
 
-More regarding hidden files: you can actually create a hidden file very easily. You just need to prefix its name with `.`. For example, type `touch .dummyhidden` and compare the output of `ls` and `ls -a`.
+More on hidden files: you can actually create a hidden file very easily. You just need to prefix its name with `.`. For example, type `touch .dummyhidden` and compare the output of `ls` and `ls -a`.
 
 In many circumstances, it is better to show the contents as a list, which we obtain using the `-l` option:
 
@@ -269,7 +265,7 @@ List `/home` from `/home/osboxes/scripting/lesson1`: `ls ../../..`
 
 We can even go up first, then go down looking for a path which is in a different branch of the directory tree, in relation to the one in which we are located. For example, from within the `/home/osboxes/scripting/lesson1/data` directory ...
 
-   cd data
+    cd data
 
 ... to list the `/home/osboxes/scripting/lesson1/results` directory we could type:
 
@@ -293,10 +289,10 @@ ls -l data/dummy*
 
 You should get the info of both files within the directory, since both names start with `dummy`:
 
-'''
+```
 -rw-rw-r-- 1 osboxes osboxes 0 Sep 24 12:38 data/dummydata
 -rw-rw-r-- 1 osboxes osboxes 0 Sep 24 13:06 data/dummydata2
-'''
+```
 
 In general, by combining absolute and relative paths, and special symbols for current, parent and home directory, you should be able to manage yourself within the linux directory hierarchy from the location of your choice.
 
@@ -373,20 +369,20 @@ For example, type `ls da` and then hit `TAB`. You should see how your line is no
 
 ### Summary
 
-- pwd - print current directory
-- getting help of a COMMAND - COMMAND --help, man COMMAND
-- create empty directory - mkdir DIRECTORY
-- create empty file - touch FILENAME
-- show contents of a directory - ls DIRECTORY
-- list contents of a directory, showing properties of files - ls -l DIRECTORY
-- create symbolic links - ln -s FILE_TO_LINK
-- copy files - cp FILE COPY_OF_FILE
-- remove files - rm FILE
-- copy directories - cp -r DIR COPY_OF_DIR
-- remove directories - rm -r DIR
-- move or rename files - mv FILE FILE_NEW_PATHNAME
-- move a file (or directory) to within another directory - mv FILE DIR
-- remove symbolic links - unlink LINK
+- `pwd` - print current directory
+- `COMMAND --help`, `man COMMAND` - getting help or manual of a command
+- `mkdir DIRECTORY` - create empty directory
+- `touch FILENAME` - create empty file
+- `ls DIRECTORY` - show contents of a directory
+- `ls -l DIRECTORY` - list contents of a directory
+- `ln -s PATH_TO_FILE` - create soft symbolic links
+- `cp FILE COPY_OF_FILE` - copy a file
+- `rm FILE` - remove a file
+- `cp -r DIR COPY_OF_DIR` - copy a directory
+- `rm -r DIR` - remove a directory
+- `mv FILE FILE_NEW_PATHNAME` - move or rename files
+- `mv FILE DIR` - move a file (or directory) to within another directory
+- `unlink LINK` - remove a symbolic link or a file
 - `TAB` autocompletion
 
 
