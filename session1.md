@@ -395,7 +395,7 @@ Besides the software included in our Linux distribution, we can install addition
 * cloning a repository 
 * using package managers 
 
-The latter is the preferred method when we want to track the collection of software that we have installed, including the specific versions, in a centralized fashion, which makes it more maneagable. Also, using package managers allow us to create different "views" or "environments" which we can switch to have a different collection of software available or "active" depending on the commands we want to run for a specific analysis or session. This "environments" are helpful also to share dependencies, for example if we want to install a software which requires other software, importing or loading an environment with the list of dependencies will make it easier to install. Examples of package managers are apt, yum, conda, npm, ...
+The latter is the preferred method when we want to track the collection of software that we have installed, including the specific versions, in a centralized fashion, which makes it more manageable. Also, using package managers allow us to create different *views* or *environments* which we can switch to have a different collection of software available or "active" depending on the commands we want to run for a specific analysis or session. This *environments* are also helpful also to share dependencies, for example if we want to install a software which requires other software, importing or loading an environment with the list of dependencies will make it easier to install. Examples of package managers are apt, yum, conda, npm, ...
 
 Other advanced options to organize, pack, distribute and run software include container systems, or containerization software, such as Docker or Singularity. But these are beyond the scope of this lesson.
 
@@ -404,7 +404,7 @@ Other advanced options to organize, pack, distribute and run software include co
 The *apt* manager is the the easiest way to install software in Ubuntu systems.
 You'll need to use a special command named `sudo` that allows authorized users to do management tasks. In our VM, our 'osboxes.org' user is one of those users.
 
-For example, we want use the `git` command to be able to clone the GitHub repository used in this course. However, the `git` command is not installed in our system.
+For example, we want use to the `git` command to be able to clone the GitHub repository used in this course. However, the `git` command is not installed in our system.
 To install `git`, type the following commands on your terminal:
 
 ```
@@ -426,7 +426,7 @@ This will clone the repository of this course on your local filesystem. In this 
 
 ### The conda manager
 
-Conda is a popular software and packages manager, which is used mainly within the Python community, but it covers much more, including software for data science, R packages, etc. In this example, we are going to install a conda manager which includes just the basic packages (aka 'Miniconda'). Then, we will use this conda manager to create a specific environment which we will use to install the blast program.
+Conda is a popular software and packages manager, which is used mainly by the Python community, but it covers much more, including software for data science, R packages, etc. In this example, we are going to install a conda manager which includes just the basic packages (aka 'Miniconda'). Then, we will use this conda manager to create a specific environment which we will use to install the blast program.
 
 To download Miniconda, you could look for the latest distribution on your web browser and download the `.sh` for your operating system from there. In our example, we are going to download it directly from the terminal using the `wget` command:
 
@@ -536,7 +536,7 @@ Now, if you run `conda list`, you should get an empty list of software. Let's in
 
     conda install -c bioconda blast=2.10.1
 
-Conda will detect a long list of dependencies to be installed for the blast program, just type "y". Once the installation finishes, check the installed packages with `conda list`. Also, check one the blast commands with `which`. For example:
+Conda will detect a long list of dependencies to be installed for the blast program, just type "y" when prompted. Once the installation finishes, check the installed packages with `conda list`. Also, check one of the blast commands with `which`. For example:
 
     which blastp
 
@@ -544,7 +544,7 @@ You should get:
 
     /home/osboxes/miniconda3/envs/blastenv/bin/blastp
 
-Note how the path includes the 'blastenv' environment which we created to install blast within. Now, you are ready to use the blast program. For example:
+Note how the path includes the 'blastenv' environment which we created to install blast within. Now, you are ready to use the blast program. For example, type:
 
     blastn -version
 
