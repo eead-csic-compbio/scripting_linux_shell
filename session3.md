@@ -166,20 +166,37 @@ Regexes are usually written in the form /abc/, where the search pattern is delim
 
 ### Grep with regexes
 
-<!-- egrep
-https://ryanstutorials.net/linuxtutorial/cheatsheetgrep.php
--->
+Regexes can be used with Linux utility *grep* to efficiently parse files.
+These are the most important parameters you should be aware of in this context:
 
+```
+-e   use extended regex syntax; same as egrep
+-P   use Perl-style regex syntax; useful to grep tabs '\t'
 
+-i   case insensitive
+-v   return lines that do not match the pattern
+-n   print line number before each line that matches
+-c   count of matching lines
+
+-r   recursive, read all files in dir and subdirs
+-l   print the name of each file which contains a match
+```
 
 
 ### Exercises
 
-<!-- such as code, log files, spreadsheets, or even documents. And while there is a lot of theory behind formal languages, the following lessons and examples will explore the more practical uses of regular expressions so that you can use them as quickly as possible. -->
+Run the following examples and explain what they are doing:
 
-<!--
-https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285
-https://eead-csic-compbio.github.io/perl_bioinformatica/node18.html
--->
+```
+grep -i "Paragon" QTL.tsv
 
+grep -n -i 'Paragon' myfile.txt
+
+grep -P "\t5A\t" QTL.tsv
+
+grep -c -P "\t\dA\t" QTL.tsv
+
+grep -v -P "\tHd\t" QTL.tsv
+
+```
 
