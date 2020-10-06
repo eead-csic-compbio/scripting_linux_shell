@@ -843,7 +843,7 @@ And use the `diff` command to compare both files:
 
 You will get the correspondence of lines which show changes:
 
-'''
+```
 4c4
 < Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
 ---
@@ -852,7 +852,7 @@ You will get the correspondence of lines which show changes:
 < I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
 ---
 > I. Wolf, Eugene V. Koonin, and Osboxes F. Altschul (2001),
-'''
+```
 
 Another example, changing all the [RHK][DE] pairs by "__my_motif_" text:
 
@@ -877,7 +877,7 @@ We can use `-e` to perform several replacements, as alternative to pipe consecut
 
 ### Working with tabular data
 
-It is very common to work with tabular data. We are going to generate the same blastp alignments, but in tabular format, so that we can more easily manage and analyze the results based on its statistics, instead of on the detailed alignment of the residues. To create the alignment in tabular format, use the `-outfmt 6` option in blast. Check the `-outfmt` parameter in the blast documentation of whith `blastp -help`. The default fields in the output are: qaccver saccver pident length mismatch gapopen qstart qend sstart send evalue bitscore. Therefore, we are going to create a header first, for our output file, with those fields:
+It is very common to work with tabular data. We are going to generate the same blastp alignments, but in tabular format, so that we can more easily manage and analyze the results based on its statistics, instead of on the detailed alignment of the residues. To create the alignment in tabular format, use the `-outfmt 6` option in blast. Check the `-outfmt` parameter in the blast documentation of whith `blastp -help`. The default fields in the output are: *qaccver saccver pident length mismatch gapopen qstart qend sstart send evalue bitscore*. Therefore, we are going to create a header first, for our output file, with those fields:
 
     printf "qaccver saccver pident length mismatch gapopen qstart qend sstart send evalue bitscore\n" | tr " " "\t" > P08660.aln.tsv
 
@@ -961,12 +961,12 @@ Finally, there is a command, `awk`, which is a scripting language itself. As suc
 
 You will get:
 
-'''
+```
 sp|P08660|AK3_ECOLI  AAC76994  100.000  449  0   0  1    449  1    449  0.0  903
 sp|P08660|AK3_ECOLI  AAC75331  45.000   20   11  0  282  301  153  172  7.4  25.8
-'''
+```
 
-The `-F` option is to define the column separator, in our case tab (`-F $'\t'`). Then, the script is enclosed between '{}'. The code which we include within the script is going to be applied to every line of the input separatedly. So, in our example we check whether the 3rd column is equal or above 45.0 (`if ($3>45.0)`). If the condition is met, we print the whole line (`print $0`).
+The `-F` option is to define the column separator, in our case tab (`-F $'\t'`). Then, the script is enclosed between `'{}'`. The code which we include within the script is going to be applied to every line of the input separatedly. So, in our example we check whether the 3rd column is equal or above 45.0 (`if ($3>45.0)`). If the condition is met, we print the whole line (`print $0`).
 
 
 
