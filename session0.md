@@ -1,31 +1,30 @@
 # Session 0: setup
 
-Computer scientists often start counting from zero. In this course, session 0 is about setting up the required environment for the course.
+Computer scientists often start counting from zero. In this course, session 0 is about setting up the required environment for the course. Basically, you can use any Linux terminal. Just notice that we are using a user called *osboxes*, which may be different from your username in your system, so that the output of the examples may vary a little.
 
-For this course we are using Ubuntu 20.04. In this session, we present different ways to install Ubuntu. Of course, you can always install Ubuntu as native OS. In any case, if you have a Linux terminal available, either Ubuntu or another distribution, you can always follow this course. To make things easier to follow, you may wish to follow the lessons as a user called "osboxes".
+Therefore, if you already have a Linux terminal available or you want to install Linux as your native OS (either Ubuntu or any other distribution), you may skip this session. Here, we present different ways to install Ubuntu, or other alternative ways to obtain a Linux terminal.
 
 - [Using a virtual machine (VM)](#using-a-virtual-machine--vm-)
 - [Ubuntu embedded in Windows 10](#ubuntu-embedded-in-windows-10)
 - [Other options](#other-options)
 
 
-
 ## Using a virtual machine (VM)
 
-A virtual machine allows us to run a OS different from the one installed as native OS on our computer.
+A virtual machine allows us to run a different OS (aka *guest OS*) from the one installed as native OS on our computer (aka *host OS*).
 
 There are different virtualization applications. One option to install a VM is:
-- Download and install Oracle VM VirtualBox (https://www.virtualbox.org/) on your system
-- In your web browser, go to osboxes.org, downloads, and look for Ubuntu 20.04
+- Download and install **Oracle VM VirtualBox** (https://www.virtualbox.org/) on your system
+- In your web browser, go to https://www.osboxes.org/, **downloads**, and look for **Ubuntu 20.04**
 - Once the image for Ubuntu has been downloaded, open VirtualBox
-- Within VirtualBox, click on "New", choose Linux, Ubuntu, and use an existing drive
-- Browse and choose the Ubuntu image
-- Follow the wizard to install the Ubuntu OS.
-- Once the process ends, within VirtualBox select the Ubuntu VM and click "Start"
+- Within VirtualBox, click on **New**, choose Linux, Ubuntu, and the option to use an existing drive
+- Browse and choose the Ubuntu image which you downloaded from osboxes.org
+- Follow the wizard to install the Ubuntu OS (default options should be fine)
+- Once the process ends, within VirtualBox select the Ubuntu VM and click **Start**
 
 ### Changing the keyboard distribution
 
-It is likely that some user will need to change the keyboard distribution. To do this, within the Ubuntu VM, click on the *Show applications* button, type *settings*, and click on the icon. A *Settings* window will emerge, and on the left menu go down to *Region & Language* and click on it. There, below the *Input Sources* section, just click on the *+* icon, then the *...* icon, and look for your language. If you cannot find it, choose *Other*, to see a full list of languages, and search again for yours. Click on your choice, and click *Add*. Then, you should remove other languages, or change priorities moving the one of your choice to the top of the list below the *Input Sources* section.
+It is likely that some user will need to change the keyboard distribution. To do this, within the Ubuntu VM, click on the **Show applications** button, type **settings**, and click on the icon. A **Settings** window will emerge, and on the left menu go down to **Region & Language** and click on it. There, below the **Input Sources** section, just click on the **+** icon, then the **...** icon, and look for your language. If you cannot find it, choose **Other**, to see a full list of languages, and search again for yours. Click on your choice, and click **Add**. Then, you should remove other languages, or change priorities moving the one of your choice to the top of the list below the **Input Sources** section.
 
 ### Disabling screen saving
 
