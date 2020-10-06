@@ -15,21 +15,21 @@ A virtual machine allows us to run a different OS (aka *guest OS*) from the one 
 
 There are different virtualization applications. One option to install a VM is:
 - Download and install **Oracle VM VirtualBox** (https://www.virtualbox.org/) on your system
-- In your web browser, go to https://www.osboxes.org/, **downloads**, and look for **Ubuntu 20.04**
+- In your web browser, go to https://www.osboxes.org/, search the **downloads** section, and look for and download **Ubuntu 20.04**
 - Once the image for Ubuntu has been downloaded, open VirtualBox
-- Within VirtualBox, click on **New**.
--- Give a name to the VM (e.g. "Ubuntu20")
--- Change the folder where to store the VM if you wish (the virtual hard drive for the whole virtual OS will be created there)
--- As *Type* choose Linux
--- As *Version* choose Ubuntu (64-bit)
--- Click **Next**
-- Depending on your memory you may assign a different memory size for your VM. No less than 2GB and maximum of half of your available memory, could be a good choice. Don't worry, you could always change this setting later. Click **Next**.
-- Hard drive window:
--- Choose the option to use an existing virtual drive
--- Click on the folder icon.
--- On the new window, click **Add**.
--- Browse and choose the Ubuntu image which you downloaded from *osboxes.org* and click **Open**
--- Click **Choose**, and then **Create**
+- Within VirtualBox, click on **New**. A wizard window will open:
+    - Give a name to the VM (e.g. "Ubuntu20")
+    - Change the folder where to store the VM if you wish (the virtual hard drive for the whole virtual OS will be created there)
+    - As *Type* choose Linux
+    - As *Version* choose Ubuntu (64-bit)
+    - Click **Next**
+- Next you are asked how much memory do you wish to allocate for the VM. Depending on your memory available you may assign a different size for your VM. No less than 2GB and maximum of half of your available memory could be a good choice. Don't worry, you could always change this setting later. Click **Next**.
+- Next, you are asked whether to create a new virtual drive or use an existing one:
+    - Choose the option to use an existing virtual drive
+    - Click on the folder icon.
+    - On the new window, click **Add**.
+    - Browse and choose the Ubuntu image which you downloaded from *osboxes.org* and click **Open**
+    - Click **Choose**, and then **Create**
 - Once the process ends, you should see the new Ubuntu VM within VirtualBox. Select it and click **Start**
 
 ### Changing the keyboard distribution
