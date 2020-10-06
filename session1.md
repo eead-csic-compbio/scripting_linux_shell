@@ -972,14 +972,56 @@ The `-F` option is to define the column separator, in our case tab (`-F $'\t'`).
 
 ### Working with several tables
 
-join, paste
+Now, we want to work with more than 1 file. For example, make a copy of the previous file:
 
+    cp P08660.aln.tsv P08660.aln.2.tsv
 
+Imagine that they are 2 different files that we want to combine. As in this case both files have the same columns, we just want to concatenate the rows of one file with the other. This is simple using the `cat` command we already know:
+
+    cat P08660.aln.tsv P08660.aln.2.tsv | column -t
+
+Of course, we would need to do some changes to keep only one of the headers, etc. Also, we could store the concatenated file into a new file using `>`. For the moment, just remember how easy is to just concatenate files. You can apply the same to any arbitrary number of files.
+
+Now, let's say that we have 2 files, but with different columns that we want to combine. First, let's create 2 example files:
+
+    cut -f 1-7 P08660.aln.tsv > P08660.half.1.tsv
+    cut -f 1,8- P08660.aln.tsv > P08660.half.2.tsv
+
+The first file contains the first 7 columns, whereas the second file contains the first, and the columns from the eighth column to the end. With the `paste` command we can join the rows of two files row-by-row.
+
+    paste P08660.half.1.tsv P08660.half.2.tsv  | column -t
+
+However, in many cases we don't want to join two files row-by-row, but joining columns for those rows which share the same value in one of the columns, which acts as a reference. This is typical when we have an identifier of any kind, associated to different values. To do this we can use the `join` command. First, update our two files to contain a column with the row number:
+
+    cat -n P08660.half.1.tsv > P08660.half.1.ID.tsv
+    cat -n P08660.half.2.tsv > P08660.half.2.ID.tsv
+
+In this case, we will join these two files using the row number as a unique identifier:
+
+    join -t $'\t' P08660.half.1.ID.tsv P08660.half.2.ID.tsv | column -t
+
+Note that we are using `-t $'\t'` just to indicate that the output must be in tabular format also. The `join` command is very versatile, and can be used to join rows in common, to show only the rows present in one of the files, etc.
 
 
 ### Text editors
 
-nano, vi, emacs.
+We have seen how to print, modify, join, etc text files. We need also a way to edit text files in more detail, as usual text processors allow to. We can also do this from the Linux command line. Although at first, using these editors is tough in comparison with those which are windows-based, command-line editors have a lot of advantages in comparison.
+
+One simple editor is `nano`. You can just type `nano` and the file to be edited (if it doesn't exist will be created), and you will enter the editor window. Try:
+
+    nano P08660.aln.tsv
+
+You can move with the arrow keys within the file, make changes with the keyboard, and do other things with shortcuts, like:
+- `Ctrl+s` to save the file
+- `Ctrl+o` to save with a different name
+- `Ctrl+w` to search for a regular expression
+- `Ctrl+\` to search and replace a regular expression
+- `Ctrl+k` to cut a line
+- `Ctrl+u` to paste a line
+- etc
+
+There are other more advanced, yet more complex, editors, like `vi` or `emacs`. Both of these are very powerful, and very different, and are widely used yet today for programming, OS administration, etc. Our recommendation would be to try these out once that you like and are confortable with something more simple, as `nano`, and you are looking for yet more features.
+
 
 ### Compressing files and packing directories
 
