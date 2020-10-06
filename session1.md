@@ -550,16 +550,20 @@ Note how the path includes the 'blastenv' environment which we created to instal
 
 ## 1.3 Working with files
 
+<!--
 Working with text files: cat, tac, head, tail (tail -n +X), more, less, grep (regular expressions), diff. Modifying text: sed, tr. Working with tabular data: column, sort, uniq, join, paste, awk. Compressing files and packing directories: gzip, gunzip, tar, zcat. Text editors: nano, vi, emacs.
 
 .bashrc
 
 This part is adapted from: https://jvanheld.github.io/using_IFB_NNCR/practicals/blast_proteome/blast_proteome.html
+-->
 
 First, create a directory for this lesson and go within it:
 
     mkdir ~/scripting/lesson3
     cd ~/scripting/lesson3
+
+### Setup and run blast
 
 Download the query, which is the sequence of protein 'P08660' of the UniprotKB database, in FASTA format. We will be using again the `wget` command:
 
@@ -591,11 +595,17 @@ Now, lets make a first alignment of our query to the proteome. As we have create
 
     blastp -db Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa -query P08660.fasta
 
-If it works, you should see some alignments printed on the terminal. However, after we keep running commands in our session, all the alignments will be lost. We would like to store the output from the `blastp` command in a file. We can do this in Linux with the `>` symbol, like:
+The last command, if it works, will print the alignments on the terminal. However, after we run several commands, all the alignments data will be lost. We would like to store the output from the `blastp` command into a file. We can do this in Linux with the `>` symbol, like:
 
     blastp -db Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa -query P08660.fasta > P08660.aln
 
-Which means *redirect the output of the blastp command to a file called "P08660.aln"*. Check the file exists with `ls -l`. Now, how do I read the file from the command line? There are several commands to achieve this, and they can be useful for different purposes.
+Which means *redirect the output of the blastp command to a file called "P08660.aln"*. Check the file exists with `ls -l`.
+
+
+
+### Reading text files
+
+In the previous section, we created a file with blast results. Now, how do we read a text file from the command line? There are several commands to achieve this, and they can be useful for different purposes.
 
 For example, you can use the `less` command to open the file to read it. Even without noticing, you probably already used `less` when reading the output from the `man` command in lesson 1. Now, try:
 
@@ -613,7 +623,7 @@ Now, there is another way to show the contents of a file, which is the `cat` com
 
     cat P08660.aln
 
-You will see that the contents of the file are now printed to the terminal. This is because the `cat` command emits as output the contents of the file, and as no redirection of such output is done, it ends in what is called the 'standard out', which in this case is the terminal screen. Of course, you could redirect the output of cat to another file using the `>` symbol (for example, `cat P08660.aln > P08660.aln.copy`), although in this case it makes no sense (since you could just copy the file with `cp`).
+You will see that the contents of the file are now printed to the terminal. This is because the `cat` command emits as output the contents of the file, and as no redirection occurs (`>` for example), it ends in what is called the 'standard out', which in this case is the terminal screen. Of course, you could redirect the output of `cat` to another file using the `>` symbol (for example, `cat P08660.aln > P08660.aln.copy`), although in this case it makes no sense (since you could just copy the file with `cp`).
 
 There are ways to print our own text to the terminal screen. For example, the `echo` command:
 
@@ -645,17 +655,17 @@ Will print the last 9 lines of the file. `tail` can also be used to print the li
 
 ### Searching previous commands
 
-Besides the use of the `TAB` autocompletion, there are other ways to work more efficiently in the linux command line. For example, you can use the arrow keys to "navigate" to previous commands you ran, so that you don't need to write them again. You could even just modify them before running them again. Try for example to look for the `tail -n +2 P09660.aln` command you already ran, using the arrow keys, and changing the +2 to +394.
+Besides the use of the `TAB` autocompletion, there are other ways to work more efficiently in the linux command line. For example, you can use the arrow keys to "navigate" to previous commands you ran, so that you don't need to type them again. You could even just modify them before running them again. Try for example to look for the `tail -n +2 P09660.aln` command you already ran, using the arrow keys, and changing the +2 to +394.
 
     tail -n +394 P08660.aln
 
-There is another way to access faster to a previous command, when you have a clear idea of the text this command it contained. Press 'Ctrl+r', and write 'head'. You will see the last previous `head` command you ran. You can now for example modify the `-6` to `-2` and run the command again. Also, if you hit 'Ctrl+r' repeatedly, you will cycle to older commands containing the work you typed. Try 'Ctrl+r', type 'head' and then hit 'Ctrl+r' again to see previous versions of the command you previously ran.
+There is another way to access faster to a previous command, when you have a clear idea of the text that this command contained. Press `Ctrl+r`, and write `head`. You will see the last previous `head` command you ran. You can now for example modify the `-6` to `-2` and run the command again. Also, if you hit `Ctrl+r` repeatedly, you will cycle to older commands containing the work you typed. Try `Ctrl+r`, type `head` and then hit `Ctrl+r` again to see previous versions of the command you ran.
 
-There is a command to obtain a list of all the previous commands you ran, which is `history`. Type the command and you will see that every command has a number assigned. You could run the exactly same command without typing it, just typing the number preceded by "!". For example, if you want to run again the command "235", just type:
+There is a command to obtain a list of all the previous commands you ran, which is `history`. Type the command and you will see that every command has a number assigned. You could run the exactly same command without typing it, just typing the number preceded by `!`. For example, if you want to run again the command "235", just type:
 
     !235
 
-Another useful trick is that you can cut the right part of a command to remove it. For example, use the arrows to recover the command `tail -n +394 P08660.aln`, move the cursor to the space between +394 and the filename, and press 'Ctrl+k'. Now you could write the name of another file, for example, and run the command.
+Another useful trick is that you can cut the right part of a command to remove it. For example, use the arrows to recover the command `tail -n +394 P08660.aln`, move the cursor to the space between +394 and the filename, and press `Ctrl+k`. Now you could write the name of another file, for example, and run the command.
     
 
 ### Linux pipes
@@ -680,10 +690,10 @@ There is another useful command to filter the contents of a file, which is the `
 
 As a result, you will get 2 lines, which are the lines containing the "Stephen" text string:
 
-'''
+```
 Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
 I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
-'''
+```
 
 Note that the search is case-sensitive. Compare the previous results with `grep "stephen" P08660.aln`.
 
@@ -693,9 +703,9 @@ We can use the `-m` option to limit the results to a maximum number of matches. 
 
 To get:
 
-'''
+```
 Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
-'''
+```
 
 You can also show the lines before the result with `-B` and the lines after the result with `-A`. For example, to get the previous line and the next 2 lines, besides the result, try:
 
@@ -703,7 +713,7 @@ You can also show the lines before the result with `-B` and the lines after the 
 
 You get the next output (note how the 2 results are separated by a line with '--' which is not in the original file):
 
-'''
+```
 Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
 Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
 Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
@@ -712,7 +722,7 @@ L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
 I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
 "Improving the accuracy of PSI-BLAST protein database searches with
 composition-based statistics and other refinements", Nucleic Acids
-'''
+```
 
 Now, note that if "Stephen" was part of "Stephenson" we would retrieve such result as well. For example:
 
@@ -728,10 +738,10 @@ Note that the text to be searched by grep is in fact a regular expression. Regul
 
 - Use `^` to represent the start of a line: `grep "^Reference" P08660.aln`
 
-'''
+```
 Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
 Reference for composition-based statistics: Alejandro A. Schaffer,
-'''
+```
 
 - Use `$` to represent the end of a line: `grep "BLOSUM62$" P08660.aln`
 
