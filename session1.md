@@ -25,27 +25,23 @@
 
 ### The terminal
 
-First of all, start the Ubuntu virtual machine (VM) with login and password 'osboxes.org'.
+First of all, start the Ubuntu virtual machine (VM) with login and password **osboxes.org**.
 
-How to open a terminal depends on the OS or setup. In Ubuntu 20.04 you can press Ctrl+Alt+t, or go to the 'Show applications' button, type 'Terminal', and click on the resulting icon. With an open terminal you can right-click on the icon at the task bar and 'Add to favourites'.
+How to open a terminal depends on the OS or setup. In Ubuntu 20.04 you can press *Ctrl+Alt+t*, or go to the **Show applications** button, type **Terminal**, and click on the *Terminal* icon. With an open terminal you can right-click on the icon at the task bar and *Add to favourites*.
 
 You should see a cursor blinking at the end of a line which looks like:
 
     osboxes@osboxes:~$
 
-The previous line is showing the user name and host name, which in this case is 'osboxes' in both cases.
+The previous line is showing the username and hostname, which are both 'osboxes' in this case. If you hit `Enter` several times, you should see how the previous line duplicates with every hit, and the cursor places itself after the last line.
 
-If you hit `Enter` several times, you should see how the previous line duplicates with every hit, and the cursor places itself after the last line.
+    osboxes@osboxes:~$
+    osboxes@osboxes:~$
+    osboxes@osboxes:~$
+    osboxes@osboxes:~$
 
-```
-username@host:~$
-username@host:~$
-username@host:~$
-username@host:~$
-```
-
-This means that your keyboard is now bound to the terminal. In other terms, the terminal is *listening* to your keyboard, and you could start sending commands to it.
-Usually, the first word that you write is a command, and it can be followed by options, parameters and arguments. You intend to do something, and you use the right command to accomplish it. The first command you are going to try is the `clear` command: just type 'clear', and hit `Enter`. You should see again a single line and the cursor waiting for another command, being the terminal empty, as if no previous commands were run. (note: you can clear the screen also typing 'Ctrl+l').
+This means that your keyboard is now bound to the terminal. In other terms, the terminal is *listening* to your keyboard, and you could start sending **commands** to it.
+Usually, the first word that you write is a command, and it can be followed by **options, parameters and arguments**. The first command you are going to try is the `clear` command: just type *clear*, and hit `Enter`. You should see how the terminal screen is cleared, showing again only one line and the cursor waiting for another command. (note: you can clear the screen also pressing 'Ctrl+l').
 
 ### Commands
 
