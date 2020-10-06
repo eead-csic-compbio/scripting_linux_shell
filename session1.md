@@ -1018,6 +1018,7 @@ You can move with the arrow keys within the file, make changes with the keyboard
 - `Ctrl+\` to search and replace a regular expression
 - `Ctrl+k` to cut a line
 - `Ctrl+u` to paste a line
+- `Ctrl+x` to exit the editor and go back to the terminal
 - etc
 
 There are other more advanced, yet more complex, editors, like `vi` or `emacs`. Both of these are very powerful, and very different, and are widely used yet today for programming, OS administration, etc. Our recommendation would be to try these out once that you like and are confortable with something more simple, as `nano`, and you are looking for yet more features.
@@ -1027,6 +1028,43 @@ There are other more advanced, yet more complex, editors, like `vi` or `emacs`. 
 
 gzip, gunzip, tar, zcat. 
 
+To end with the management of text files, we are going to explain how to compress them and uncompress them. This is a rather easy procedure from the command line.
+
+To compress a file, use the `gzip` command:
+
+    gzip P08660.aln.tsv
+
+Check the result with `ls -l`. You should see a `P08660.aln.tsv.gz` file. Uncompress the file with `gunzip`:
+
+    gunzip P08660.aln.tsv.gz
+
+
+What if we want to keep both the original file and the compressed one:
+
+    gzip -c P08660.aln.tsv > P08660.aln.tsv.gz
+
+And the same when uncompressing:
+
+    gunzip -c P08660.aln.tsv.gz > P08660.aln.tsv
+
+There are other commands which use other compression algorithms, like `bzip` and `bunzip`. Try out these commands by yourself, and compare the size of the resulting files, and also the compression and uncompression timings.
+
+Besides compressing files, in many occassions it is very useful to pack a whole directory. We can do this, and at the same time compress its contents, with the `tar` command.
+
+To package and compress (using gzip) a directory:
+
+    cd ..
+    tar zcf lesson3.tar.gz lesson3
+
+Using `ls` you should see a `lesson3.tar.gz` file, which actually contains the whole content of the original `lesson3` directory. You should be safe if you remove the `lesson3` directory. For the moment, let's just rename it:
+
+    mv lesson3 lesson3_original
+
+To uncompress and unpack a gzipped directory:
+
+    tar zxf lesson3.tar.gz
+
+And you should recover the original `lesson3` directory with its contents.
 
 
 
