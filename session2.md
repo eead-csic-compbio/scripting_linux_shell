@@ -193,6 +193,7 @@ There is another way to access variable contents, which is using curly braces:
 In some cases, the code is more readable using curly braces. And in some rare cases will be safer to use "${var}" than "$var", depending on what you want to do, and how you will express it:
 
     dirname_second="my second dir"
+    echo $dirname_second
     echo "$dirname_second"
     echo "$dirname"_second
     echo "${dirname}"_second
