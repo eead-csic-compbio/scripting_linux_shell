@@ -367,6 +367,8 @@ Finally, there are several things which are very important to work efficiently i
 
 For example, type `ls da` and then hit `TAB`. You should see how your line is now `ls data`, because the only possible option was that you were going to write `ls data`. However, if you further hit `TAB` you will get a list of 2 options (`data/` and `data_moved/`), since there are those 2 possible paths you want to write. You can now add `_` to get `ls data_` and hit `TAB`. The command will be completed to `ls data_moved/`. This means that you can consecutively combine writing and hitting `TAB` until your command or path is complete. This will save you a lot of effort and time in the end.
 
+Also, the more you type, the more errors you will do. Therefore, using `TAB` autocompletion not only makes you more efficient, but also helps you to make less mistakes when typing commands, paths, etc.
+
 ### Summary
 
 - `pwd` - print current directory
