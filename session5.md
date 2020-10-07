@@ -1,5 +1,10 @@
 # Session 5: Advanced scripts
 
+So far we have been using one-liners or short scripts that can be easily typed in the terminal.
+However, some tasks are more complex than that an require longer scripts, which are typically stored in text files.
+
+#!/bin/bash
+
 scripts complejos (perl, python, bash, R)
 - shebang
 - dependencias
