@@ -91,11 +91,14 @@ Both methods will yield the same contents in `file.out`:
 Remember also the append redirection `>>`, which is in fact a synonym of `1>>`, that is, redirect the stdout appending to a file. You can also use `2>>` to redirect the stderr appending to a file:
 
     (printf "Hello\n"; printf "Bye\n" 1>&2) 2>> file.out
-    Hello # we didn't redirect this
+    Hello
+
+The "Hello" appears because we didn't redirect the output from the first `printf`. Then, we print the contents of `file.out`, and "Bye" appears twice, due to the appending with `2>>`.
+
     cat file.out
     Hello
     Bye
-    Bye # appended using `2>>`
+    Bye
 
 Note also that when we use the pipe `|` to redirect the output of a command as input of another, what we are redirecting by default is just the stdout, not the stderr:
 
