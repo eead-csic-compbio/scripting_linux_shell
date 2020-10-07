@@ -71,19 +71,15 @@ We can also redirect both outputs to different files, so that we can later check
     cat file.err
     Bye
 
-And, finally, we could merge both outputs to a single file in different ways:
+And, finally, we could merge both outputs to a single file, by redirecting stdout to a file `> file.out`, and redirecting the stderr to stdout `2>&1`
 
-- Redirecting stdout to a file `> file.out`, and redirecting the stderr to stdout `2>&1`
 
-```
     (printf "Hello\n"; printf "Bye\n" 1>&2) > file.out 2>&1
-```
 
-- Redirecting stderr to a file `2> file.out`, and redirecting the stdout to stderr `1>&2`
+Of course, we could also redirect the stderr to a file `2> file.out`, and then redirect the stdout to stderr `1>&2`
 
-```
     (printf "Hello\n"; printf "Bye\n" 1>&2) 2> file.out 1>&2
-```
+
 
 Both methods will yield the same contents in `file.out`:
 
