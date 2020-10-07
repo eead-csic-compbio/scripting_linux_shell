@@ -15,7 +15,7 @@ These are portable shebangs for some scripting languages:
 
 #!/usr/bin/env perl 
 
-#!/usr/bin/python
+#!/usr/bin/env python # most likely python3 in 2020
 
 #!/usr/bin/env Rscript
 ```
