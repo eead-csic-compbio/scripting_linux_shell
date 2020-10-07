@@ -3,23 +3,32 @@
 - [2.1 Redirections](#21-redirections)
 - [2.2 Variables](#22-variables)
 - [2.3 Subshells](#23-subshells)
-- [2.4 Running scripts](#24-running-scripts)
-- [2.5 Bash control statements](#25-bash-control-statements)
-- [2.6 Scripting basics](#26-scripting-basics)
+- [2.4 Bash control statements](#24-bash-control-statements)
+- [2.5 Scripting basics](#25-scripting-basics)
+- [2.6 Running scripts](#26-running-scripts)
 
 
 ## 2.1 Redirections
 
 So far, we have seen some example of how to redirect the output of a script to a file (`>`), to another script (`|`), or appending it to an existing file (`>>`). All of these are examples of Linux redirection, which we will further study here.
 
-In Linux, there are 2 different channels (actually, *file descriptors*) to which the programs or scripts could send text output: the standard output ("stdout") and the standard error ("stderr"). In fact, you can use these *file descriptors* directly:
+In Linux, there are 2 different channels (actually, *file descriptors*) to which the programs or scripts could send text output: the standard output (aka "stdout", which uses the *file descriptor* `/dev/stdout`) and the standard error (aka "stderr", whose *file descriptor* is `/dev/stderr`). In fact, you can use these *file descriptors* directly:
 
     echo "Hello" > /dev/stdout
     echo "Bye" > /dev/stderr
 
 We are redirecting the output of the `echo` command to these stdout and stderr. As you can see, in both cases what we redirect to these files is immediately printed on the terminal.
 
-Now, let's try a small code which prints text to both stdout and stderr:
+Managing the stdout and stderr through redirections is very important in Linux, since almost every command does at least one of the following:
+
+- Create output files with the results of running the command.
+- Modify files or its properties (e.g. permissions) as the results of running the command.
+- Print output to stdout (which in fact means modifying `/dev/stdout`.
+- Print output to stderr (which actually means modifying `/dev/stderr`.
+
+Or any combination of the previous ones.
+
+Now, let's try a tiny code:
 
     (printf "Hello\n"; printf "Bye\n" 1>&2)
 
@@ -28,16 +37,11 @@ After running the previous code you should see as output:
     Hello
     Bye
 
-Don't worry if you don't understand the previous code in detail. Just consider it as a code which you run, and prints "Hello" to the stdout and "Bye" to the stderr. However, it is very important to understand that the stdout is represented with the number 1, and when we redirect with `>`, as we saw in session1, it is the same as if we would use `1>`. On the other hand, the stderr is represented with the number 2, so when we want to redirect the stderr we use `2>`. A bit more complex, to redirect the stdout to stderr we write `1>&2`, and to redirect the stderr to stdout we write `2>&1`.
+Don't worry if you don't understand the previous code in detail. Just consider that it is a code which prints "Hello" to the stdout and "Bye" to the stderr.
 
-Nonetheless, we give a brief explanation of the previous code:
+However, it is very important to understand that the stdout is represented with the number 1, and when we redirect it to a file with `> FILE`, as we saw in session1, it is equivalent to `1> FILE`. On the other hand, the stderr is represented with the number 2, so when we want to redirect the stderr to a file we use `2> FILE`. A bit more complex: to redirect the stdout to stderr we write `1>&2`, and to redirect the stderr to stdout we write `2>&1`.
 
-- We are using the parentheses `(` and `)` to enclose 2 commands which we want to run as a single one.
-- The first `printf "Hello\n"` just prints "Hello" to the stdout (which is the default output of `printf`).
-- We separate both commands with `;`.
-- The second command `printf "Bye\n" 1>&2` prints "Bye" to the stderr, because we use `1>&2` to redirect the stdout to the stderr.
-
-Therefore, the previous parentheses-enclosed command (technically called a *subshell*) prints text to both stdout and stderr, and we can redirect that output in different ways:
+Therefore, the previous parentheses-enclosed code (technically called a *subshell*) prints text to both stdout and stderr. From outside the code, we can redirect that output in different ways:
 
     (printf "Hello\n"; printf "Bye\n" 1>&2) > file.out
 
@@ -54,7 +58,7 @@ Now, we will redirect the stderr instead:
 
     (printf "Hello\n"; printf "Bye\n" 1>&2) 2> file.out
 
-The output now is:
+The output on the screen is now:
 
     Hello
 
@@ -73,13 +77,11 @@ We can also redirect both outputs to different files, so that we can later check
 
 And, finally, we could merge both outputs to a single file, by redirecting stdout to a file `> file.out`, and redirecting the stderr to stdout `2>&1`
 
-
     (printf "Hello\n"; printf "Bye\n" 1>&2) > file.out 2>&1
 
 Of course, we could also redirect the stderr to a file `2> file.out`, and then redirect the stdout to stderr `1>&2`
 
     (printf "Hello\n"; printf "Bye\n" 1>&2) 2> file.out 1>&2
-
 
 Both methods will yield the same contents in `file.out`:
 
@@ -87,8 +89,7 @@ Both methods will yield the same contents in `file.out`:
     Hello
     Bye
 
-
-Remember also the append redirection `>>`, which is in fact a synonym of `1>>`, that is, redirect the stdout appending to a file. You can also use `2>>` to redirect the stderr appending to a file:
+Remember also the append redirection (`>>`), synonym of `1>>`, which redirects the stdout appending its contents to a file. You can also use `2>>` to redirect the stderr appending its contents to a file:
 
     (printf "Hello\n"; printf "Bye\n" 1>&2) 2>> file.out
     Hello
@@ -214,32 +215,87 @@ In summary:
 - If possible, always access a variable using quotes, and even better if you also use curly braces.
 
 
+Of course, besides text you can assign also numbers as the content for a variable:
 
+    mynum=1
 
+We can also use `let` to assign a variable using arithmetical expressions:
+
+    let "two=$mynum + 2"
+
+We get:
+
+    echo $mynum
+    1
+    echo $two
+    3
+
+If you want to more specifically declare your variable as an integer:
+
+    declare -i mynum
+    mynum=2
+    mynum="$mynum * $mynum"
+    echo $mynum
+    4
+
+And we can also use double parentheses to perform arithmetic operations:
+
+    (( mynum = 4 * 4 ))
+    echo $mynum
+    16
+
+We can do these operations without assigning to any variable with `$(( ))`:
+
+    echo $(( 4 * 4 ))
+    16
+    
 
 
 ## 2.3 Subshells
 
+Let's back to the code from section 2.1:
 
-(), var=$(), let var=
+    (printf "Hello\n"; printf "Bye\n" 1>&2)
 
-arithmetic (( ))
+We mentioned that this is a *subshell*, which is a way to run several lines of code as if it was a single command. More in detail:
+
+- We are using the parentheses `(` and `)` to enclose 2 commands which we want to run as a single one.
+- The first `printf "Hello\n"` just prints "Hello" to the stdout (which is the default output of `printf`).
+- We separate both commands with `;`.
+- The second command `printf "Bye\n" 1>&2` prints "Bye" to the stderr, because we use `1>&2` to redirect the stdout to the stderr.
+
+We could add more commands within the parentheses, just separating every command of each other with `;`. It is like creating a script, but without storing the code within any file.
+
+Moreover, with `$()` we can assign the output of a *subshell* to a variable. Try:
+
+    subsh=$(printf "Hello\n"; printf "Bye\n" 1>&2)
+    Bye
+    echo "$subsh"
+    Hello
+
+Note however that we are assigning only the text from stdout.
+
+The use of `$()` is technically called a *command substitution*, and it is also running a *subshell*, as with `()`, but in this case we can assign the output to a variable.
+
+There is another interesting expression in bash, which is the process substitution `<()`. In this case, the result from the *subshell* will be sent to a new *file descriptor*, which we can use as a temporary file. For example, compare:
+
+    wc file.out
+    wc <(cat file.out)
+
+You can check the path of the file descriptor being created:
+
+    ls <(cat file.out)
+
+This is useful to use the output of a command, which you enclose within `<()`, to another command which requires its output as a file, but you don't want to store the result of the first command as an actual file, but as a temporary file only to be used just once.
+
+We will see more examples of *subshells*, *command substitutions* and *process substitutions* later in this course.
 
 
 
 
-## 2.4 Running scripts
-
-./script
-shebang (just mention the system uses, and reference section 2.6)
-chmod
-export and $PATH
-
-Ctrl+C, &, Ctrl+Z, bg, nohup, screen and tmux
 
 
-
-## 2.5 Bash control statements
+## 2.4 Bash control statements
 
 if then else fi
 -d -f -z -e
@@ -254,6 +310,18 @@ break
 
 
 
-## 2.6 Scripting basics
+## 2.5 Scripting basics
 
 shebang. chmod. comments. input parameters. output status (exit and $?).
+
+
+
+
+## 2.6 Running scripts
+
+./script
+shebang (just mention the system uses, and reference section 2.6)
+chmod
+export and $PATH
+
+Ctrl+C, &, Ctrl+Z, bg, nohup, screen and tmux
