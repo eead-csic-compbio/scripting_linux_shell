@@ -7,7 +7,18 @@ However, some tasks are more complex than that an require longer scripts, which 
 
 scripts complejos (perl, python, bash, R)
 - shebang
+
+#!/bin/bash
+3 #!/usr/bin/env perl - Uses the env command to find the path to the perl executable.
+#!/usr/bin/python
+
+#!/usr/bin/env Rscript
+
+pyenv
+
+
 - dependencias
+- arguments
 - disección
 - ejecución
 - modificación
