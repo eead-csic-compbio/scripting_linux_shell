@@ -1095,39 +1095,31 @@ And you should recover the original `lesson3` directory with its contents.
 
 ### Summary 3
 
-- `file`
-- `curl`
-- `less`
-- `more`
-- `cat`
-- `echo`
-- `printf`
-- `\n` `\t`
-- `tac`
-- `head`
-- `tail`
-- `|`
-- `history`
-- `Ctrl+r`
-- arrow keys navigation
-- `Ctrl+k`
-- `grep`
-- `sed`
-- `diff`
-- `tr`
-- `>>`
-- `column -t`
-- `tail -n +x`
-- `sort`
-- `locale decimal-separator`
-- `cut`
-- `uniq`
-- `awk`
-- `paste`
-- `join`
-- `nano`
-- `gzip` `gunzip`
-- `tar zxf` `tar zcf`
+- `file FILE` - to check the type of a file
+- `curl URL -o FILE` - to download a file through http
+- `cat`, `more`, `less`, `tac`, `head`, `tail` - different commands to output the content of a text file
+- `echo`, `printf` - different commands to output text strings
+- `\n` `\t` - special strings to represent in text the `ENTER` and the `TAB`
+- `|` - the Linux pipe, to redirect the output of a command as the input for another
+- `history`, `Ctrl+r`, arrow keys navigation - different ways to recover previous commands
+- `Ctrl+k` - to cut the text from the current cursor to the end of line
+- `grep` - to search for regular expressions in text
+- `sed` - to replace text using regular expressions
+- `diff` - to compare 2 text files
+- `tr` - to replace a single character to another, in a given text
+- `>>` - Linux redirection to a file, which appends the content to the existing ones, if the file already exists
+- `column -t` - to show tabular data on the terminal output, so that the different columns are correctly visualized
+- `tail -n +x` - to output the content of a text file from the "x" line to the end of file
+- `sort` - to sort the lines of a text file
+- `locale decimal-separator` - to check the decimal separator being used
+- `cut` - to cut the columns of a text tabular file
+- `uniq` - to collapse repeated lines into unique lines
+- `awk` - an interpreter for the scripting language awk
+- `paste` - to join text files row-by-row
+- `join` - to join text files based on common values in a column
+- `nano`, `vi`, `emacs` - different command-line text editors
+- `gzip` `gunzip` - to compress and uncompress files with the .gzip format, respectively
+- `tar zcf` `tar zxf` - to compress and pack, and uncompress and unpack, directories, respectively
 
 
 
