@@ -157,7 +157,61 @@ It should show on the screen what you just wrote.
 
 ## 2.2 Variables
 
-var=, ${var}, 
+You can store data into variables in bash. For example:
+
+    myvar=Hello
+
+Note how the `=` separates the name of the variable that you choose (`myvar` in our example) and the value to store into the variable (`Hola` in our example). It is very important to note that there are no white spaces at both sides of the `=` symbol.
+
+You can access the value of a variable with the `$` symbol:
+
+    echo $myvar
+
+It should print:
+
+    Hello
+
+However, if you want to store a text which includes white spaces, you need to use other methods. To assign the value, you need to use quotes (either single or double):
+
+    myvar="Hello, how are you"
+
+White spaces can also be problematic when accesing the variable contents. For example:
+
+    dirname="my directory"
+    mkdir $dirname
+
+In this example, `mkdir` will create 2 directories! One called "my" and one called "directory". Check it out with `ls -l`. Now, try the next:
+
+    mkdir "$dirname"
+
+Now, `mkdir` will create a single directory called "my directory", which was our intention. Therefore, it is safier to access the content of a variable, specially leading with paths, using quotes, as in `"$dirname"`.
+
+There is another way to access variable contents, which is using curly braces:
+
+    echo "${dirname}"
+
+In some cases, the code is more readable using curly braces. And in some rare cases will be safer to use "${var}" than "$var", depending on what you want to do, and how you will express it:
+
+    dirname_second="my second dir"
+    echo "$dirname_second"
+    echo "$dirname"_second
+    echo "${dirname}"_second
+    echo "${dirname}_second"
+
+Also, using curly braces allows using parameter substutition with variables:
+
+- Printing the length of the contents of the variable: `echo ${#dirname_second}`
+- Removing a pattern at the beginning of the content: `echo ${dirname@my }`
+- Removing a pattern at the end of the content: `echo ${dirname% directory}`
+- Replacing a pattern with another content: `echo ${dirname/ectory/_example}`
+- Slicing a part of the contents: `echo ${dirname:3:5}`
+
+And other uses: https://www.cyberciti.biz/tips/bash-shell-parameter-substitution-2.html
+
+In summary:
+- If the content you want to assign to a variable can contain white spaces, use always quotes.
+- If possible, always access a variable using quotes, and even better if you also use curly braces.
+
 
 
 
