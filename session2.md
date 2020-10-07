@@ -75,11 +75,15 @@ And, finally, we could merge both outputs to a single file in different ways:
 
 - Redirecting stdout to a file `> file.out`, and redirecting the stderr to stdout `2>&1`
 
+```
     (printf "Hello\n"; printf "Bye\n" 1>&2) > file.out 2>&1
+```
 
 - Redirecting stderr to a file `2> file.out`, and redirecting the stdout to stderr `1>&2`
 
+```
     (printf "Hello\n"; printf "Bye\n" 1>&2) 2> file.out 1>&2
+```
 
 Both methods will yield the same contents in `file.out`:
 
