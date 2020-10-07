@@ -15,9 +15,9 @@
 	- [The apt package manager in Ubuntu](#the-apt-package-manager-in-ubuntu)
 	- [Cloning repositories with git](#cloning-repositories-with-git)
 	- [The conda manager](#the-conda-manager)
-	- [Summary](#summary)
+	- [Summary 2](#summary-2)
 - [1.3 Working with files](#13-working-with-files)
-        - [Setup and run blast](#setup-and-run-blast)
+	- [Setup and run blast](#setup-and-run-blast)
 	- [Reading text files](#reading-text-files)
 	- [Searching previous commands](#searching-previous-commands)
 	- [Linux pipes](#linux-pipes)
@@ -26,7 +26,7 @@
 	- [Working with several tables](#working-with-several-tables)
 	- [Text editors](#text-editors)
 	- [Compressing files and packaging directories](#compressing-files-and-packaging-directories)
-	- [Summary](#summary)
+	- [Summary 3](#summary-3)
 - [1.4 Remote filesystems](#14-remote-filesystems)
 
 
@@ -562,7 +562,7 @@ Note how the path includes the 'blastenv' environment which we created to instal
     blastn -version
 
 
-### Summary
+### Summary 2
 
 - `sudo COMMAND` - to run some commands with special permissions (e.g. to install software)
 - `wget URL` - to download a file through HTTP
@@ -1091,6 +1091,43 @@ To uncompress and unpack a gzipped directory:
     tar zxf lesson3.tar.gz
 
 And you should recover the original `lesson3` directory with its contents.
+
+
+### Summary 3
+
+- `file`
+- `curl`
+- `less`
+- `more`
+- `cat`
+- `echo`
+- `printf`
+- `\n` `\t`
+- `tac`
+- `head`
+- `tail`
+- `|`
+- `history`
+- `Ctrl+r`
+- arrow keys navigation
+- `Ctrl+k`
+- `grep`
+- `sed`
+- `diff`
+- `tr`
+- `>>`
+- `column -t`
+- `tail -n +x`
+- `sort`
+- `locale decimal-separator`
+- `cut`
+- `uniq`
+- `awk`
+- `paste`
+- `join`
+- `nano`
+- `gzip` `gunzip`
+- `tar zxf` `tar zcf`
 
 
 
