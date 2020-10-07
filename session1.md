@@ -15,7 +15,18 @@
 	- [The apt package manager in Ubuntu](#the-apt-package-manager-in-ubuntu)
 	- [Cloning repositories with git](#cloning-repositories-with-git)
 	- [The conda manager](#the-conda-manager)
+	- [Summary](#summary)
 - [1.3 Working with files](#13-working-with-files)
+        - [Setup and run blast](#setup-and-run-blast)
+	- [Reading text files](#reading-text-files)
+	- [Searching previous commands](#searching-previous-commands)
+	- [Linux pipes](#linux-pipes)
+	- [Text filters](#text-filters)
+	- [Working with tabular data](#working-with-tabular-data)
+	- [Working with several tables](#working-with-several-tables)
+	- [Text editors](#text-editors)
+	- [Compressing files and packaging directories](#compressing-files-and-packaging-directories)
+	- [Summary](#summary)
 - [1.4 Remote filesystems](#14-remote-filesystems)
 
 
@@ -549,6 +560,19 @@ You should get:
 Note how the path includes the 'blastenv' environment which we created to install blast within. Now, you are ready to use the blast program. For example, type:
 
     blastn -version
+
+
+### Summary
+
+- `sudo COMMAND` - to run some commands with special permissions (e.g. to install software)
+- `wget URL` - to download a file through HTTP
+- `apt` or `apt-get` - linux software manager (e.g. `apt-get install SOFTWARE` to install a specific program)
+- `git` - command-line software to manage GIT repositories (e.g. `git clone REPO_URL` to download a repository)
+- `chmod` - command to modify files permissions (e.g. `chmod u+x FILE` to make a file executable for the owner user)
+- `conda` - package and software manager (e.g. `conda activate` and `conda deactivate` to change environments, `conda install` to install packages)
+- `which` - to get the path of a command
+- a primer of Linux permissions is included in the section describing conda
+
 
 ## 1.3 Working with files
 
