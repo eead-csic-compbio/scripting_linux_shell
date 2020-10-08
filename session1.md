@@ -1118,8 +1118,8 @@ And you should recover the original `lesson3` directory with its contents.
 - `paste` - to join text files row-by-row
 - `join` - to join text files based on common values in a column
 - `nano`, `vi`, `emacs` - different command-line text editors
-- `gzip` `gunzip` - to compress and uncompress files with the .gzip format, respectively
-- `tar zcf` `tar zxf` - to compress and pack, and uncompress and unpack, directories, respectively
+- `gzip`, `gunzip` - to compress and uncompress files with the .gzip format, respectively
+- `tar zcf`, `tar zxf` - to compress and pack, and uncompress and unpack, directories, respectively
 
 
 
