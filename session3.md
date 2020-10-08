@@ -109,7 +109,7 @@ cut -f 2 allele_stats.tsv | sort -n | uniq -c
   11 5
    1 6
 
-# count alleles in chr U & P~
+# count alleles in chromosomes U & P
 # this is a Perl one-liner, explained in next session
 perl -lane 'print if($F[1] == 2 && $F[2]=~/P:/ && $F[2]=~/U:/)' allele_stats.tsv
 
