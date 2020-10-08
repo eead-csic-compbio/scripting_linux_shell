@@ -85,7 +85,32 @@ This code will work if there is only one word per line, or when you want to proc
 You might recall from session 2 that pipes can be used to transfer data from one process to another. In that case, the second process will be actually reading the standard output of process 1 as if it was a file. 
 <!-- ## 3.3 Writing to files --> 
 
-## 3.3 Regular expressions
+## 3.3 Analyzing files in the terminal
+
+The following example demonstrates how to produce basic stats by parsing a file in the command line with simple Linux utilities:
+
+```
+cd $COURSEDIR/files
+
+# check file format
+file allele_stats.tsv
+head allele_stats.tsv
+
+# count data
+wc -l allele_stats.tsv
+
+# make distribution of allele number 
+cut -f 2 allele_stats.tsv | sort -n | uniq -c
+   5 0
+ 418 1
+1011 2
+ 194 3
+  49 4
+  11 5
+   1 6
+```
+
+## 3.4 Regular expressions
 
 Regular expressions, or regexes, are useful for extracting information from text files.
 Regexes are search patterns expressed in the form of a sequence of text characters
