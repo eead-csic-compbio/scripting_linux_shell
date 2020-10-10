@@ -5,6 +5,7 @@
 
 use strict;  
 
+# simple argument parsing
 my $degenerate_sequence = $ARGV[0] || 
 	die "# usage: $0 <degenerate DNA sequence, example: GAYTST>\n";  
 
