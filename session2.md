@@ -551,6 +551,7 @@ shebang. chmod. comments. input parameters. output status (exit and $?).
 ./script
 shebang (just mention the system uses, and reference section 2.6)
 chmod
-export and $PATH
+export and $PATH .bashrc
 
 Ctrl+C, &, Ctrl+Z, bg, nohup, screen and tmux
+

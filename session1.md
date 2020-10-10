@@ -1129,12 +1129,48 @@ And you should recover the original `lesson3` directory with its contents.
 
 ## 1.4 Remote filesystems
 
-ssh, scp, rsync
+There are occasions in which we need to work in a remote computer: for example, we are given access to a cluster of computers to perform our analyses. Very often, the remote computer will be a Linux OS, and we will be given an user and password to access to it. We will use `ssh` to connect to the server using our credentials:
+
+    ssh user@remote
+
+With the `ssh` command we ask to connect to the `remote` computer using our `user`. Once within the remote computer, we can run commands there, and once we finish we can use the `exit` command to disconnect from the remote computer and go back to our terminal in our local computer.
+
+For example, John wants to connect to the a server using its IP address (138.130.130.130 for example). The server administrators send to John an email with the credentials:
+
+- User: "john"
+- Password: "johnpass"
+
+John will use `ssh` to connect to the server:
+
+    ssh john@138.130.130.130
+
+He will be asked for his password, and he types `johnpass`. If the connection is OK and the password was typed correctly, the terminal will change to show that John is now within the `138.130.130.130` host:
+
+    john@138.130.130.130:~$
+
+And John will be ready to run commands within the remote computer. Once he finishes doing work remotely, John closes the remote session:
+
+    exit
 
 
+Sometimes we don't need to have a terminal session in the remote computer, but we want just to copy files between our computer and the remote one. To do this, we can use the `scp` or the `rsync` commands. For example, to copy a local file to the remote computer:
 
-Others:
-$PATH
-tree
-rename
-.bashrc
+    rsync myfile user@remote:/home/user/
+
+or
+
+    scp myfile user@remote:/home/user/
+
+Instead, to copy a remote file to our local computer:
+
+    rsync user@remote:/home/user/myfile .
+
+or
+
+    scp user@remote:/home/user/myfile .
+
+Therefore, the `rsync` or the `scp` commands have 2 arguments:
+- The path to the file to be copied.
+- The path to the destination were to make a copy of the file.
+
+In either case, if it is a remote file, the format is `user@host:path`, using `:` to separate the user and host from the path of the file.
