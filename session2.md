@@ -4,7 +4,7 @@
 - [2.2 Variables](#22-variables)
 - [2.3 Subshells](#23-subshells)
 - [2.4 Bash control statements](#24-bash-control-statements)
-- [2.5 Scripting basics](#25-scripting-basics)
+- [2.5 A bash script primer](#25-a-bash-script-primer)
 - [2.6 Running scripts](#26-running-scripts)
 
 
@@ -540,7 +540,7 @@ There is another loop in bash, `until`, which is conceptually similar to `while`
 
 
 
-## 2.5 Scripting basics
+## 2.5 A bash script primer
 
 Now, we have enough elements to make our own bash scripts. Here, we will cover the basics.
 
