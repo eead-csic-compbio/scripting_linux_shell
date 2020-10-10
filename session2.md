@@ -630,13 +630,234 @@ the script ended ok
 This is how we create a script in Linux. Later in this course we will explain more details about writing scripts in bash.
 
 
+
+
+
+
+
 ## 2.6 Running scripts
 
+Now, we know how to run commands in the terminal, including bash scripts that we wrote our own.
 
-./script
-shebang (just mention the system uses, and reference section 2.6)
-chmod
-export and $PATH .bashrc
+It is important though to know how is determining the OS which command should actually be run.
 
-Ctrl+C, &, Ctrl+Z, bg, nohup, screen and tmux
+When we write the name of command, the shell, which is the interpreter running in your terminal, looks for the command in a special variable (an environment variable) called PATH. The PATH variable stores a string, which is in fact a list of paths where the shell will look for installed programs. Check your PATH variable (you already know how to print the content of variables):
+
+    echo "$PATH"
+
+You will see something similar to:
+
+/home/osboxes/miniconda3/bin:/home/osboxes/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+This is hard to read, but you will notice that it is a list of paths, using `:` as separator. Take a look a the list, one line per path, translating `:` to `\n`:
+
+    echo "$PATH" | tr ":" "\n"
+
+You will get:
+
+```
+/home/osboxes/miniconda3/bin
+/home/osboxes/miniconda3/condabin
+/usr/local/sbin
+/usr/local/bin
+/usr/sbin
+/usr/bin
+/sbin
+/bin
+```
+
+These are the locations were the shell will look for commands. In fact, you can use `which` to check the result of that search:
+
+```
+which conda
+/home/osboxes/miniconda3/bin/conda
+which ls
+/usr/bin/ls
+```
+
+You can modify the PATH variable to add new paths to the list, so that the shell will look for commands there.
+
+First, let's create a new script, called `wait.sh`, within our `~/scripting` directory, with the following code:
+
+```
+#!/usr/bin/env bash
+
+while :
+do
+    echo "WAIT!"
+    sleep 2
+done
+
+exit 0
+```
+
+After saving the script, remember to change the permissions with `chmod u+x wait.sh`. Our script `wait.sh` performs an infinite `while` loop, printing "WAIT!" every 2 seconds.
+
+You can run it with `./wait.sh`, and interrupt it with `Ctrl+c`. The shell is able to run your script even when it is not within the paths included in the PATH variable, because you are giving the path to the script (`./wait.sh` tells to run the script called `wait.sh` which is in the current directory `./`). In fact, you should be able to run it like this, using the path to the script, from another directory:
+
+```
+cd ..
+pwd
+/home/osboxes
+./scripting/wait.sh
+```
+
+Or
+
+    /home/osboxes/scripting/wait.sh
+
+However, if you try to run it as any other command it will be not found:
+
+    wait.sh
+
+You will get:
+
+    wait.sh: command not found
+
+Thus, to run it like this, we need to add the path to the directory containing the script to the PATH variable. We could do (don't do it please):
+
+    PATH=/home/osboxes/scripting
+
+But we will lose the previous paths of the PATH variable. Therefore, we insert or append our new path along with the previous value of the PATH variable, using the `:` as separator:
+
+    PATH="$PATH":/home/osboxes/scripting
+
+Now, if you did that, you should be able to run the script, just typing:
+
+    wait.sh
+
+If you print the content of PATH (`echo "$PATH"`) you should see now your path along with the others.
+
+However, every time that you login again into the shell (every time you open a terminal) you will have again the original PATH variable, and you will need to add again the path of your script to the PATH variable. However, there are user-specific scripts which are run every time a terminal is open by that user. You can edit those files, to add the paths you may want to the PATH variable. For example, open the `/home/osboxes/.bashrc` file:
+
+    nano ~/.bashrc
+
+Go to the end of the script and add a new line with:
+
+    PATH="$PATH":/home/osboxes/scripting
+
+Save the file and exit nano. Exit from the terminal with `exit`, and open a new terminal. Right after opening the terminal, you should be able to run `wait.sh`.
+However, you will often see that this is done using the `export` command:
+
+    export PATH="$PATH":/home/osboxes/scripting
+
+You should be fine with either choice. Just be aware that you will find examples using both. For further info check https://unix.stackexchange.com/questions/138504/setting-path-vs-exporting-path-in-bash-profile
+
+
+
+Now, open the terminal and run the script `wait.sh` and keep it running. It will print:
+
+```
+WAIT!
+WAIT!
+WAIT!
+...
+```
+
+We already know that we can interrupt the script using `Ctrl+c`. There is also a way to just pause the script, which is `Ctrl+z`. Try it, and the type:
+
+    jobs
+
+You will see:
+
+    [1]+ Stopped wait.sh
+
+Your script is still there, but it is stopped, and no output ("WAIT!") is being output. You also have control of the terminal again, so you could run other commands. How do you resume the script? Type:
+
+    fg
+
+And the script will run in "forward" again, that is, it will output "WAIT!" and you will not be able to input new commands. Now, there is a way to have your script running in the background, so that you get again the control of the terminal to input commands. Pause your script again with `Ctrl+z` and then type:
+
+
+    bg
+
+You will see how the script prints again "WAIT!" to the terminal, so it is running, but you are able to input commands: the script is running in the background. You could again put the script to "forward" with `fg`, to be able to stop it with `Ctrl+c`.
+
+As you can see, when you run a script in the background it is not confortable to have the output on the screen. Therefore, it is better if you redirect the output to a file, so that the script runs in the background and you can type new commands without ease:
+
+    wait.sh > /dev/null
+    Ctrl+z
+    bg
+    jobs
+
+You should see:
+
+    [1]+ Running wait.sh > /dev/null &
+
+Now you could cancel the job by using `fg` and `Ctrl+c`, or directly using the `kill` command:
+
+    kill %1
+
+There is also a way to run a command directly on the background, which is appending `&` to the end of the command line:
+
+    wait.sh > /dev/null &
+
+You will see:
+
+    [1] 4222
+
+Which are the job number (1) and the process ID (4222). You could also use the PID to kill the job:
+
+    kill 4222
+
+
+However, what happens to a command running on the background when the terminal is closed. The process is usually terminated even if it is running on the background. This is important, specially when you are working in remote computers in which you want to run commands, exit, and come back once the process has ended. There are several ways to run a process on the background and avoid it being killed.
+
+One method is using the `nohup` command:
+
+    nohup wait.sh
+
+In this case, the output of `wait.sh` will be redirected to a file called `nohup.out`, and `nohup` itself will be running on the foreground, so that you cannot enter new commands. However, you can run `nohup` on the background itself. Cancel the previous command (`Ctrl+c`), and type:
+
+   nohup wait.sh &
+
+Now, you will be able to type other commands into the terminal, while the `nohup` command keeps running, and so it is the `wait.sh` command. Use the `tail -f` command to check how the output from `wait.sh` is being generated in the `nohup.out` file:
+
+    tail -f nohup.out
+
+You can cancel the `tail`, once more, with `Ctrl+c`.
+
+There is an even more advanced way to run our commands so that we can exit from the terminal and leave the commands running. This is using *terminal multiplexers* like `screen` or `tmux`. We are going to see a very simple example using `tmux`, but notice that both `screen`, `tmux`, and other software alike has a lot of useful possibilities, like using several windows, several tabs, splitting the window into panes, switching sessions, etc.
+
+First, let's install `tmux`, which is not included in the osboxes VM. You will remember from a previous lesson that we can install software using `apt` (similar to `apt-get`):
+
+    sudo apt install tmux
+
+Type your password (osboxes.org), and type "Y". Once the software is installed, let's create first a session. We can do that using the `new` command of `tmux`, and giving a name to the new session with `-s` followed by the new name:
+
+    tmux new -s mysession
+
+You will be automatically *attached* to such session. Run our script
+
+    wait.sh
+
+Now, press `Ctrl+b`, release and then just press `d`. You will go back to your previous terminal, and will see something similar to:
+
+    [detached (from session mysession)]
+
+You have *detached* from the session. However, the session is still there:
+
+    tmux ls
+
+You will get:
+
+    mysession: 1 windows (created Sat Oct 10 12:00:00 2020)
+
+Let's attach to the session again. You can do that with the `attach` command of `tmux`, and the `-t` argument followed by the session name:
+
+    tmux -t mysession
+
+You should see your "WAIT!" output from you script still running! You can even exit the terminal, open the terminal and re-attach, and it will keep running:
+
+    Ctrl+b, then d
+    exit
+    Ctrl+Alt+t
+    tmux attach -t mysession
+
+However, this is not magic. If you shutdown the computer where the command is running (where you opened the tmux session), the command will die, of course. Note however, that if you open a terminal, connect through `ssh` to a remote computer, open a tmux session, run a command, detach, exit from the terminal and shutdown the computer, the server will keep running. Therefore, you can use `tmux` sessions to run remote jobs, so that those jobs keep running unless the remote computer is shutdown (which is not the usual thing for computer servers).
+
+Finally, by detaching you "leave" the session temporarily. However, sometimes you just want to definitely end the session. To do that, end the tmux session, so that it will not exist anymore, from the terminal within the tmux session just type:
+
+    exit
+
 
