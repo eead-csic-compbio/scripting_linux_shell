@@ -8,6 +8,8 @@
 import argparse
 
 # define arguments
+parser=argparse.ArgumentParser()
+
 # example, optional arg 'last'
 parser.add_argument("--last", default=5, type=int,
         help="last sentence to check")
