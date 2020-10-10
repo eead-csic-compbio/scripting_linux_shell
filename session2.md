@@ -297,9 +297,179 @@ We will see more examples of *subshells*, *command substitutions* and *process s
 
 ## 2.4 Bash control statements
 
-if then else fi
--d -f -z -e
-! && || = == -eq -ne -gt -lt -gte -lte
+So far, we have seen how to run commands in different ways, and even combinations of several commands, either using the pipe `|` or using *subshells*. We have also seen how to use variables.
+
+Sometimes, we need to run a command or use a variable only if a specific condition is met. On other occasions, we need to run a command several times, for example changing the input or the parameters in each iteration. In this section, we will see how to achieve this in bash.
+
+First, create a new directory within the `scripting` directory:
+
+```
+mkdir -p ~/scripting/control_sts
+cd ~/scripting/control_sts
+```
+
+when we want to check if a condition is met, we use the `if then else fi` statements. The key element of this is how we check the condition that we want to assess. For example, we can remove a file, only if the file exists:
+
+```
+if [ -e myfile ]; then
+    echo "FILE EXISTS";
+else
+    echo "file doesn't exist";
+fi;
+```
+
+You will get:
+
+    file doesn't exist
+
+In the first line, we have the `if` with the condition to be checked. The condition has to be enclosed within `[` and `]`, and it will be an statement returning either *true* or *false* (i.e. it is a boolean value). In our example, the condition is `-e myfile`, which is using a bash *file test operator* used to check if a file exists. If the file does exist, `-e myfile` will yield *true*, and the `echo "FILE EXISTS"` command will be run. If the file does not exist, `-e myfile` will yield *false*, and the command under the `else` will be run: `echo "file doesn't exist" in our example.
+
+Now try to create the file and see what happens:
+
+```
+touch myfile
+if [ -e myfile ]; then
+    echo "FILE EXISTS";
+else
+    echo "file doesn't exist";
+fi;
+```
+
+You should get:
+
+    FILE EXISTS
+
+We will not go further into *file test operators* in this lesson, but you should be aware that there are operators to check if a file exists (`-e`), if the file is an actual file (`-f`) or a directory (`-d`), and others which you can check at https://tldp.org/LDP/abs/html/fto.html.
+
+You can add more conditions to a single `if` block, to have more alternatives, using the `elif` word:
+
+
+```
+if [ -e nonexistingfile ]; then
+echo "NON EXISTING ACTUALLY EXISTS";
+elif [ -e myfile ]; then
+echo "myfile DOES exist"
+else
+echo "none of them exist
+fi;
+```
+
+You will get:
+
+    "myfile DOES exist"
+
+because `nonexistingfile` does not exist and then the second condition `elif [ -e myfile ];` is assessed.
+
+You can use `if` statements to check any condition you may need. For example, to compare 2 different values:
+
+```
+if [ 1 -eq 1 ]; then
+echo "equal";
+else
+echo "different";
+fi;
+```
+
+Besides the `-eq` to check if 2 values are the same, you can use other operators for comparison, including:
+
+- `a -eq b`: *true* if a is equal to b
+- `a -gt b`: *true* if a is greater than b
+- `a -ge b`: *true* if a is greater or equal than b
+- and other operators that you may check at https://tldp.org/LDP/abs/html/comparison-ops.html
+
+You can also check different conditions at once using compound comparisons. For example, use `&&`, the *and* boolean operator, to check if 2 conditions are both true:
+
+```
+if [ 1 -eq 1 ] && [ 2 -eq 2 ]; then
+echo "both are equal";
+fi;
+```
+
+Which is the same as using `-a`:
+
+```
+if [ 1 -eq 1 -a  2 -eq 2 ]; then
+echo "both are equal";
+fi;
+```
+
+To check if at least one of the conditions is true, you can use `||`, the *or* boolean operator:
+
+```
+if [ 1 -eq 2 ] || [ 10 -eq 10 ]; then
+echo "at least one is equal";
+fi;
+```
+
+Or using `-o`:
+
+```
+if [ 1 -eq 2 -o 10 -eq 10 ]; then
+echo "at least one is equal";
+fi;
+```
+
+You can also use the `!` operator, *not* boolean operator, to check if a condition is *not true*:
+
+```
+if [ ! 1 -eq 2 ]; then
+echo "not equal"
+fi;
+```
+
+You can also compare strings, or variables containing strings:
+
+```
+user_continent="Europe"
+if [ "$user_continent" = "Europe" ]; then
+echo "User is from Europe";
+elif [ "$user_continent" = "Africa" ]; then
+echo "User is from Africa";
+else
+echo "User is not from Europe or Africa";
+fi;
+```
+
+We can also use the `if` statements to check the outcome of commands. If the command returns 0, the condition is considered *true*, whether if a command returns value different to 0 the condition is considered *false*. For example, our `myfile` file is empty. Thus, if we search a pattern with grep we will find nothing. `grep` returns a 0 when the pattern is found and 1 if the pattern is not found. Therefore:
+
+```
+if grep "any" myfile; then
+echo "any found in myfile";
+else
+echo "grep found nothing";
+fi;
+```
+
+It should output:
+
+    grep found nothing
+
+Actually, every command in Linux returns an *exit stats* value, which is usually 0 if the command was successful, or a value greather than 0 if something went wrong. Note that the definition of success or error depends on the specific command. As we have seen, for `grep` success means pattern found. Importantly, besides check directly the command within an `if` condition statement, we can directly retrieve the exit status of the last command run through the special variable `$?`:
+
+```
+grep "any" myfile
+status=$?
+echo "$status"
+if [ "$status" -eq 0 ]; then
+echo "command successful"
+else
+echo "command returned $status"
+fi;
+```
+
+Another widely used trick, implicitly using the *exit status*, is running a command only if the previous one was successful using `&&` between commands in a *one-liner*:
+
+```
+grep "any" myfile && rm myfile
+```
+
+The previous *one-liner* will delete `myfile` only if the `grep` finds the pattern "any" within it.
+
+
+
+Now, let's move to other control statements. In this case, those allowing us to run a given block of code any number of times (yes, from 0 to infinite). These control statements are often called just *loops*. The `while` loop will keep running, until a given condition will trigger the end of the loop.
+
+For example, 
 
 for in ; do done
 while; do done
