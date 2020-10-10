@@ -10,7 +10,7 @@ import argparse
 # define arguments
 # example, optional arg 'last'
 parser.add_argument("--last", default=5, type=int,
-        help="last sentence to check, default:"+)
+        help="last sentence to check")
 
 # actually parse args
 args = parser.parse_args()
