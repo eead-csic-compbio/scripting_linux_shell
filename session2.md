@@ -467,16 +467,75 @@ The previous *one-liner* will delete `myfile` only if the `grep` finds the patte
 
 
 
-Now, let's move to other control statements. In this case, those allowing us to run a given block of code any number of times (yes, from 0 to infinite). These control statements are often called just *loops*. The `while` loop will keep running, until a given condition will trigger the end of the loop.
+Now, let's move to other control statements. In this case, those allowing us to run a given block of code any number of times (yes, from 0 to infinite). These control statements are often called just *loops*. 
 
-For example, 
+The `for` loop allows itering over a list of elements, keeping track of the current element on a variable, so that we can use such variable within the code block to be run. For example:
 
-for in ; do done
-while; do done
-continue
-break
+```
+for animal in cat dog human; do
+    echo "$animal";
+done
+```
+
+You will get:
+
+```
+cat
+dog
+human
+```
+
+We can use this to iterate over any list of elements:
+
+```
+for current in $(ls /); do
+    echo "$current";
+done
+```
+
+The previous command will obtain the list of files within the root directory (`ls /`), and will create a list with it using command substitution `$(ls /)`. This list is iterated and each filename printed (`echo "$current"`).
+
+The `for` loop will end once that the list of elements has been iterated over completely. However, there are ways to exit from a loop before the end of the list, using the `break` command:
+
+```
+for current in $(ls /); do
+if [ "$currentfile" = "etc" ]; then
+    break
+else
+    echo "$currentfile";
+fi;
+done
+```
+
+The previous code will `echo` the name of files until a file called `etc` is found, using the `break` command at that point to end prematurely the loop.
+
+There is another special word, `continue`, in this case to just "jump" to the next item in the iteration:
+
+for current in $(ls /); do
+if [ ! "$currentfile" = "tmp" ]; then
+    continue
+else
+    echo "$currentfile";
+    break;
+fi;
+done
+```
+
+In this latter case, if the current file is not "tmp", just go to the next element of the list. Only the "tmp" file will be printed, and once this happens the `break` command interrupts the loop, so that no more iterations are carried out.
 
 
+The `while` loop does not use a list of elements, but instead a condition (as the conditions used in the `if` statements). Therefore, the `while` loop will keep running while the condition is *true*, whereas it will finish once the condition is *false*. We can use this even to create a *infinite loop*, which will never end unless we stop it pressing `Ctrl+c`:
+
+```
+while [ 1 -eq 1 ]; do
+    echo "loop";
+    sleep 1;
+done
+```
+
+The previous loop will keep printing "loop" while `1 -eq 1` is true, that is, forever. The `sleep 1` just makes the loop "freeze" 1 second, before the next iteration is run. This is a kind of abstract example, but you will see later in this course other uses of the `while` loop, including parsing text files.
+
+There is another loop in bash, `until`, which is conceptually similar to `while` and we will not cover here. Check more info about these loops at https://tldp.org/LDP/abs/html/loops1.html
 
 
 
