@@ -900,6 +900,8 @@ We can use `-e` to perform several replacements, as alternative to pipe consecut
 - To delete specific lines of a file: `sed '10,400d' P08660.aln`
 - etc
 
+Check more info and examples about sed at https://tldp.org/LDP/abs/html/x23170.html
+
 
 ### Working with tabular data
 
@@ -993,6 +995,8 @@ sp|P08660|AK3_ECOLI  AAC75331  45.000   20   11  0  282  301  153  172  7.4  25.
 ```
 
 The `-F` option is to define the column separator, in our case tab (`-F $'\t'`). Then, the script is enclosed between `'{}'`. The code which we include within the script is going to be applied to every line of the input separatedly. So, in our example we check whether the 3rd column is equal or above 45.0 (`if ($3>45.0)`). If the condition is met, we print the whole line (`print $0`).
+
+Check more info and examples about awk at https://tldp.org/LDP/abs/html/awk.html
 
 
 
