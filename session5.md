@@ -20,20 +20,29 @@ These are portable shebangs for some scripting languages:
 #!/usr/bin/env Rscript
 ```
 
-## Imported modules or packages
+Note that it is possible to have different versions of the same intepreter on the same environment and thus you must make sure that you are using the appropriate one. This might be more difficult that it seems in systems with many users and that's why tools such as conda (seen in previous sessions), [pyenv](https://github.com/pyenv/pyenv) or [perlbrew](https://perlbrew.pl) can often be your best friend.
 
-This ...
-Can be installed ...
+## Imported libraries, modules or packages
 
+Programming languages usually have what's we can call the i) **core language**, which includes the main functions, data types and syntax, and ii) the **ecosystem of libraries** than extend the language. Usually you will see any imported modules at the header of scripts.
 
-- dependencias
-- arguments
-- disección
-- ejecución
-- modificación
+In order to install accessory modules you have mainly two choices:
+ * the operating systen package manager, such as *apt-get* in Ubuntu or *yum* in redhat like Linux distros
+ * Language specific package managers:
+   - [pip](https://pip.pypa.io/en/stable) takes python modules from [PyPI](https://pypi.org)
+   - cpanm for Perl, seen in the previous session, downloads from [CPAN](https://www.cpan.org)
+   - install.packages(), core function of R to install from [CRAN](https://cran.r-project.org) 
 
-## Environment variables
+## Argument parsing and environment variables
 
-## Understanding and modifying a script
+Scripts will typically take input arguments and will produce some kind of output.
+Most languages have core modules for handling arguments, such as [argparse](https://docs.python.org/3/library/argparse.html) for python or [Getopt::Long](https://perldoc.perl.org/Getopt::Long) in Perl. You will see a couple of examples in the next section.
 
-Please see the example script at files/ and ...
+## Running, reading and modifying scripts
+
+Please check the example scripts at folder [files/](./files/) and do the following tasks:
+* Check their file permissions, are they executable?
+* Make them executable with *chmod +x*
+* What are these scripts doing? Can you see the comments?
+* Do they have library/modules dependencies? Install them if required
+* Run them, what kind of output they produce?
