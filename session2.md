@@ -542,12 +542,96 @@ There is another loop in bash, `until`, which is conceptually similar to `while`
 
 ## 2.5 Scripting basics
 
-shebang. chmod. comments. input parameters. output status (exit and $?).
+Now, we have enough elements to make our own bash scripts. Here, we will cover the basics.
+
+First, we need to create a file, our script, to write code within it. We will use the `nano` text editor to create the file.
+
+```
+cd ~/scripting
+nano myscript.sh
+```
+
+We will begin with a special line, which is a *shebang*. It has to be the first line of the script, and it is telling the OS which interpreter should be use to interpret (to run) our code. As we are doing a bash script, we will write:
+
+    #!/usr/bin/env bash
+
+Then, we will include the code of our script, which will be very basic to begin with:
 
 
+```
+printf "UPPERCASE GOES TO THE STDOUT\n"
+printf "lowercase goes to the stderr\n" 1>&2
+printf "HERE I INCLUDE THE MAIN OUTPUT FROM MY SCRIPT\n"
+printf "here I could output a warning or errors\n" 1>&2
+printf "END OF THE SCRIPT\n"
+printf "the script ended ok\n" 1>&2
+```
+
+Finally, we could just let the script end without an `exit` command, and it will end by default with *exit status* 0. However, it is a good practice to always include the `exit` command along with the *exit status* of our script:
+
+    exit 0
+
+We can save our script with `Ctrl+s` and exit with `Ctrl+x`. We can later edit the script again with `nano myscript.sh`.
+Now, try to run the script:
+
+    ./myscript.sh
+
+You will get `Permission denied`, since we created the file, but it is without permission to execute by default. Check the permissions with `ls -l myscript.sh`:
+
+```
+-rw-rw-r-- 1 osboxes osboxes 77 Oct 10 07:52 myscript.sh
+```
+
+The owner of the file is `osboxes`, but he has not right to execute the script. To change this type:
+
+    chmod u+x myscript.sh
+
+And check again the permissions with `ls -l myscript.sh`:
+
+```
+-rwxrw-r-- 1 osboxes osboxes 77 Oct 10 07:52 myscript.sh
+```
+
+Now, osboxes has right to run the script. Type:
+
+    ./myscript.sh
+
+And you should get:
+
+```
+UPPERCASE GOES TO THE STDOUT
+lowercase goes to the stderr
+HERE I INCLUDE THE MAIN OUTPUT FROM MY SCRIPT
+here I could output a warning or errors
+END OF THE SCRIPT
+the script ended ok
+```
+
+As we have seen in previous examples, we can redirect stdout and stderr to different files:
+
+    ./myscript.sh > myscript.out 2> myscript.err
+
+Check `cat myscript.out`:
+
+```
+UPPERCASE GOES TO THE STDOUT
+HERE I INCLUDE THE MAIN OUTPUT FROM MY SCRIPT
+END OF THE SCRIPT
+```
+
+Check `cat myscript.err`:
+
+```
+lowercase goes to the stderr
+here I could output a warning or errors
+the script ended ok
+```
+
+This is how we create a script in Linux. Later in this course we will explain more details about writing scripts in bash.
 
 
 ## 2.6 Running scripts
+
 
 ./script
 shebang (just mention the system uses, and reference section 2.6)
