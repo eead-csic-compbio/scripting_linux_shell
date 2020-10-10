@@ -28,7 +28,7 @@ sentences = [
 words = set(sentences[0].split(" "))
 
 # iterate the remaining sentences
-for i, sentence in enumerate(sentences[1:args.last-1]):
+for i, sentence in enumerate(sentences[1:args.last]):
     words.intersection_update(sentence.split(" "))
     if words:
         print("Among the first", i+2, "sentences there are",
