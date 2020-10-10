@@ -511,6 +511,7 @@ The previous code will `echo` the name of files until a file called `etc` is fou
 
 There is another special word, `continue`, in this case to just "jump" to the next item in the iteration:
 
+```
 for current in $(ls /); do
 if [ ! "$currentfile" = "tmp" ]; then
     continue
