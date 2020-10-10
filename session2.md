@@ -346,11 +346,11 @@ You can add more conditions to a single `if` block, to have more alternatives, u
 
 ```
 if [ -e nonexistingfile ]; then
-echo "NON EXISTING ACTUALLY EXISTS";
+    echo "NON EXISTING ACTUALLY EXISTS";
 elif [ -e myfile ]; then
-echo "myfile DOES exist"
+    echo "myfile DOES exist"
 else
-echo "none of them exist
+    echo "none of them exist
 fi;
 ```
 
@@ -364,9 +364,9 @@ You can use `if` statements to check any condition you may need. For example, to
 
 ```
 if [ 1 -eq 1 ]; then
-echo "equal";
+    echo "equal";
 else
-echo "different";
+    echo "different";
 fi;
 ```
 
@@ -381,7 +381,7 @@ You can also check different conditions at once using compound comparisons. For 
 
 ```
 if [ 1 -eq 1 ] && [ 2 -eq 2 ]; then
-echo "both are equal";
+    echo "both are equal";
 fi;
 ```
 
@@ -389,7 +389,7 @@ Which is the same as using `-a`:
 
 ```
 if [ 1 -eq 1 -a  2 -eq 2 ]; then
-echo "both are equal";
+    echo "both are equal";
 fi;
 ```
 
@@ -397,7 +397,7 @@ To check if at least one of the conditions is true, you can use `||`, the *or* b
 
 ```
 if [ 1 -eq 2 ] || [ 10 -eq 10 ]; then
-echo "at least one is equal";
+    echo "at least one is equal";
 fi;
 ```
 
@@ -405,7 +405,7 @@ Or using `-o`:
 
 ```
 if [ 1 -eq 2 -o 10 -eq 10 ]; then
-echo "at least one is equal";
+    echo "at least one is equal";
 fi;
 ```
 
@@ -413,7 +413,7 @@ You can also use the `!` operator, *not* boolean operator, to check if a conditi
 
 ```
 if [ ! 1 -eq 2 ]; then
-echo "not equal"
+    echo "not equal"
 fi;
 ```
 
@@ -422,11 +422,11 @@ You can also compare strings, or variables containing strings:
 ```
 user_continent="Europe"
 if [ "$user_continent" = "Europe" ]; then
-echo "User is from Europe";
+    echo "User is from Europe";
 elif [ "$user_continent" = "Africa" ]; then
-echo "User is from Africa";
+    echo "User is from Africa";
 else
-echo "User is not from Europe or Africa";
+    echo "User is not from Europe or Africa";
 fi;
 ```
 
@@ -434,9 +434,9 @@ We can also use the `if` statements to check the outcome of commands. If the com
 
 ```
 if grep "any" myfile; then
-echo "any found in myfile";
+    echo "any found in myfile";
 else
-echo "grep found nothing";
+    echo "grep found nothing";
 fi;
 ```
 
@@ -451,9 +451,9 @@ grep "any" myfile
 status=$?
 echo "$status"
 if [ "$status" -eq 0 ]; then
-echo "command successful"
+    echo "command successful"
 else
-echo "command returned $status"
+    echo "command returned $status"
 fi;
 ```
 
