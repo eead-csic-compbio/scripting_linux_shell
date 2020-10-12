@@ -32,6 +32,9 @@ Note that the TAB character is encoded as '\t'.
 
 <!-- * *tar* files are actually bundles of files which can be extracted using the utility [tar](https://en.wikipedia.org/wiki/Tar_(computing). -->
 
+Note that selected bioinformatics formats are described on [session 4](./session4.md).
+
+
 ### Exercises
 
 ```
