@@ -1,5 +1,10 @@
 # Session 5: Advanced scripts
 
+- [Shebang](#shebang)
+- [Imported libraries, modules or packages](#imported-libraries--modules-or-packages)
+- [Argument parsing and environment variables](#argument-parsing-and-environment-variables)
+- [Running, reading and modifying scripts](#running--reading-and-modifying-scripts)
+
 So far we have been using one-liners or short scripts that can be easily typed in the terminal.
 However, some tasks are more complex than that an require longer scripts, which are typically stored in text files. We will learn how to run and modify script files in this section, with examples in BASH, perl, R and python.
 
