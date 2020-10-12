@@ -1,5 +1,13 @@
 # Session 3: Parsing files and regular expressions
 
+- [3.1 Some general file formats ](#3-1-some-general-file-formats-)
+	- [Exercises](#exercises)
+- [3.2 Reading files ](#3-2-reading-files-)
+- [3.3 Analyzing files in the terminal](#3-3-analyzing-files-in-the-terminal)
+- [3.4 Regular expressions](#3-4-regular-expressions)
+	- [Basics](#basics)
+	- [Grep with regexes](#grep-with-regexes)
+	- [Exercises](#exercises)
 
 Parsing has different meanings in [Computer Science](https://en.wikipedia.org/wiki/Parsing). 
 In data science is broadly the task of extracting features of interest from data files.
