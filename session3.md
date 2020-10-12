@@ -1,5 +1,6 @@
 # Session 3: Parsing files and regular expressions
 
+
 Parsing has different meanings in [Computer Science](https://en.wikipedia.org/wiki/Parsing). 
 In data science is broadly the task of extracting features of interest from data files.
 
