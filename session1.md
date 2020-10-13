@@ -234,9 +234,9 @@ You should get something like:
 
 As argument you can also specify a filename, instead of a directory name.
 
-    ls -lht data/dummydata
+    ls -l data/dummydata
 
-You can also combine different options. For example, to list the contents of the current directory, as a list `l`, with file sizes in *human readable format* `h`, sorted by date of modification `t`:
+You can also combine different options. For example, to list the contents of the current directory, as a list (`-l`), with file sizes in *human readable format* (`-h`), sorted by date of modification (`-t`):
 
     ls -lht 
 
@@ -1055,8 +1055,6 @@ There are other more advanced, yet more complex, editors, like `vi` or `emacs`. 
 
 
 ### Compressing files and packing directories
-
-gzip, gunzip, tar, zcat. 
 
 To end with the management of text files, we are going to explain how to compress them and uncompress them. This is a rather easy procedure from the command line.
 

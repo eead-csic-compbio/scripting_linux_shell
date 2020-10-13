@@ -23,8 +23,8 @@ Managing the stdout and stderr through redirections is very important in Linux, 
 
 - Create output files with the results of running the command.
 - Modify files or its properties (e.g. permissions) as the results of running the command.
-- Print output to stdout (which in fact means modifying `/dev/stdout`.
-- Print output to stderr (which actually means modifying `/dev/stderr`.
+- Print output to stdout (which in fact means writing to `/dev/stdout`).
+- Print output to stderr (which actually means writing to `/dev/stderr`).
 
 Or any combination of the previous ones.
 
@@ -277,7 +277,7 @@ Note however that we are assigning only the text from stdout.
 
 The use of `$()` is technically called a *command substitution*, and it is also running a *subshell*, as with `()`, but in this case we can assign the output to a variable.
 
-There is another interesting expression in bash, which is the process substitution `<()`. In this case, the result from the *subshell* will be sent to a new *file descriptor*, which we can use as a temporary file. For example, compare:
+There is another interesting expression in bash, which is the *process substitution* `<()`. In this case, the result from the *subshell* will be sent to a new *file descriptor*, which we can use as a temporary file. For example, compare:
 
     wc file.out
     wc <(cat file.out)
@@ -666,7 +666,7 @@ You will get:
 /bin
 ```
 
-These are the locations were the shell will look for commands. In fact, you can use `which` to check the result of that search:
+These are the locations where the shell will look for commands. In fact, you can use `which` to check the result of that search:
 
 ```
 which conda
@@ -718,7 +718,7 @@ Thus, to run it like this, we need to add the path to the directory containing t
 
     PATH=/home/osboxes/scripting
 
-But we will lose the previous paths of the PATH variable. Therefore, we insert or append our new path along with the previous value of the PATH variable, using the `:` as separator:
+But we would lose the previous paths of the PATH variable. Therefore, we insert or append our new path along with the previous value of the PATH variable, using the `:` as separator:
 
     PATH="$PATH":/home/osboxes/scripting
 
