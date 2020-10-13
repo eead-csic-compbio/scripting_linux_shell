@@ -1,9 +1,18 @@
 # Session 3: Parsing files and regular expressions
 
+- [3.1 Some general file formats ](#31-some-general-file-formats)
+	- [Exercises](#exercises)
+- [3.2 Reading files ](#32-reading-files)
+- [3.3 Analyzing files in the terminal](#33-analyzing-files-in-the-terminal)
+- [3.4 Regular expressions](#34-regular-expressions)
+	- [Basics](#basics)
+	- [Grep with regexes](#grep-with-regexes)
+	- [Exercises](#exercises)
+
 Parsing has different meanings in [Computer Science](https://en.wikipedia.org/wiki/Parsing). 
 In data science is broadly the task of extracting features of interest from data files.
 
-## 3.1 Some general file formats 
+## 3.1 Some general file formats
 
 * **Text** is the natural format for human readable files, where bytes encode characters according to the [UTF-8](https://en.wikipedia.org/wiki/UTF-8) or the [ASCII](https://en.wikipedia.org/wiki/ASCII) tables. Text files can be easily parsed in the terminal or edited with text editors, particularly in English. Some languages such as [Raku](https://raku.org) excel at parsing text and grammars. Text files usually can have extension *.txt* or have no extension at all.
 
@@ -22,6 +31,9 @@ Note that the TAB character is encoded as '\t'.
 * **BZIP2** files are also compressed, in this case using the software [bzip2/bunzip2](https://en.wikipedia.org/wiki/Bzip2). They usually have extension *.bz2* and can be extracted in real time with *bzcat*.
 
 <!-- * *tar* files are actually bundles of files which can be extracted using the utility [tar](https://en.wikipedia.org/wiki/Tar_(computing). -->
+
+Note that selected bioinformatics formats are described on [session 4](./session4.md).
+
 
 ### Exercises
 
@@ -66,7 +78,7 @@ file QTL.tsv.bz2
 You can try bzcat and bzless as well.
 
 
-## 3.2 Reading files 
+## 3.2 Reading files
 
 Files are handy when processing data on the terminal. 
 You can use them to repeat the same operation on all lines of a file, for instance.
