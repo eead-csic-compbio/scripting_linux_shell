@@ -595,17 +595,25 @@ Download the query, which is the sequence of protein 'P08660' of the UniprotKB d
 
     wget https://www.uniprot.org/uniprot/P08660.fasta
 
+Alternatively, you can copy the file, which is included within the `files` directory of the course repository:
+
+    cp ~/scripting/scripting_linux_shell/files/P08660.fasta ./
+
 Check the file with `ls -l`.
 
 Download the sequences to be used as reference against which we want to align our query. In this case, it is the proteome of Escherichia coli strain k12, which we obtain from Ensembl Genomes. We could use `wget`, but we are going to show an alternative, which is the `curl` command. For `curl`, we need to specify the output file with the `-o` option:
 
     curl ftp://ftp.ensemblgenomes.org/pub/release-41/bacteria//fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/pep/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa.gz -o Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa.gz
 
+Alternatively, you can copy the file, which is included within the `files` directory of the course repository:
+
+    cp ~/scripting/scripting_linux_shell/files/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa.gz
+
 Check the file with `ls -l`. Note the `.gz` extension of the file. This points out that the file we downloaded is compressed in gzip format. You can check it with the `file` command, like:
 
     file Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa.gz
 
-Among the output, you will read *"gzip compressed data"*. The `file` command is often useful when you are not sure about the type of file you are dealing with. In this case, a gzip compressed file, which is rather straightforward in Linux to uncompress files with gzip format, using the command `gunzip`:
+Among the output, you will read *"gzip compressed data"*. The `file` command is often useful when you are not sure about the type of file you are dealing with. In this case, a gzip compressed file, which is rather straightforward in Linux to uncompress files with gzip format, using the command `gunzip` (remember using TAB autocompletion to avoid writing the whole filename):
 
     gunzip Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa.gz
 
