@@ -1047,9 +1047,24 @@ You will get:
 4  sp|P08660|AK3_ECOLI  AAC73113  28.049   82      53        2        298
 ```
 
+Compare it with the columns present in the second file:
+
+    head -4 P08660.half.2.ID.tsv | column -t
+
+To get:
+
+```
+1  qaccver              qend  sstart  send  evalue    bitscore
+2  sp|P08660|AK3_ECOLI  449   1       449   0.0       903
+3  sp|P08660|AK3_ECOLI  448   3       460   5.79e-50  178
+4  sp|P08660|AK3_ECOLI  373   386     467   6.4       26.2
+```
+
 In this case, we will join these two files using the row number as a unique identifier:
 
     join -t $'\t' P08660.half.1.ID.tsv P08660.half.2.ID.tsv | column -t
+
+You should get a new table, including the columns of both previous tables for each row.
 
 Note that we are using `-t $'\t'` just to indicate that the output must be in tabular format also. The `join` command is very versatile, and can be used to join rows in common, to show only the rows present in one of the files, etc. Check join options with `join --help`.
 
