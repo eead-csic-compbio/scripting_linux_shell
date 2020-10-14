@@ -1075,7 +1075,7 @@ And the same when uncompressing:
 
     gunzip -c P08660.aln.tsv.gz > P08660.aln.tsv
 
-As seen on [session3](./sesssion3.md), there are other commands which use other compression algorithms, like `bzip` and `bunzip`. Try out these commands by yourself, and compare the size of the resulting files, and also the compression and uncompression timings.
+As seen on [session3](./session3.md), there are other commands which use other compression algorithms, like `bzip` and `bunzip`. Try out these commands by yourself, and compare the size of the resulting files, and also the compression and uncompression timings.
 
 Besides compressing files, in many occassions it is very useful to pack a whole directory. We can do this, and at the same time compress its contents, with the `tar` command.
 
