@@ -60,8 +60,11 @@ For systems runnings Windows 10 there's a way of running Ubuntu and its terminal
 
 4. Reboot and launch the Ubuntu app. After a few minutes you should be able to choose your own user and password. You are ready to go.
 
-Note: you will be using a separate filesystem, which can be found at C:\Users\**username**\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs
-Note: the standard Windows filesystem, for instance drive C:, can be found from Ubuntu at /mnt/c 
+Note: you will be using a separate filesystem, which can be found at 
+	C:\Users\**username**\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs
+
+Note: the standard Windows filesystem, for instance drive C:, can be found from Ubuntu at 
+	/mnt/c 
 
 ## Other options 
 
