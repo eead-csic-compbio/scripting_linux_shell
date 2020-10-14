@@ -99,7 +99,7 @@ You might recall from session 2 that pipes can be used to transfer data from one
 
 ## 3.3 Analyzing files in the terminal
 
-The following example demonstrates how to produce basic stats by parsing a file in the command line with simple Linux utilities:
+The following example demonstrates how to produce basic stats by parsing a file in the command line with simple Linux utilities. Note these examples are similar to those in [session1](./session1.md):
 
 ```
 cd $COURSEDIR/files
