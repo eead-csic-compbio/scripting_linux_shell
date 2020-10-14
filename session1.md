@@ -607,7 +607,7 @@ Download the sequences to be used as reference against which we want to align ou
 
 Alternatively, you can copy the file, which is included within the `files` directory of the course repository:
 
-    cp ~/scripting/scripting_linux_shell/files/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa.gz
+    cp ~/scripting/scripting_linux_shell/files/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.pep.all.fa.gz ./
 
 Check the file with `ls -l`. Note the `.gz` extension of the file. This points out that the file we downloaded is compressed in gzip format. You can check it with the `file` command, like:
 
