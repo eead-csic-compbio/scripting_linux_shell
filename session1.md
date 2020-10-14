@@ -1034,11 +1034,24 @@ However, in many cases we don't want to join two files row-by-row, but joining c
     cat -n P08660.half.1.tsv > P08660.half.1.ID.tsv
     cat -n P08660.half.2.tsv > P08660.half.2.ID.tsv
 
+Check the first rows of one of the files, and notice how the first column is the row number:
+
+    head -4 P08660.half.1.ID.tsv | column -t
+
+You will get:
+
+```
+1  qaccver              saccver   pident   length  mismatch  gapopen  qstart
+2  sp|P08660|AK3_ECOLI  AAC76994  100.000  449     0         0        1
+3  sp|P08660|AK3_ECOLI  AAC73113  30.149   471     288       10       6
+4  sp|P08660|AK3_ECOLI  AAC73113  28.049   82      53        2        298
+```
+
 In this case, we will join these two files using the row number as a unique identifier:
 
     join -t $'\t' P08660.half.1.ID.tsv P08660.half.2.ID.tsv | column -t
 
-Note that we are using `-t $'\t'` just to indicate that the output must be in tabular format also. The `join` command is very versatile, and can be used to join rows in common, to show only the rows present in one of the files, etc.
+Note that we are using `-t $'\t'` just to indicate that the output must be in tabular format also. The `join` command is very versatile, and can be used to join rows in common, to show only the rows present in one of the files, etc. Check join options with `join --help`.
 
 
 ### Text editors
