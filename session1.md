@@ -1029,7 +1029,7 @@ The first file contains the first 7 columns, whereas the second file contains th
 
     paste P08660.half.1.tsv P08660.half.2.tsv  | column -t
 
-However, in many cases we don't want to join two files row-by-row, but joining columns for those rows which share the same value in one of the columns, which acts as a reference. This is typical when we have an identifier of any kind, associated to different values. To do this we can use the `join` command. First, update our two files to contain a column with the row number:
+However, in many cases we don't want to join two files row-by-row, but joining columns for those rows which share the same value in one of the columns, which acts as a key field to join the rows. This is typical when we have an identifier of any kind, associated to different values. To do this we can use the `join` command. First, update our two files to contain a column with the row number:
 
     cat -n P08660.half.1.tsv > P08660.half.1.ID.tsv
     cat -n P08660.half.2.tsv > P08660.half.2.ID.tsv
