@@ -760,7 +760,7 @@ If we want to find only "Stephen" as a complete word, we can use the `-w` parame
     printf "Stephen" | grep -w "Stephen"
     printf "Stephenson" | grep -w "Stephen"
 
-Note that the text to be searched by grep is in fact a **regular expression**. Regular expressions are beyond the scope of this lesson, and will be further covered in session3 of this course. They are very powerful for text search, replacement and filtering. We will see just some examples using grep:
+Note that the text to be searched by grep is in fact a **regular expression**. Regular expressions are beyond the scope of this lesson, and will be further covered in [session3](./session3.md) of this course. They are very powerful for text search, replacement and filtering. We will see just some examples using grep:
 
 - Use `^` to represent the start of a line: `grep "^Reference" P08660.aln`
 
@@ -998,7 +998,7 @@ The `-F` option is to define the column separator, in our case tab (`-F $'\t'`).
 
 Check more info and examples about awk at https://tldp.org/LDP/abs/html/awk.html
 
-
+Perl-one liners are a perfect fit for these jobs as well, as described in [session4](./session4.md).
 
 ### Working with several tables
 
@@ -1075,7 +1075,7 @@ And the same when uncompressing:
 
     gunzip -c P08660.aln.tsv.gz > P08660.aln.tsv
 
-There are other commands which use other compression algorithms, like `bzip` and `bunzip`. Try out these commands by yourself, and compare the size of the resulting files, and also the compression and uncompression timings.
+As seen on [session3](./sesssion3.md), there are other commands which use other compression algorithms, like `bzip` and `bunzip`. Try out these commands by yourself, and compare the size of the resulting files, and also the compression and uncompression timings.
 
 Besides compressing files, in many occassions it is very useful to pack a whole directory. We can do this, and at the same time compress its contents, with the `tar` command.
 
