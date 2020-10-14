@@ -63,6 +63,8 @@ For systems runnings Windows 10 there's a way of running Ubuntu and its terminal
 Note: you will be using a separate filesystem, which can be found at 
 	C:\Users\**username**\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs
 
+This requires enabling "Show Hidden Files and Folders".
+
 Note: the standard Windows filesystem, for instance drive C:, can be found from Ubuntu at 
 	/mnt/c 
 
