@@ -10,7 +10,7 @@ library(vioplot)
 filedir="./"
 
 # parse input TSV file names
-repeat_files = list.files(path=filedir, pattern="\\.tsv")
+repeat_files = list.files(path=filedir, pattern="A*\\.tsv")
 series_names = gsub("\\.tsv", "", repeat_files)
 
 # actually read files into data frames
