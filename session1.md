@@ -1186,7 +1186,6 @@ And John will be ready to run commands within the remote computer. Once he finis
 
     exit
 
-
 Sometimes we don't need to have a terminal session in the remote computer, but we want just to copy files between our computer and the remote one. To do this, we can use the `scp` or the `rsync` commands. For example, to copy a local file to the remote computer:
 
     rsync myfile user@remote:/home/user/
@@ -1208,3 +1207,5 @@ Therefore, the `rsync` or the `scp` commands have 2 arguments:
 - The path to the destination were to make a copy of the file.
 
 In either case, if it is a remote file, the format is `user@host:path`, using `:` to separate the user and host from the path of the file.
+
+If you want to try out these commands and have no server no test them you can apply to get free accounts on servers listed at [https://shells.red-pill.eu](https://shells.red-pill.eu)
