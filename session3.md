@@ -232,7 +232,7 @@ Run the following examples and explain what they are doing:
 ```
 grep -i "Paragon" QTL.tsv
 
-grep -n -i 'Paragon' myfile.txt
+grep -n -i 'Paragon' QTL.tsv
 
 grep -P "\t5A\t" QTL.tsv
 
