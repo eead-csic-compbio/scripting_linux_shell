@@ -498,7 +498,7 @@ The previous command will obtain the list of files within the root directory (`l
 The `for` loop will end once that the list of elements has been iterated over completely. However, there are ways to exit from a loop before the end of the list, using the `break` command:
 
 ```
-for current in $(ls /); do
+for currentfile in $(ls /); do
 if [ "$currentfile" = "etc" ]; then
     break
 else
@@ -512,7 +512,7 @@ The previous code will `echo` the name of files until a file called `etc` is fou
 There is another special word, `continue`, in this case to just "jump" to the next item in the iteration:
 
 ```
-for current in $(ls /); do
+for currentfile in $(ls /); do
 if [ ! "$currentfile" = "tmp" ]; then
     continue
 else
