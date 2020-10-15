@@ -10,7 +10,7 @@ library(vioplot)
 filedir="./"
 
 # parse input TSV file names
-repeat_files = list.files(path=filedir, pattern="A*\\.tsv")
+repeat_files = list.files(path=filedir, pattern="A.*\\.tsv")
 series_names = gsub("\\.tsv", "", repeat_files)
 
 # actually read files into data frames
@@ -35,3 +35,6 @@ axis(2, labels = series_names, at = c(1:length(repeats)), las=1)
 lapply(seq_along(repeats), function(x)
   vioplot(repeats[[x]], at = x,  add = T, box = F, horizontal=T)
 )
+
+# check file Rplots.pdf was created
+
