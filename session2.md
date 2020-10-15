@@ -15,6 +15,7 @@ So far, we have seen some example of how to redirect the output of a script to a
 In Linux, there are 2 different channels (actually, *file descriptors*) to which the programs or scripts could send text output: the standard output (aka "stdout", which uses the *file descriptor* `/dev/stdout`) and the standard error (aka "stderr", whose *file descriptor* is `/dev/stderr`). 
 
 ![](pics/stdstreams.png)
+**Figure** of the standard streams, taken from [https://en.wikipedia.org/wiki/Standard_streams](https://en.wikipedia.org/wiki/Standard_streams)
 
 In fact, you can use these *file descriptors* directly:
 
