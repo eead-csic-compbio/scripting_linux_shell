@@ -52,7 +52,7 @@ Also, it is important to explain how to use the *Host key*. This key can be pres
 
 For systems runnings Windows 10 there's a way of running Ubuntu and its terminal. Follow these steps:
 
-1. Make sure you have version 1709 or hihger, as explained [here](https://www.protocols.io/view/ubuntu-on-windows-for-computational-biology-sfuebnw)
+1. Make sure you have version 1709 or higher, as explained [here](https://www.protocols.io/view/ubuntu-on-windows-for-computational-biology-sfuebnw)
 
 2. Open Microsoft Store. Search and install "Ubuntu". You can choose a particular version or simply 'Ubuntu' to get the latest supported version.
 
@@ -60,6 +60,13 @@ For systems runnings Windows 10 there's a way of running Ubuntu and its terminal
 
 4. Reboot and launch the Ubuntu app. After a few minutes you should be able to choose your own user and password. You are ready to go.
 
+Note: you will be using a separate filesystem, which can be found at 
+	C:\Users\**username**\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs
+
+This requires enabling "Show Hidden Files and Folders".
+
+Note: the standard Windows filesystem, for instance drive C:, can be found from Ubuntu at 
+	/mnt/c 
 
 ## Other options 
 
