@@ -350,7 +350,7 @@ if [ -e nonexistingfile ]; then
 elif [ -e myfile ]; then
     echo "myfile DOES exist"
 else
-    echo "none of them exist
+    echo "none of them exist"
 fi;
 ```
 
