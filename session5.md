@@ -91,3 +91,8 @@ These are the tasks that should be carried out by the script, one by one. Please
 
 15. Tar the folder *analyses* to file *analyses.tar.gz* or *analyses.tgz* (1)
 
+Once that you have those steps within the 'myscript.sh' file:
+
+* Make the script file executable (1.2, 2.5)
+* Add the **absolute path** of 'myscript.sh' to your PATH environmental variable (2.6)
+* Create a new directory 'final_test', move to within that directory and run your script
