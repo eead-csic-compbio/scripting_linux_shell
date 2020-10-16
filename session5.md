@@ -59,7 +59,7 @@ The last task of this course is meant to be a way of demonstrating how to put th
 
 * Create a text file named 'myscript.sh' with a BASH shebang (1,2,5). **Tip**: use editor *nano*
 
-* In order to capture arguments of the script you see how that is done at [./files/sample_script.sh](sample_script.sh) 
+* To handle arguments of the script see how that is done at [sample_script.sh](./files/sample_script.sh) 
 
 These are the tasks that should be carried out by the script, one by one. Please add the task names as comments (lines starting with '#') to the script. You can test them first in the terminal before actually writting them in the script:
 
