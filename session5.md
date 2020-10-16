@@ -91,12 +91,14 @@ You can test them first in the terminal before actually writting them in the scr
 
 14. Check result file *analyses/test.1line.fasta* has been successfully created (2). **Tip**: use this syntax: 
 
-	if [ -f "$FILE" ]; then
-		echo "$FILE created correctly"
-	else 
-		echo "$FILE does not exist."
-	fi
-
+```
+if [ -f "$FILE" ]; then
+	echo "$FILE created correctly"
+else 
+	echo "$FILE does not exist, stop"
+	exit 1
+fi
+```
 
 15. Tar the folder *analyses* to file *analyses.tar.gz* or *analyses.tgz* (1)
 
