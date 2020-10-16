@@ -89,7 +89,14 @@ You can test them first in the terminal before actually writting them in the scr
 
 13. Convert sequences in FASTA file *uncompressed/test.fasta* to single-lines and saved them in file *analyses/test.1line.fasta* (4). **Tip**: see [session4](./session4.md#some-bioinformatics-one-liners)
 
-14. Check result file *analyses/test.1line.fasta* has been successfully created (2)
+14. Check result file *analyses/test.1line.fasta* has been successfully created (2). **Tip**: use this syntax: 
+
+	if [ -f "$FILE" ]; then
+		echo "$FILE created correctly"
+	else 
+		echo "$FILE does not exist."
+	fi
+
 
 15. Tar the folder *analyses* to file *analyses.tar.gz* or *analyses.tgz* (1)
 
