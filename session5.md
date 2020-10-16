@@ -61,11 +61,11 @@ The last task of this course is meant to be a way of demonstrating how to put th
 
 These are the tasks that should be carried out by the script, one by one. Please add the task names as comments (lines starting with '#') to the script. You can test them first in the terminal before actually writting them in the script:
 
-1. Create a directory called 'test_script' or the name passed as argument (1)
+1. Create a directory called 'test_script' or the name passed as argument (1,2)
 
 2. Move into that directory (1)
 
-3. Create a text file named 'myscript.sh' with a BASH shebang (1,3)
+3. Create a text file named 'myscript.sh' with a BASH shebang (1,5)
 
 4. Clone the GitHub repo https://github.com/eead-csic-compbio/methods_biostats_bioinfo.git (1)
 
