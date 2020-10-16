@@ -4,7 +4,7 @@
 - [Imported libraries, modules or packages](#imported-libraries-modules-or-packages)
 - [Argument parsing and environment variables](#argument-parsing-and-environment-variables)
 - [Running and reading scripts](#running-and-reading-scripts)
-- [Writing your own script](#rriting-your-own-script)
+- [Writing your own script](#writing-your-own-script)
 
 So far we have been using one-liners or short scripts that can be easily typed in the terminal.
 However, some tasks are more complex than that an require longer scripts, which are typically stored in text files. We will learn how to run and modify script files in this section, with examples in BASH, perl, R and python.
@@ -77,11 +77,19 @@ These are the tasks that should be carried out by the script, one by one. Please
 
 8. Uncompress the files in folder 'uncompressed' (1,3)
 
+9. Create a folder named 'analyses' (1)
 
+10. Get the names of the first 10 sequences in FASTQ file *uncompressed/testPE.fastq* (1,2,4)
 
+11. Sort the BLAST hits on file uncompressed/test.blast.tsv by query and bitscore (1,4). **Tip**: check column order at [session 4](./session4.md#blast-tab-separated-format) 
 
+12. Produce a list of sorted hits for query sequence 12 (1,4) and save them in file *analyses/12.hits.tsv*. **Note**: keep all columns from the original BLAST format
 
+13. Extract the sorted BLAST hits for sequences 10 to 12 (1,3,4). **Tip**: check regular expressions at [session 4](./session4.md#one-liners-that-use-range-regexes) 
 
+14. Convert sequences in FASTA file *uncompressed/test.fasta* to single-lines and saved them in file *analyses/test.1line.fasta* (4). **Tip**: see [session4](./session4.md#some-bioinformatics-one-liners)
 
+15. Check result file *analyses/test.1line.fasta* has been successfully created (2)
 
+16. Tar the folder *analyses* to file *analyses.tar.gz* or *analyses.tgz* (1)
 
