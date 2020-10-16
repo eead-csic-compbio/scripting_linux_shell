@@ -501,7 +501,7 @@ echo
 zcat test_data/test.fasta.gz | perl -lne 'print if($_ eq reverse)'
 echo
 
-# convert FASTA file so that sequences take a single line (order changes)
+# convert FASTA file so that sequences take a single line (conserves order)
 zcat test_data/test.fasta.gz | perl -ne 'if(/^>/){ print "\n"; print } else { chomp; print }' > test_data/test.1.fasta
 
 # compute frequency of 6-mers, print 10 random hexamers
