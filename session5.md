@@ -55,13 +55,13 @@ Please check the example scripts at folder [files/](./files/) and do the followi
 
 ## Writing your own script
 
-The last task of this course is meant to be a way of demonstrating how to put the things you have learned to action. The idea is that you should write your own script, and it should perform the following tasks, seen in the sessions in parentheses:
+The last task of this course is meant to be a way of demonstrating how to put the things you have learned to action. The idea is that you should write a script to perform a series of tasks introduced in the sessions in **(parentheses)**:
 
-* Create a text file named 'myscript.sh' with a BASH shebang (1,2,5). **Tip**: use editor *nano*
+* Create a text file named 'myscript.sh' with a BASH shebang (1,2,5). **Tip**: use editor *nano*. **Tip 2**: to handle script arguments see [sample_script.sh](./files/sample_script.sh) 
 
-* To handle arguments of the script see how that is done at [sample_script.sh](./files/sample_script.sh) 
+These are the tasks that should be carried out by the script. Please add them as comments (lines starting with '#') to the script, as well as some messages to *stderr* so that the progress of the script can be tracked e.g. "Running step 1", "Running step 2", ..., "Finished." (2.1).
 
-These are the tasks that should be carried out by the script, one by one. Please add the task names as comments (lines starting with '#') to the script. You can test them first in the terminal before actually writting them in the script:
+You can test them first in the terminal before actually writting them in the script:
 
 1. Create a directory called 'test_script' or the name passed as argument (1,2)
 
@@ -94,8 +94,6 @@ These are the tasks that should be carried out by the script, one by one. Please
 15. Tar the folder *analyses* to file *analyses.tar.gz* or *analyses.tgz* (1)
 
 Once that you have those steps within the 'myscript.sh' file:
-
-* Add a command before each step, to print to standard error the progress of your script (2.1) (e.g. "Running step 1", "Running step 2", ..., "Finished.")
 
 * Make the script file executable (1.2, 2.5)
 
