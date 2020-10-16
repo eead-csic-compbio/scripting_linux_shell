@@ -48,6 +48,39 @@ Most languages have core modules for handling arguments, such as [argparse](http
 Please check the example scripts at folder [files/](./files/) and do the following tasks:
 * Check their file permissions, are they executable?
 * Make them executable with *chmod +x*
-* What are these scripts doing? Can you see the comments?
+* What are these scripts doing? Do the comments help?
 * Do they have library/modules dependencies? Install them if required
 * Run them, what kind of output they produce?
+
+## Writing your own script
+
+The last task of this course is meant to be a way of demonstrating how to put the things you have learned to action. The idea is that you should write your own script, and it should perform the following tasks, seen in the sessions in parentheses:
+
+* Create a text file named 'myscript.sh' with a BASH shebang (1,2,3). **Tip**: use editor *nano*
+
+These are the tasks that should be carried out by the script, one by one. Please add the task names as comments (lines starting with '#') to the script. You can test them first in the terminal before actually writting them in the script:
+
+1. Create a directory called 'test_script' (1)
+
+2. Move into that directory (1)
+
+3. Create a text file named 'myscript.sh' with a BASH shebang (1,3)
+
+4. Clone the GitHub repo https://github.com/eead-csic-compbio/methods_biostats_bioinfo.git (1)
+
+5. List the contents of the methods_biostats_bioinfo/test_data (1)
+
+6. Check which files in that folder are compressed (1,3). **Tip**: use *file* command
+
+7. Create a folder named 'uncompressed' and copy all the compressed files there (1,3)
+
+8. Uncompress the files in folder 'uncompressed' (1,3)
+
+
+
+
+
+
+
+
+
