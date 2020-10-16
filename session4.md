@@ -502,11 +502,8 @@ zcat test_data/test.fasta.gz | perl -lne 'print if($_ eq reverse)'
 echo
 
 # convert FASTA file so that sequences take a single line (order changes)
-# NOTE that END{} is used to do operations after input is consumed
-zcat test_data/test.fasta.gz | \
-  perl -lne 'if(/^(>.*)/){ $h=$1 } else { $fa{$h} .= $_ } END{ foreach $h (keys(%fa)){ print "$h\n$fa{$h}\n" }}' \
-  > test_data/test.1.fasta
-  
+zcat test_data/test.fasta.gz | perl -ne 'if(/^>/){ print "\n"; print } else { chomp; print }' > test_data/test.1.fasta
+
 # compute frequency of 6-mers, print 10 random hexamers
 perl -lne 'if(!/^>/){ while(/(\w{6})/g){$fq{$1}++}} END{ foreach $k (keys(%fq)){ print "$k $fq{$k}" }}' test_data/test.1.fasta | head -10
 echo
