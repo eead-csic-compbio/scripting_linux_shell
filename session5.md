@@ -57,7 +57,7 @@ Please check the example scripts at folder [files/](./files/) and do the followi
 
 The last task of this course is meant to be a way of demonstrating how to put the things you have learned to action. The idea is that you should write your own script, and it should perform the following tasks, seen in the sessions in parentheses:
 
-* Create a text file named 'myscript.sh' with a BASH shebang (1,2,3). **Tip**: use editor *nano*
+* Create a text file named 'myscript.sh' with a BASH shebang (1,2,5). **Tip**: use editor *nano*
 
 These are the tasks that should be carried out by the script, one by one. Please add the task names as comments (lines starting with '#') to the script. You can test them first in the terminal before actually writting them in the script:
 
@@ -65,31 +65,29 @@ These are the tasks that should be carried out by the script, one by one. Please
 
 2. Move into that directory (1)
 
-3. Create a text file named 'myscript.sh' with a BASH shebang (1,5)
+3. Clone the GitHub repo https://github.com/eead-csic-compbio/methods_biostats_bioinfo.git (1)
 
-4. Clone the GitHub repo https://github.com/eead-csic-compbio/methods_biostats_bioinfo.git (1)
+4. List the contents of the methods_biostats_bioinfo/test_data (1)
 
-5. List the contents of the methods_biostats_bioinfo/test_data (1)
+5. Check which files in that folder are compressed (1,3). **Tip**: use *file* command
 
-6. Check which files in that folder are compressed (1,3). **Tip**: use *file* command
+6. Create a folder named 'uncompressed' and copy all the compressed files there (1,3)
 
-7. Create a folder named 'uncompressed' and copy all the compressed files there (1,3)
+7. Uncompress the files in folder 'uncompressed' (1,3)
 
-8. Uncompress the files in folder 'uncompressed' (1,3)
+8. Create a folder named 'analyses' (1)
 
-9. Create a folder named 'analyses' (1)
+9. Get the names of the first 10 sequences in FASTQ file *uncompressed/testPE.fastq* (1,2,4)
 
-10. Get the names of the first 10 sequences in FASTQ file *uncompressed/testPE.fastq* (1,2,4)
+10. Sort the BLAST hits on file uncompressed/test.blast.tsv by query and bitscore (1,4). **Tip**: check column order at [session 4](./session4.md#blast-tab-separated-format) 
 
-11. Sort the BLAST hits on file uncompressed/test.blast.tsv by query and bitscore (1,4). **Tip**: check column order at [session 4](./session4.md#blast-tab-separated-format) 
+11. Produce a list of sorted hits for query sequence 12 (1,4) and save them in file *analyses/12.hits.tsv*. **Note**: keep all columns from the original BLAST format
 
-12. Produce a list of sorted hits for query sequence 12 (1,4) and save them in file *analyses/12.hits.tsv*. **Note**: keep all columns from the original BLAST format
+12. Extract the sorted BLAST hits for sequences 10 to 12 (1,3,4). **Tip**: check regular expressions at [session 4](./session4.md#one-liners-that-use-range-regexes) 
 
-13. Extract the sorted BLAST hits for sequences 10 to 12 (1,3,4). **Tip**: check regular expressions at [session 4](./session4.md#one-liners-that-use-range-regexes) 
+13. Convert sequences in FASTA file *uncompressed/test.fasta* to single-lines and saved them in file *analyses/test.1line.fasta* (4). **Tip**: see [session4](./session4.md#some-bioinformatics-one-liners)
 
-14. Convert sequences in FASTA file *uncompressed/test.fasta* to single-lines and saved them in file *analyses/test.1line.fasta* (4). **Tip**: see [session4](./session4.md#some-bioinformatics-one-liners)
+14. Check result file *analyses/test.1line.fasta* has been successfully created (2)
 
-15. Check result file *analyses/test.1line.fasta* has been successfully created (2)
-
-16. Tar the folder *analyses* to file *analyses.tar.gz* or *analyses.tgz* (1)
+15. Tar the folder *analyses* to file *analyses.tar.gz* or *analyses.tgz* (1)
 
