@@ -3,7 +3,8 @@
 - [Shebang](#shebang)
 - [Imported libraries, modules or packages](#imported-libraries-modules-or-packages)
 - [Argument parsing and environment variables](#argument-parsing-and-environment-variables)
-- [Running, reading and modifying scripts](#running-reading-and-modifying-scripts)
+- [Running and reading scripts](#running-and-reading-scripts)
+- [Writing your own script](#rriting-your-own-script)
 
 So far we have been using one-liners or short scripts that can be easily typed in the terminal.
 However, some tasks are more complex than that an require longer scripts, which are typically stored in text files. We will learn how to run and modify script files in this section, with examples in BASH, perl, R and python.
@@ -43,7 +44,7 @@ In order to install accessory modules you have mainly two choices:
 Scripts will typically take input arguments and will produce some kind of output.
 Most languages have core modules for handling arguments, such as [argparse](https://docs.python.org/3/library/argparse.html) for python or [Getopt::Long](https://perldoc.perl.org/Getopt::Long) in Perl. You will see a couple of examples in the next section.
 
-## Running, reading and modifying scripts
+## Running and reading scripts
 
 Please check the example scripts at folder [files/](./files/) and do the following tasks:
 * Check their file permissions, are they executable?
