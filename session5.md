@@ -96,4 +96,4 @@ Once that you have those steps within the 'myscript.sh' file:
 * Add a command before each step, to print to standard error the progress of your script (e.g. "Running step 1", "Running step 2", ..., "Finished.")
 * Make the script file executable (1.2, 2.5)
 * Add the **absolute path** of 'myscript.sh' to your PATH environmental variable (2.6)
-* Create a new directory 'final_test', move to within that directory and run your script
+* Create a new directory 'final_test', move to within that directory and run your script redirecting the output to 'myscript.out' and the error to 'myscript.err'
