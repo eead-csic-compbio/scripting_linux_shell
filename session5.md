@@ -71,9 +71,18 @@ You can test them first in the terminal before actually writting them in the scr
 
 4. List the contents of the methods_biostats_bioinfo/test_data (1)
 
-5. Check which files in that folder are compressed (1,3). **Tip**: use *file* command
+5. Check which files in that folder are compressed (1,3). **Tip**: use *file* command with wildcards
 
-6. Create a folder named 'uncompressed' and copy all the compressed files there (1,3)
+6. Create a folder named 'uncompressed' and copy all the compressed files there (1,2,3). **Tip**: use a loop such as:
+
+```
+for file in files/*; do 
+	iscomp=$(file $file | grep compressed); 
+	if [[ ! -z $iscomp ]]; then 
+		echo $file; 
+	fi; 
+done
+```
 
 7. Uncompress the files in folder 'uncompressed' (1,3)
 
@@ -92,7 +101,7 @@ You can test them first in the terminal before actually writting them in the scr
 14. Check result file *analyses/test.1line.fasta* has been successfully created (2). **Tip**: use this syntax: 
 
 ```
-if [ -f "$FILE" ]; then
+if [ -e "$FILE" ]; then
 	echo "$FILE created correctly"
 else 
 	echo "$FILE does not exist, stop"
