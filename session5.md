@@ -77,7 +77,7 @@ You can test them first in the terminal before actually writting them in the scr
 
 ```
 for file in files/*; do 
-	iscomp=$(file $file | grep compressed); 
+	iscomp=$(file $file | grep _regex_from_task5_); 
 	if [[ ! -z $iscomp ]]; then 
 		echo $file; 
 	fi; 
