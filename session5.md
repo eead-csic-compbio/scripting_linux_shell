@@ -88,7 +88,7 @@ done
 
 8. Create a folder named 'analyses' (1)
 
-9. Get the names of the first 10 sequences in FASTQ file *uncompressed/testPE.fastq* (1,2,4)
+9. Get the names of the first 10 sequences in FASTQ file *uncompressed/testPE.fastq* (1,2,4). **Tip**: this is important as in tasks 11 & 12 we select some sequences by name, not position
 
 10. Sort the BLAST hits on file uncompressed/test.blast.tsv by query and bitscore (1,4). **Tip**: check column order at [session 4](./session4.md#blast-tab-separated-format) 
 
