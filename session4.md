@@ -392,10 +392,8 @@ If you prefer in Spanish, you can try [https://eead-csic-compbio.github.io/perl_
 A one-liner is a Perl program in which the source code is typed in the terminal instead of being contained in a file.
 Their main advantage is that they can be naturally combined with powerful command-line Linux such as *grep, sort or uniq*.
 In the next sections we will show how to write some useful one-liners. The reader can learn even more from repositories such as 
-[perl_the_swiss_knife](https://learnbyexample.gitbooks.io/command-line-text-processing/content/perl_the_swiss_knife.html) or
-<!--[perl-one-liners](https://gist.github.com/mischapeters/1e8eef09a0aafd4f24f0) -->
-[Perl one-liners](https://gist.github.com/joyrexus/7328094).
-Occasionally we post one-liners at out [blog](https://bioinfoperl.blogspot.com.es).
+[perl_the_swiss_knife](https://learnbyexample.gitbooks.io/command-line-text-processing/content/perl_the_swiss_knife.html) or [Perl one-liners](https://gist.github.com/joyrexus/7328094).
+Occasionally we post one-liners at our [blog](https://bioinfoperl.blogspot.com.es).
 
 ### Hello world one-liners
 
