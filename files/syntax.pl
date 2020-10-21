@@ -132,13 +132,8 @@ my $x = 'bar';
 
 # Simple matching
 
-#if (/foo/) { 
-  # true if $_, usually current line or element, contains "foo"
-#}
-
-if ($x =~ /foo/) { 
-  # true if $x contains "foo"
-}
+#if (/foo/) {} # true if $_, usually current line or element, contains "foo"
+if ($x =~ /foo/) { } # true if $x contains "foo"
 
 # Simple substitution
 
