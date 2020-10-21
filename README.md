@@ -17,4 +17,4 @@ This is a five-session course for learning the basics of the Linux shell and scr
 |4|Perl one-liners|2h|[session 4](./session4.md)|
 |5|Advanced scripts|2h|[session 5](./session5.md)|
 
-We post regularly about these and related bioinformatics topics at the [#!/perl/bioinfo](https://bioinfoperl.blogspot.com) blog.
+We post regularly about these and related bioinformatics topics at the [#!/perl/bioinfo](https://bioinfoperl.blogspot.com) blog, mostly in Spanish.
