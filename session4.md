@@ -236,12 +236,14 @@ The Newick format does the job of describing a phylogenetic tree as a sucession 
 ## Perl basics in 5 minutes
 
 The following snippet illustrates the main features you must know in order to read and write Perl code. One of the strongest features of Perl are its [regular expressions](https://perldoc.perl.org/perlre.html), which are efficient and powerful. This code was adapted from
-[https://learnxinyminutes.com/docs/perl](https://learnxinyminutes.com/docs/perl):
+[https://learnxinyminutes.com/docs/perl](https://learnxinyminutes.com/docs/perl) and it's in script [files/syntax.pl)(./files/syntax.pl), which can be run with $ perl syntax.pl:
 
 ```perl
-# This is a comment
+#!/usr/bin/env perl
 
 # Adapted from https://learnxinyminutes.com/docs/perl
+
+# this is a comment line
 
 #### Strict and warnings
 
@@ -305,10 +307,10 @@ my %fruit_color = ("apple", "red", "banana", "yellow");
 #  You can use whitespace and the "=>" operator to lay them out more
 #  nicely:
 
-my %fruit_color = (
+%fruit_color = (
   apple  => "red",
   banana => "yellow",
-	 );
+);
 
 # Hash elements are accessed using curly braces, again with the $ sigil.
 my $color = $fruit_color{apple};
@@ -324,38 +326,42 @@ my @colors = values %fruit_color;
 #### Conditional and looping constructs
 
 # Perl has most of the usual conditional and looping constructs.
+my ($var, $zippy, $bananas) = (0,1,0);
 
 if ($var) {
-  ...
+  #...
 } elsif ($var eq 'bar') {
-  ...
+  #...
 } else {
-  ...
+  #...
 }
 
 # the Perlish post-condition way
-print "Yow!" if $zippy;
-print "We have no bananas" unless $bananas;
+print "Yow!\n" if $zippy;
+print "We have no bananas\n" unless $bananas;
 
 #  while
-while (condition) {
-  ...
+while ($var) {
+  #...
 }
 
 # for loops and iteration
+my $max = 5;
 for my $i (0 .. $max) {
-  print "index is $i";
+  print "index is $i\n";
 }
 
+my @elements = (1,2,3);
 for my $element (@elements) {
-  print $element;
+  print $element, "\n";
 }
 
-map {print} @elements;
+map { print "$_\n" } @elements;
 
-# iterating through a hash (for and foreach are equivalent)
+
+# iterating through a hash (for and foreach are equivalent
 foreach my $key (keys %hash) {
-  print $key, ': ', $hash{$key}, "\n";
+   print $key, ': ', $hash{$key}, "\n";
 }
 
 #### Regular expressions
@@ -364,9 +370,12 @@ foreach my $key (keys %hash) {
 # subject of lengthy documentation in perlrequick, perlretut, and
 # elsewhere. However, in short:
 
+my $x = 'bar';
+
 # Simple matching
-if (/foo/)       { ... }  # true if $_ contains "foo"
-if ($x =~ /foo/) { ... }  # true if $x contains "foo"
+
+#if (/foo/) {} # true if $_, usually current line or element, contains "foo"
+if ($x =~ /foo/) { } # true if $x contains "foo"
 
 # Simple substitution
 
