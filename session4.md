@@ -236,7 +236,7 @@ The Newick format does the job of describing a phylogenetic tree as a sucession 
 ## Perl basics in 5 minutes
 
 The following snippet illustrates the main features you must know in order to read and write Perl code. One of the strongest features of Perl are its [regular expressions](https://perldoc.perl.org/perlre.html), which are efficient and powerful. This code was adapted from
-[https://learnxinyminutes.com/docs/perl](https://learnxinyminutes.com/docs/perl) and it's in script [files/syntax.pl)(./files/syntax.pl), which can be run with $ perl syntax.pl:
+[learnxinyminutes.com/docs/perl](https://learnxinyminutes.com/docs/perl) and it's in script [files/syntax.pl](./files/syntax.pl), which can be run with $ perl syntax.pl:
 
 ```perl
 #!/usr/bin/env perl
