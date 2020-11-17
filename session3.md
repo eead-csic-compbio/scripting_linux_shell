@@ -30,7 +30,7 @@ Note that the TAB character is encoded as '\t'.
 
 * **BZIP2** files are also compressed, in this case using the software [bzip2/bunzip2](https://en.wikipedia.org/wiki/Bzip2). They usually have extension *.bz2* and can be extracted in real time with *bzcat*.
 
-* **TAR** files are actually bundles of files which can be extracted using the utility [tar](https://en.wikipedia.org/wiki/Tar_(computing), already mentioned on [session 1](./session1.md). Note that TAR files are often GZIPed or BZIPed.
+* **TAR** files are actually bundles of files which can be extracted using the utility **tar**, already mentioned on [session 1](./session1.md). Note that TAR files are often GZIPed or BZIPed.
 
 Note that selected bioinformatics formats are described on [session 4](./session4.md).
 
