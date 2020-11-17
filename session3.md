@@ -30,7 +30,7 @@ Note that the TAB character is encoded as '\t'.
 
 * **BZIP2** files are also compressed, in this case using the software [bzip2/bunzip2](https://en.wikipedia.org/wiki/Bzip2). They usually have extension *.bz2* and can be extracted in real time with *bzcat*.
 
-<!-- * *tar* files are actually bundles of files which can be extracted using the utility [tar](https://en.wikipedia.org/wiki/Tar_(computing). -->
+* **TAR** files are actually bundles of files which can be extracted using the utility [tar](https://en.wikipedia.org/wiki/Tar_(computing), already mentioned on [session 1](./session1.md). Note that TAR files are often GZIPed or BZIPed.
 
 Note that selected bioinformatics formats are described on [session 4](./session4.md).
 
@@ -72,10 +72,13 @@ bzip2 QTL.tsv
 ls QTL.tsv.bz2
 file QTL.tsv.bz2
 
-# which compressed format saves more space?
+# extract a single file from larger TAR GZ bundle,
+# note the example in session 1 extracted all files
+tar xvfz $COURSEDIR/files/Arab.tgz Arabis_alpina2.tsv
 
 ```
-You can try bzcat and bzless as well.
+
+Which compressed format saves more space? You can try bzcat and bzless as well.
 
 
 ## 3.2 Reading files
