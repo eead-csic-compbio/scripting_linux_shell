@@ -129,4 +129,6 @@ There are many resources to help you learn programming online. Here's a list:
 
 * [Plants & Python: A series of lessons in coding, plant biology, computation, and bioinformatics](https://plantsandpython.github.io/PlantsAndPython/00_Opening_page.html)
 
-* [Perl en bioinformática](Perl en bioinformática), in Spanish 
+* [Perl en bioinformática](https://eead-csic-compbio.github.io/perl_bioinformatica), in Spanish 
+
+* [R bloggers](https://www.r-bloggers.com)
