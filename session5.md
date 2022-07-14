@@ -5,6 +5,7 @@
 - [Argument parsing and environment variables](#argument-parsing-and-environment-variables)
 - [Running and reading scripts](#running-and-reading-scripts)
 - [Writing your own script](#writing-your-own-script)
+- [Resources for scripting languages](#resources-for-scripting-languages)
 
 So far we have been using one-liners or short scripts that can be easily typed in the terminal.
 However, some tasks are more complex than that an require longer scripts, which are typically stored in text files. We will learn how to run and modify script files in this section, with examples in BASH, perl, R and python.
@@ -118,3 +119,14 @@ Once that you have those steps within the 'myscript.sh' file:
 <!-- * Add the **absolute path** of 'myscript.sh' to your PATH environmental variable (2.6) -->
 
 * Create a new directory 'final_test', move to within that directory and run your script redirecting the output to 'myscript.out' and the error to 'myscript.err' (2.5). 
+
+
+## Resources for scripting languages
+
+There are many resources to help you learn programming online. Here's a list:
+
+* Our own [blog](https://bioinfoperl.blogspot.com.es), in Spanish and English
+
+* [Plants & Python: A series of lessons in coding, plant biology, computation, and bioinformatics](https://plantsandpython.github.io/PlantsAndPython/00_Opening_page.html)
+
+* [Perl en bioinformática](Perl en bioinformática), in Spanish 
