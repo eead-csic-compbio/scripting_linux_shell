@@ -50,9 +50,12 @@ Also, it is important to explain how to use the *Host key*. This key can be pres
 
 ## Ubuntu embedded in Windows 10
 
-For systems runnings Windows 10 there's a way of running Ubuntu and its terminal. Follow these steps:
+For systems runnings Windows 10/11 there's a powerful way of running Ubuntu and its terminal,
+as explained in 
+[ubuntu-on-wsl2-on-windows-10](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10) and 
+[ubuntu-on-wsl2-on-windows-11-with-gui-support](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support).
 
-1. Make sure you have version 1709 or higher, as explained [here](https://www.protocols.io/view/ubuntu-on-windows-for-computational-biology-sfuebnw)
+<!--1. Make sure you have version 1709 or higher, as explained [here](https://www.protocols.io/view/ubuntu-on-windows-for-computational-biology-sfuebnw)
 
 2. Open Microsoft Store. Search and install "Ubuntu". You can choose a particular version or simply 'Ubuntu' to get the latest supported version.
 
@@ -63,9 +66,10 @@ For systems runnings Windows 10 there's a way of running Ubuntu and its terminal
 Note: you will be using a separate filesystem, which can be found at 
 	C:\Users\**username**\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs
 
-This requires enabling "Show Hidden Files and Folders".
+This requires enabling "Show Hidden Files and Folders". -->
 
 Note: the standard Windows filesystem, for instance drive C:, can be found from Ubuntu at 
+
 	/mnt/c 
 
 ## Other options 
