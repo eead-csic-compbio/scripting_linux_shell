@@ -995,6 +995,11 @@ Finally, there is a command, `awk`, which is a scripting language itself. As suc
 
     tail -n +2 P08660.aln.tsv | awk -F $'\t' '{if ($3>=45.0) print $0}' | column -t
 
+Note that you might have to explicitely tell awk that $3 is a number by adding it zero:
+
+    tail -n +2 P08660.aln.tsv | awk -F $'\t' '{if ($3+0>=45.0) print $0}' | column -t
+
+
 You will get:
 
 ```
