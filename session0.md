@@ -48,12 +48,10 @@ It is recommended also to install the Guest Additions. If you installed the *osb
 
 Also, it is important to explain how to use the *Host key*. This key can be pressed when within the guest OS, to recover the keyboard and mouse control to the host OS, and also to activate some options. The *Host key* is configurable, but it is usually assigned by default to keys like the *Windows key*, *left Shift*, *left Alt*, *left Ctrl*, or similar. You can check which is your current *Host key* on the group of icons to the bottom right of the window of the guest OS. One example of its use: press *Host key+F* to go full screen.
 
-## Ubuntu embedded in Windows 10
+## Ubuntu embedded in Windows (WSL)
 
 For systems runnings Windows 10/11 there's a powerful way of running Ubuntu and its terminal,
-as explained in 
-[ubuntu-on-wsl2-on-windows-10](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10) and 
-[ubuntu-on-wsl2-on-windows-11-with-gui-support](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support).
+as explained at [Install Ubuntu on WSL2 and get started with graphical applications](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support#1-overview).
 
 <!--1. Make sure you have version 1709 or higher, as explained [here](https://www.protocols.io/view/ubuntu-on-windows-for-computational-biology-sfuebnw)
 
