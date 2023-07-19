@@ -477,7 +477,7 @@ perl -i.bk -ne 's/, complete genome\.//; print' test_data/test.fasta
 
 The next example prints lines that appear in the input file after the first regex and before the second: 
 ```
-zcat test_data/test.blast.tsv.gz | perl -lne 'print if /^10\t/../^12\t/'
+zcat test_data/test.blast.tsv.gz | perl -lne 'print if(/^10\t/../^12\t/)'
 ```
 
 ### One-liner output piped to other process
