@@ -74,9 +74,9 @@ Also, it is important to explain how to use the *Host key*. This key can be pres
 
 ## Other options 
 
-If you are running a MacOS computer you should be able to run this course on your terminal. You must learn how to install new software though. For instance, you might want to install Xcode Command Line Tools by typing git --version
+If you are running a **MacOS** computer you should be able to run this course on your terminal. You must learn how to install new software though. For instance, you might want to install Xcode Command Line Tools by typing git --version
 
-If you use a Windows system you can install [MobaXterm](https://mobaxterm.mobatek.net). It is a powerfull yet simple tool to connect to SSH and SFTP servers. it also offers Linux terminal and X server. It also allows you to install parts beyond *bash*, such as *git*, *perl* or *python* packages. For example, in order to install Perl under MobaXterm please push "Packages" and select "perl". 
+If you use a Windows system you can install [MobaXterm](https://mobaxterm.mobatek.net). It is a powerfull yet simple tool to connect to SSH and SFTP servers. it also offers Linux terminal and X server. It also allows you to install parts beyond *bash*, such as *git*, *perl* or *python* packages. For example, in order to install Perl under MobaXterm please push "Packages" and select "perl". MobaXterm can only be used to launch a Ubuntu terminal if you installed [Ubuntu embedded in Windows](#ubuntu-embedded-in-windows-wsl).
 
 ![](pics/MobaXterm.png)
 
