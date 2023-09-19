@@ -2,12 +2,35 @@
 
 Computer scientists often start counting from zero. In this course, session 0 is about setting up the required environment for the course. Basically, you can use any Linux terminal. Just notice that we are using a user called *osboxes*, which may be different from your username in your system, so that the output of the examples may vary a little.
 
-Therefore, if you already have a Linux terminal available or you want to install Linux as your native OS (either Ubuntu or any other distribution), you may skip this session. Here, we present different ways to install Ubuntu, or other alternative ways to obtain a Linux terminal.
+Therefore, if you already have a Linux terminal available or you want to install Linux as your native OS (either Ubuntu or any other distribution), you may skip this session. Here, we present different ways to install Ubuntu, or an alternative way to obtain a Linux terminal.
 
-- [Using a virtual machine (VM)](#using-a-virtual-machine--vm-)
+
 - [Ubuntu embedded in Windows 10](#ubuntu-embedded-in-windows-10)
+- [Using a virtual machine (VM)](#using-a-virtual-machine--vm-)
 - [Other options](#other-options)
 
+
+## Ubuntu embedded in Windows (WSL)
+
+For systems runnings Windows 10/11 there's a powerful way of running Ubuntu and its terminal,
+as explained at [Install Ubuntu on WSL2 and get started with graphical applications](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support#1-overview) or at [https://learn.microsoft.com/en-us/windows/wsl/install](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+<!--1. Make sure you have version 1709 or higher, as explained [here](https://www.protocols.io/view/ubuntu-on-windows-for-computational-biology-sfuebnw)
+
+2. Open Microsoft Store. Search and install "Ubuntu". You can choose a particular version or simply 'Ubuntu' to get the latest supported version.
+
+3. Open system admin and look for "Turn Windows Features on or off". Select the Windows subsystem for Linux.
+
+4. Reboot and launch the Ubuntu app. After a few minutes you should be able to choose your own user and password. You are ready to go.
+
+Note: you will be using a separate filesystem, which can be found at 
+        C:\Users\**username**\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs
+
+This requires enabling "Show Hidden Files and Folders". -->
+
+**Note**: the standard Windows filesystem, for instance drive C:, can be found from Ubuntu at
+
+        /mnt/c
 
 ## Using a virtual machine (VM)
 
@@ -48,27 +71,6 @@ It is recommended also to install the Guest Additions. If you installed the *osb
 
 Also, it is important to explain how to use the *Host key*. This key can be pressed when within the guest OS, to recover the keyboard and mouse control to the host OS, and also to activate some options. The *Host key* is configurable, but it is usually assigned by default to keys like the *Windows key*, *left Shift*, *left Alt*, *left Ctrl*, or similar. You can check which is your current *Host key* on the group of icons to the bottom right of the window of the guest OS. One example of its use: press *Host key+F* to go full screen.
 
-## Ubuntu embedded in Windows (WSL)
-
-For systems runnings Windows 10/11 there's a powerful way of running Ubuntu and its terminal,
-as explained at [Install Ubuntu on WSL2 and get started with graphical applications](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support#1-overview).
-
-<!--1. Make sure you have version 1709 or higher, as explained [here](https://www.protocols.io/view/ubuntu-on-windows-for-computational-biology-sfuebnw)
-
-2. Open Microsoft Store. Search and install "Ubuntu". You can choose a particular version or simply 'Ubuntu' to get the latest supported version.
-
-3. Open system admin and look for "Turn Windows Features on or off". Select the Windows subsystem for Linux.
-
-4. Reboot and launch the Ubuntu app. After a few minutes you should be able to choose your own user and password. You are ready to go.
-
-Note: you will be using a separate filesystem, which can be found at 
-	C:\Users\**username**\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\rootfs
-
-This requires enabling "Show Hidden Files and Folders". -->
-
-Note: the standard Windows filesystem, for instance drive C:, can be found from Ubuntu at 
-
-	/mnt/c 
 
 ## Other options 
 
