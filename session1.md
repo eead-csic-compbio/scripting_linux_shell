@@ -34,14 +34,14 @@
 
 <!-- : input and commands, -h, --help, man; the home directory; ls (-a -l -lh -lrt -ad), wildcards (ls whatever*), relative paths (./ ../), the root directory, absolute paths (/, ~/); hard drives, df and mount; moving (cd DIR, cd ..). Creating, moving, renaming and copying files (touch, mv, cp, rename). Symbolic links (ln -s, unlink). -->
 
-### The terminal
-
-In this course you will need to open a terminal to type your commands.
+In this course you will need to open a terminal to type your commands and a file system to store your data.
 The way this can be done will depend on your setting, see [session 0](./session0.md).
 For instance, if you are using a virtual machine (VM), please start it first with login and password 'osboxes.org'.
 For compatibility with the VM, the examples below assume your username is 'osboxes' and 
 your home directory is '/home/osboxes/'; in other settings your username and home will most likely 
-be different, but that's ok, the examples should work as long as you adapt them. 
+be different, but that's ok, the examples should work as long as you adapt them.
+
+### The terminal
 
 How to open a terminal depends on the OS or setup. In Ubuntu 20.04 you can press *Ctrl+Alt+t*, or go to the **Show applications** button, type **Terminal**, and click on the *Terminal* icon. With an open terminal you can right-click on the icon at the task bar and *Add to favourites*.
 
