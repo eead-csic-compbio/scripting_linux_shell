@@ -36,7 +36,12 @@
 
 ### The terminal
 
-First of all, start the Ubuntu virtual machine (VM) with login and password **osboxes.org**.
+In this course you will need to open a terminal to type your commands.
+The way this can be done will depend on your setting, see [session 0](./session0.md).
+For instance, if you are using a virtual machine (VM), please start it first with login and password **osboxes.org**.
+In fact, for compatibility with the VM, the examples below assume your username is 'osboxes' and 
+your home directory is '/home/osboxes/'; in other settings your username and home will most likely 
+be different, but that's ok, the examples should work as long as you adapt them. 
 
 How to open a terminal depends on the OS or setup. In Ubuntu 20.04 you can press *Ctrl+Alt+t*, or go to the **Show applications** button, type **Terminal**, and click on the *Terminal* icon. With an open terminal you can right-click on the icon at the task bar and *Add to favourites*.
 
