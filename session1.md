@@ -38,8 +38,8 @@
 
 In this course you will need to open a terminal to type your commands.
 The way this can be done will depend on your setting, see [session 0](./session0.md).
-For instance, if you are using a virtual machine (VM), please start it first with login and password **osboxes.org**.
-In fact, for compatibility with the VM, the examples below assume your username is 'osboxes' and 
+For instance, if you are using a virtual machine (VM), please start it first with login and password 'osboxes.org'.
+For compatibility with the VM, the examples below assume your username is 'osboxes' and 
 your home directory is '/home/osboxes/'; in other settings your username and home will most likely 
 be different, but that's ok, the examples should work as long as you adapt them. 
 
