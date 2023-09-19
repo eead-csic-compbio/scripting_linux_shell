@@ -5,7 +5,7 @@ Computer scientists often start counting from zero. In this course, session 0 is
 Therefore, if you already have a Linux terminal available or you want to install Linux as your native OS (either Ubuntu or any other distribution), you may skip this session. Here, we present different ways to install Ubuntu, or an alternative way to obtain a Linux terminal.
 
 
-- [Ubuntu embedded in Windows 10](#ubuntu-embedded-in-windows-10)
+- [Ubuntu embedded in Windows](#ubuntu-embedded-in-windows--WSL)
 - [Using a virtual machine (VM)](#using-a-virtual-machine--vm-)
 - [Other options](#other-options)
 
