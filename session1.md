@@ -444,7 +444,8 @@ This will clone the repository of this course on your local filesystem. In this 
 
 ### The conda manager
 
-Conda is a popular software and packages manager, which is used mainly by the Python community, but it covers much more, including software for data science, R packages, etc. In this example, we are going to install a conda manager which includes just the basic packages (aka 'Miniconda'). Then, we will use this conda manager to create a specific environment which we will use to install the blast program.
+Conda is a popular software and packages manager, which is used mainly by the Python community, but it covers much more, including software for data science, R packages, etc. In this example, we are going to install a conda manager which includes just the basic packages (aka 'Miniconda'). Then, we will use this conda manager to create a specific environment which we will use to install the blast program. Another popular conda manager is [miniforge](https://github.com/conda-forge/miniforge),
+which supports both conda and mamba.
 
 To download Miniconda, you could look for the latest distribution on your web browser and download the `.sh` for your operating system from there. In our example, we are going to download it directly from the terminal using the `wget` command:
 
