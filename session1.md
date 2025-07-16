@@ -811,6 +811,11 @@ Sbjct  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
 Sbjct  185  WQALQGAKLVLQDYASGSRPLIDAALARNGIQANIVQEIGHPATLFPMVAAGIGISILPA  244
 ```
 
+If you wanted to use more advanced Perl regular expressions, see [session4](./session4.md), you can indicate it to grep as follows: `grep -P "^\S{1,3}" P08660.aln`
+
+Alternatively you can turn off regex matching with `grep -F`, increasing efficiency.
+
+
 - Use the `-v` option to instead of keeping the lines found, discard those and get the others: `grep ".HPA.L." P08660.aln | grep -v "^Query"`
 
 ```
