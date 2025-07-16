@@ -774,7 +774,9 @@ If we want to find only "Stephen" as a complete word, we can use the `-w` parame
     printf "Stephen" | grep -w "Stephen"
     printf "Stephenson" | grep -w "Stephen"
 
-Note that the text to be searched by grep is in fact a **regular expression**. Regular expressions are beyond the scope of this lesson, and will be further covered in [session3](./session3.md) of this course. They are very powerful for text search, replacement and filtering. We will see just some examples using grep:
+Note that the text to be searched by grep is in fact a **regular expression** or **regex**. Regular expressions are beyond the scope of this lesson, and will be further covered in [session3](./session3.md) of this course. They are very powerful for text search, replacement and filtering. We will see just some examples using grep:
+
+- Turn off regex matching with `grep -F` to increase performance if not needed.
 
 - Use `^` to represent the start of a line: `grep "^Reference" P08660.aln`
 
@@ -810,11 +812,6 @@ Sbjct  185  WQALQGAKLVLQDYASGSRPLIDAALARNGIQANIVQEIGHPATLFPMVAAGIGISILPA  244
 Sbjct  241  DEIAFAEAAEMATFGAKVLHPATLLPAVRSDIPVFVGSSKDPRAGGTLVCNKTENPPLFR  300
 Sbjct  185  WQALQGAKLVLQDYASGSRPLIDAALARNGIQANIVQEIGHPATLFPMVAAGIGISILPA  244
 ```
-
-If you wanted to use more advanced Perl regular expressions, see [session4](./session4.md), you can indicate it to grep as follows: `grep -P "^\S{1,3}" P08660.aln`
-
-Alternatively you can turn off regex matching with `grep -F`, increasing efficiency.
-
 
 - Use the `-v` option to instead of keeping the lines found, discard those and get the others: `grep ".HPA.L." P08660.aln | grep -v "^Query"`
 
@@ -870,7 +867,7 @@ Sbjct  144  MKRDGKYLRRVVASPQPRKILDSEAIELL--LKEGHVV----ICSGGGGVPVTDDGAGSE  197
 Sbjct  198  AVIDKDLAAALLAEQINADGLVILTDADAVYENWGTPQQRAIRHATP-DELAPFAKA  253
 ```
 
-The same regular expression can be used with another command, `sed`, to replace those patterns for other text strings. For example:
+The same regex can be used with another command, `sed`, to replace those patterns for other text strings. For example:
 
     grep "Stephen" P08660.aln | sed 's#Stephen#Osboxes#'
 
@@ -921,6 +918,8 @@ We can use `-e` to perform several replacements, as alternative to pipe consecut
 
 Check more info and examples about sed at https://tldp.org/LDP/abs/html/x23170.html
 
+Finally, another language specially efficient for regexes is Perl, introduced in [session4](./session4.md).
+You can tell `grep` you are using a Perl regex as follows: `grep -P "^\S{1,3}" P08660.aln`
 
 ### Working with tabular data
 
